@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <bank xmlns="https://checkit.clontz.org" version="0.2">
-    <title>New CheckIt Bank</title>
-    <slug>new-checkit-bank</slug>
-    <url>https://checkit.clontz.org</url>
-    <outcomes>
+    <title>MAT 106 - Number Systems and Operations - CheckIt Bank</title>
+    <slug>mat-106-bank</slug>
+    <url>https://jslyemath.github.io/mat-106-checkit</url>
+    <outcomes>        
         <outcome>
-            <title>Sample Outcome</title>
-            <slug>EX1</slug>
-            <path>outcomes/EX1</path>
+            <title>Decimal Place Values</title>
+            <slug>D1</slug>
+            <path>outcomes/D1</path>
             <description>
-Simplify the sum of two monomials.
+                I can identify place values in decimal numbers using both numerical notation and English words, and represent decimal numbers using base-ten blocks.
             </description>
         </outcome>
     </outcomes>
