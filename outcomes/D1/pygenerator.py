@@ -39,11 +39,17 @@ def generate(**kwargs):
     int_blocks_dec = blocks_dec.replace(".", "")
 
     if units_block_choice == 'flats':
+        units_block = 'flat'
+        tenths_block = 'long'
+        hundredths_block = 'small cube'
         lcubes_amt = 0
         flats_amt = int(int_blocks_dec[0])
         rods_amt = int(int_blocks_dec[1])
         scubes_amt = int(int_blocks_dec[2])
     else:
+        units_block = 'large cube'
+        tenths_block = 'flat'
+        hundredths_block = 'long'
         lcubes_amt = int(int_blocks_dec[0])
         flats_amt = int(int_blocks_dec[1])
         rods_amt = int(int_blocks_dec[2])
@@ -67,5 +73,8 @@ def generate(**kwargs):
         'pv_ans_text': pv_ans_text,
         'blocks_dec': blocks_dec,
         'units_block_choice': units_block_choice,
-        'blocks_ans_text': blocks_ans_text
+        'blocks_ans_text': blocks_ans_text,
+        'units_block': units_block,
+        'tenths_block': tenths_block,
+        'hundredths_block': hundredths_block
     }
