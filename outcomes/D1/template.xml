@@ -4,6 +4,7 @@
         <content>
             <p>Consider the number {{pv_dec_string}}. Identify and name each of the place values used in this number. Write these names using both a numerical label (e.g. ``10s'') and an English-word label (e.g. ``tens'').</p>
         </content>
+        
         <outtro>
             <p>{{pv_ans_text}}</p>
         </outtro>
@@ -12,8 +13,39 @@
         <content>
             <p>Using {{units_block_choice}} to represent the units, draw a base-ten block representation of the number {{blocks_dec}}.</p>
         </content>
+        
         <outtro>
             <p>{{blocks_ans_text}}</p>
+        </outtro>
+    </knowl>
+    
+    <knowl>
+        <content>
+        <title>D1-E</title>
+            If one {{units_block}} represents one unit, which type of block represents one tenth? Why? Relate your answer back to the base ten place value system.
+        </content>
+        
+        <outtro>
+            It takes ten tenths to create a single unit. Likewise, it takes ten {{tenths_block}}s to create a single {{units_block}}. Thus, a {{tenths_block}} represents one tenth. 
+        </outtro>
+    </knowl>
+    
+    <knowl>
+        <content>
+            If one {{units_block}} represents one unit, which type of block represents one hundredth? Why? Relate your answer back to the base ten place value system.
+        </content>
+        
+        <outtro>
+            It takes one hundred hundredths to create a single unit. Likewise, it takes one hundred {{hundredths_block}}s to create a single {{units_block}}. Thus, a {{hundredths_block}} represents one hundredth. 
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>How do base ten blocks physically demonstrate how a base-ten place value system works?</p>
+        </content>
+        <outtro>
+            <p>In a base-ten place value system, each place value must be ten times the place value to its right. It takes ten units to make a long, ten longs to make a flat, and ten flats to make a large cube. Thus, the four types of base ten blocks can be used for any 4 consecutive base-ten place values. </p>
         </outtro>
     </knowl>
 </knowl>
