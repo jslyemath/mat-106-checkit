@@ -41,14 +41,14 @@ jobs:
         run: |
           python3 .github/scripts/sync_outcomes.py
 
-      - name: Commit and push changes
-        working-directory: mat-106-checkit
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add outcomes
-          git commit -m "Sync outcomes from mat-106-bank and local-mat-106-bank" || echo "No changes to commit"
-          git push
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: Sync outcomes from mat-106-bank and local-mat-106-bank
+          title: Sync outcomes from mat-106-bank and local-mat-106-bank
+          body: Automated outcomes sync via GitHub Action.
+          branch: outcomes-sync/${{ github.run_id }}
+          delete-branch: true
 
       - name: Upload error log
         if: always()
