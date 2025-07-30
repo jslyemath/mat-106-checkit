@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.2">
+    <intro>
+        <p>Compute each of the following using the stated algorithm. You must show all calculations in the desired base, and not by converting between bases.</p>
+    </intro>
+    <knowl>
+        <content>
+            <p><m>{{base_ten_prob}}</m> ({{base_ten_alg}})</p>
+        </content>
+        <outtro>
+            <p><m>{{base_ten_ans}}</m></p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{base_b_prob}}</m> ({{base_b_alg}})</p>
+        </content>
+        <outtro>
+            <p><m>{{base_b_ans}}</m></p>
+        </outtro>
+    </knowl>
+</knowl>
