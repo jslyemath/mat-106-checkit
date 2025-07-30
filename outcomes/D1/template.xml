@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.2">
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
     <knowl>
         <content>
             <p>Consider the number {{pv_dec_string}}. Identify and name each of the place values used in this number. Write these names using both a numerical label (e.g. ``10s'') and an English-word label (e.g. ``tens'').</p>
@@ -41,7 +41,7 @@
 
     <knowl>
         <content>
-            <p>How do base ten blocks physically demonstrate how a base-ten place value system works?</p>
+            <p>How do base-ten blocks physically demonstrate how a base-ten place value system works?</p>
         </content>
         <outtro>
             <p>In a base-ten place value system, each place value must be ten times the place value to its right. It takes ten units to make a long, ten longs to make a flat, and ten flats to make a large cube. Thus, the four types of base ten blocks can be used for any 4 consecutive base-ten place values. </p>
