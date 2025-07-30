@@ -1,6 +1,6 @@
 class Generator(BaseGenerator):
     def data(self):
-        return pygenerate()
+        return pygenerate(mode='html')
 
 # ────────────────────────────────────────────────────────────────────────────
 

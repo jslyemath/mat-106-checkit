@@ -321,7 +321,7 @@ def str_int_base_op(num1, num2, op, base):
     return base_conv(eval(str(int(num1, base=base)) + op + str(int(num2, base=base))), base, output='str')
 
 
-def to_egyptian(num, mode='html'):
+def to_egyptian(num, mode='latex'):
     egy_html = ('\U000133FA', '\U00013386', '\U00013362', '\U000131BC', '\U000130AD', '\U00013190', '\U00013068')
     egy_latex = ('\\Hone', '\\Hten', '\\Hhundred', '\\Hthousand', '\\HXthousand', '\\HCthousand', '\\Hmillion')
     egy_powers = []
@@ -342,7 +342,7 @@ def to_egyptian(num, mode='html'):
     return ''.join(egyptian_list[::-1])
 
 
-def to_simple_babylonian(num, mode='html'):
+def to_simple_babylonian(num, mode='latex'):
     base_60 = base_conv(num, 60)
 
     bab_html_zero = '\U000120F5'
