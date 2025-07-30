@@ -41,6 +41,15 @@ jobs:
         run: |
           python3 .github/scripts/sync_outcomes.py
 
+      - name: Commit and push changes
+        working-directory: mat-106-checkit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add outcomes
+          git commit -m "Sync outcomes from mat-106-bank and local-mat-106-bank" || echo "No changes to commit"
+          git push
+
       - name: Upload error log
         if: always()
         uses: actions/upload-artifact@v4
