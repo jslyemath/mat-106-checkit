@@ -17,4 +17,27 @@
             <p>{{to_m_modern}}</p>
         </outtro>
     </knowl>
+
+    <!-- newpage -->
+
+    <!-- TODO: Find a way to put this W1 text into the checkit. -->
+    <p>For the following questions, consider the {{expl_system}} numeral “<m>{{expl_ancient}}</m>” and the modern base-ten numeral “<m>{{expl_modern}}</m>”.</p>
+    <knowl>
+        <content>
+            <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> similar?</p>
+        </content>
+        <outtro>
+            <p>Answers will vary.</p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> different? <strong>Why?</strong> What is fundamentally different about these two numeration systems that is key to understanding this difference?</p>
+        </content>
+        <outtro>
+            <p>Answers will vary.</p>
+        </outtro>
+    </knowl>
+
 </knowl>
