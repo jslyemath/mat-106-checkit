@@ -1,0 +1,49 @@
+name: Sync Outcomes
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/scripts/sync_outcomes.py'
+
+jobs:
+  sync-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout mat-106-checkit
+        uses: actions/checkout@v4
+        with:
+          path: mat-106-checkit
+
+      - name: Checkout mat-106-bank
+        uses: actions/checkout@v4
+        with:
+          repository: jslyemath/mat-106-bank
+          path: mat-106-bank
+
+      - name: Checkout local-mat-106-bank
+        uses: actions/checkout@v4
+        with:
+          repository: jslyemath/local-mat-106-bank
+          path: local-mat-106-bank
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run sync script
+        working-directory: mat-106-checkit
+        env:
+          BANK_PATH: ../mat-106-bank/outcomes
+          LOCAL_BANK_PATH: ../local-mat-106-bank
+          CHECKIT_PATH: ./outcomes
+        run: |
+          python3 ../.github/scripts/sync_outcomes.py
+
+      - name: Upload error log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-errors
+          path: mat-106-checkit/sync_errors.log
