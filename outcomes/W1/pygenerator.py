@@ -3,9 +3,11 @@ import random
 
 
 def generate(**kwargs):
+    mode = kwargs.get('mode', 'latex')
+
     def bab_modern():
         modern = random.choice(range(3501, 162000))
-        bab = sm.to_simple_babylonian(modern)
+        bab = sm.to_simple_babylonian(modern, mode=mode)
         return f'{bab}', modern, 'ancient Babylonian'
 
     def rom_modern():
@@ -15,7 +17,7 @@ def generate(**kwargs):
 
     def egy_modern():
         modern = random.choice(range(100000, 4000000))
-        egy = sm.to_egyptian(modern)
+        egy = sm.to_egyptian(modern, mode=mode)
         return f'\\Large\\textpmhg{{{egy}}}', modern, 'ancient Egyptian'
 
     non_bab_systems = [rom_modern, egy_modern]
