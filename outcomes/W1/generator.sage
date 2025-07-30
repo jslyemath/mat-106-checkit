@@ -20,7 +20,6 @@ if outcomes_str not in sys.path:
 # Load pygenerator.py and add its generate function as pygenerate to globals
 pygenerator_path = generator_dir / "pygenerator.py"
 module_globals = runpy.run_path(str(pygenerator_path))
-
 try:
     pygenerate = module_globals["generate"]
 except KeyError:

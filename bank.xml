@@ -3,283 +3,284 @@
     <title>MAT 106 - Number Systems and Operations - CheckIt Bank</title>
     <slug>mat-106-bank</slug>
     <url>https://jslyemath.github.io/mat-106-checkit</url>
-    <!-- <outcome>
-        <title>Analyzing Student Work</title>
-        <slug>G1</slug>
-        <path>outcomes/G1</path>
-        <description>
-            I can identify hypothetical student work as correct or incorrect, analyze the reasoning for incorrect mistakes, and make appropriate suggestions for improvement.
-        </description>
-    </outcome>
+    <outcomes>        
+        <!-- <outcome>
+            <title>Analyzing Student Work</title>
+            <slug>G1</slug>
+            <path>outcomes/G1</path>
+            <description>
+                I can identify hypothetical student work as correct or incorrect, analyze the reasoning for incorrect mistakes, and make appropriate suggestions for improvement.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>>Word Problems (Basic Arithmetic)</title>
-        <slug>G2</slug>
-        <path>outcomes/G2</path>
-        <description>
-            I can solve word problems using basic arithmetic operations.
-        </description>
-    </outcome> -->
+        <outcome>
+            <title>>Word Problems (Basic Arithmetic)</title>
+            <slug>G2</slug>
+            <path>outcomes/G2</path>
+            <description>
+                I can solve word problems using basic arithmetic operations.
+            </description>
+        </outcome> -->
 
-    <outcome>
-        <title>Ancient and Modern Numeration</title>
-        <slug>W1</slug>
-        <path>outcomes/W1</path>
-        <description>
-            I can convert the ancient Roman/Babylonian/Egyptian numeration systems to modern Hindu-Arabic base ten, and vice versa.
-        </description>
-    </outcome>
-<!-- 
-    <outcome>
-        <title>Base-b Addition and Subtraction Algorithms</title>
-        <slug>W2</slug>
-        <path>outcomes/W2</path>
-        <description>
-            I can compute addition and subtraction of multi-digit base-b whole numbers using non-standard addition and subtraction algorithms.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Ancient and Modern Numeration</title>
+            <slug>W1</slug>
+            <path>outcomes/W1</path>
+            <description>
+                I can convert the ancient Roman/Babylonian/Egyptian numeration systems to modern Hindu-Arabic base ten, and vice versa.
+            </description>
+        </outcome>
+    <!-- 
+        <outcome>
+            <title>Base-b Addition and Subtraction Algorithms</title>
+            <slug>W2</slug>
+            <path>outcomes/W2</path>
+            <description>
+                I can compute addition and subtraction of multi-digit base-b whole numbers using non-standard addition and subtraction algorithms.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Properties of Addition and Multiplication</title>
-        <slug>W3</slug>
-        <path>outcomes/W3</path>
-        <description>
-            I can identify uses of the associative, commutative, identity, zero product, and distributive properties of addition and multiplication.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Properties of Addition and Multiplication</title>
+            <slug>W3</slug>
+            <path>outcomes/W3</path>
+            <description>
+                I can identify uses of the associative, commutative, identity, zero product, and distributive properties of addition and multiplication.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Generating Appropriate Word Problems</title>
-        <slug>W4</slug>
-        <path>outcomes/W4</path>
-        <description>
-            I can generate elementary word problems most suitable for each of the problem structures of addition, subtraction, multiplication, and division.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Generating Appropriate Word Problems</title>
+            <slug>W4</slug>
+            <path>outcomes/W4</path>
+            <description>
+                I can generate elementary word problems most suitable for each of the problem structures of addition, subtraction, multiplication, and division.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Base-b Multiplication Algorithms</title>
-        <slug>W5</slug>
-        <path>outcomes/W5</path>
-        <description>
-            I can compute multiplication of multi-digit base-b whole numbers using non-standard multiplication algorithms.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Base-b Multiplication Algorithms</title>
+            <slug>W5</slug>
+            <path>outcomes/W5</path>
+            <description>
+                I can compute multiplication of multi-digit base-b whole numbers using non-standard multiplication algorithms.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Long Division Algorithms</title>
-        <slug>W6</slug>
-        <path>outcomes/W6</path>
-        <description>
-            I can compute the quotient of two whole or decimal numbers using standard and non-standard algorithms.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Long Division Algorithms</title>
+            <slug>W6</slug>
+            <path>outcomes/W6</path>
+            <description>
+                I can compute the quotient of two whole or decimal numbers using standard and non-standard algorithms.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Divisibility Statements</title>
-        <slug>N1</slug>
-        <path>outcomes/N1</path>
-        <description>
-            I can identify divisibility statements as true or false.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Divisibility Statements</title>
+            <slug>N1</slug>
+            <path>outcomes/N1</path>
+            <description>
+                I can identify divisibility statements as true or false.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Prime and Composite Numbers</title>
-        <slug>N2</slug>
-        <path>outcomes/N2</path>
-        <description>
-            I can determine if a number is prime or composite via the prime testing method.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Prime and Composite Numbers</title>
+            <slug>N2</slug>
+            <path>outcomes/N2</path>
+            <description>
+                I can determine if a number is prime or composite via the prime testing method.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Greatest Common Divisor</title>
-        <slug>N3</slug>
-        <path>outcomes/N3</path>
-        <description>
-            I can compute the greatest common divisor (GCD) of two numbers using appropriate methods.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Greatest Common Divisor</title>
+            <slug>N3</slug>
+            <path>outcomes/N3</path>
+            <description>
+                I can compute the greatest common divisor (GCD) of two numbers using appropriate methods.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Least Common Multiple</title>
-        <slug>N4</slug>
-        <path>outcomes/N4</path>
-        <description>
-            I can compute the least common multiple (LCM) of two numbers using appropriate methods.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Least Common Multiple</title>
+            <slug>N4</slug>
+            <path>outcomes/N4</path>
+            <description>
+                I can compute the least common multiple (LCM) of two numbers using appropriate methods.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Fraction Equivalence</title>
-        <slug>F1</slug>
-        <path>outcomes/F1</path>
-        <description>
-            I can convert fractions to different forms (including simplest form), and determine if two fractions are equivalent.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Fraction Equivalence</title>
+            <slug>F1</slug>
+            <path>outcomes/F1</path>
+            <description>
+                I can convert fractions to different forms (including simplest form), and determine if two fractions are equivalent.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Fraction Models</title>
-        <slug>F2</slug>
-        <path>outcomes/F2</path>
-        <description>
-            I can construct both number line and area models for fractions.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Fraction Models</title>
+            <slug>F2</slug>
+            <path>outcomes/F2</path>
+            <description>
+                I can construct both number line and area models for fractions.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Exemplifying the Denseness Property</title>
-        <slug>F3</slug>
-        <path>outcomes/F3</path>
-        <description>
-            I can, given two rational numbers, find any number of rational numbers between them and, in the case of decimals, place these numbers accurately on a number line.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Exemplifying the Denseness Property</title>
+            <slug>F3</slug>
+            <path>outcomes/F3</path>
+            <description>
+                I can, given two rational numbers, find any number of rational numbers between them and, in the case of decimals, place these numbers accurately on a number line.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Mixed Number Operations</title>
-        <slug>F4</slug>
-        <path>outcomes/F4</path>
-        <description>
-            I can compute the sum, difference, product, and quotient of mixed numbers.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Mixed Number Operations</title>
+            <slug>F4</slug>
+            <path>outcomes/F4</path>
+            <description>
+                I can compute the sum, difference, product, and quotient of mixed numbers.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Proportional Reasoning</title>
-        <slug>F5</slug>
-        <path>outcomes/F5</path>
-        <description>
-            I can solve word problems using proportional reasoning.
-        </description>
-    </outcome> -->
+        <outcome>
+            <title>Proportional Reasoning</title>
+            <slug>F5</slug>
+            <path>outcomes/F5</path>
+            <description>
+                I can solve word problems using proportional reasoning.
+            </description>
+        </outcome> -->
 
-    <outcome>
-        <title>Decimal Place Values</title>
-        <slug>D1</slug>
-        <path>outcomes/D1</path>
-        <description>
-            I can identify place values in decimal numbers using both numerical notation and English words, and represent decimal numbers using base-ten blocks.
-        </description>
-    </outcome>
-<!-- 
-    <outcome>
-        <title>Decimal Conversions</title>
-        <slug>D2</slug>
-        <path>outcomes/D2</path>
-        <description>
-            I can convert numbers between fractions, decimals, and percents.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Decimal Place Values</title>
+            <slug>D1</slug>
+            <path>outcomes/D1</path>
+            <description>
+                I can identify place values in decimal numbers using both numerical notation and English words, and represent decimal numbers using base-ten blocks.
+            </description>
+        </outcome>
+    <!-- 
+        <outcome>
+            <title>Decimal Conversions</title>
+            <slug>D2</slug>
+            <path>outcomes/D2</path>
+            <description>
+                I can convert numbers between fractions, decimals, and percents.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Ordering Rational Numbers</title>
-        <slug>D3</slug>
-        <path>outcomes/D3</path>
-        <description>
-            I can order any rational numbers, including decimals, from least to greatest.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Ordering Rational Numbers</title>
+            <slug>D3</slug>
+            <path>outcomes/D3</path>
+            <description>
+                I can order any rational numbers, including decimals, from least to greatest.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Percent Word Problems</title>
-        <slug>D4</slug>
-        <path>outcomes/D4</path>
-        <description>
-            I can solve word problems using percents.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Percent Word Problems</title>
+            <slug>D4</slug>
+            <path>outcomes/D4</path>
+            <description>
+                I can solve word problems using percents.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Arithmetic Word Problems</title>
-        <slug>G2-E</slug>
-        <path>outcomes/G2-E</path>
-        <description>
-            I can explain my reasoning for each step of work in solving a word problem with the basic arithmetic operations, in language that supports elementary students' understanding of how to solve such problems.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Explaining Arithmetic Word Problems</title>
+            <slug>G2-E</slug>
+            <path>outcomes/G2-E</path>
+            <description>
+                I can explain my reasoning for each step of work in solving a word problem with the basic arithmetic operations, in language that supports elementary students' understanding of how to solve such problems.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Numeration Systems</title>
-        <slug>W1-E</slug>
-        <path>outcomes/W1-E</path>
-        <description>
-            I can compare and contrast the ancient and modern numeration systems, and explain how they represent values.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Explaining Numeration Systems</title>
+            <slug>W1-E</slug>
+            <path>outcomes/W1-E</path>
+            <description>
+                I can compare and contrast the ancient and modern numeration systems, and explain how they represent values.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Operation Properties</title>
-        <slug>W3-E</slug>
-        <path>outcomes/W3-E</path>
-        <description>
-            I can explain why the properties of addition and multiplication work, in terms that elementary students would understand.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Explaining Operation Properties</title>
+            <slug>W3-E</slug>
+            <path>outcomes/W3-E</path>
+            <description>
+                I can explain why the properties of addition and multiplication work, in terms that elementary students would understand.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Problem Structures</title>
-        <slug>W4-E</slug>
-        <path>outcomes/W4-E</path>
-        <description>
-            I can explain why word problems are most suitable for particular problem structures.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Explaining Problem Structures</title>
+            <slug>W4-E</slug>
+            <path>outcomes/W4-E</path>
+            <description>
+                I can explain why word problems are most suitable for particular problem structures.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Divisibility</title>
-        <slug>N1-E</slug>
-        <path>outcomes/N1-E</path>
-        <description>
-            I can explain why divisibility statements are logically correct or incorrect, using general logic that elementary students would understand.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Explaining Divisibility</title>
+            <slug>N1-E</slug>
+            <path>outcomes/N1-E</path>
+            <description>
+                I can explain why divisibility statements are logically correct or incorrect, using general logic that elementary students would understand.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Prime Testing</title>
-        <slug>N2-E</slug>
-        <path>outcomes/N2-E</path>
-        <description>
-            I can explain why the method for testing primes is designed the way it is, and why it works.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Explaining Prime Testing</title>
+            <slug>N2-E</slug>
+            <path>outcomes/N2-E</path>
+            <description>
+                I can explain why the method for testing primes is designed the way it is, and why it works.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Fraction Models</title>
-        <slug>F2-E</slug>
-        <path>outcomes/F2-E</path>
-        <description>
-            I can explain how to construct fraction models, and how students can understand how they represent the numerator and denominator of a fraction.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Explaining Fraction Models</title>
+            <slug>F2-E</slug>
+            <path>outcomes/F2-E</path>
+            <description>
+                I can explain how to construct fraction models, and how students can understand how they represent the numerator and denominator of a fraction.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Rational Denseness</title>
-        <slug>F3-E</slug>
-        <path>outcomes/F3-E</path>
-        <description>
-            I can explain the denseness property of the rational numbers, by using language appropriate for an elementary student, and by using concrete examples.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Explaining Rational Denseness</title>
+            <slug>F3-E</slug>
+            <path>outcomes/F3-E</path>
+            <description>
+                I can explain the denseness property of the rational numbers, by using language appropriate for an elementary student, and by using concrete examples.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Proportional Reasoning</title>
-        <slug>F5-E</slug>
-        <path>outcomes/F5-E</path>
-        <description>
-            I can explain my reasoning for each step of work in solving a proportional reasoning word problem, in language that supports elementary students' understanding of how to solve such problems.
-        </description>
-    </outcome>
+        <outcome>
+            <title>Explaining Proportional Reasoning</title>
+            <slug>F5-E</slug>
+            <path>outcomes/F5-E</path>
+            <description>
+                I can explain my reasoning for each step of work in solving a proportional reasoning word problem, in language that supports elementary students' understanding of how to solve such problems.
+            </description>
+        </outcome>
 
-    <outcome>
-        <title>Explaining Decimal Place Value</title>
-        <slug>D1-E</slug>
-        <path>outcomes/D1-E</path>
-        <description>
-            I can explain the relationship between place values in the base ten decimal system, and how the base ten blocks help demonstrate that relationship.
-        </description>
-    </outcome> -->
-
+        <outcome>
+            <title>Explaining Decimal Place Value</title>
+            <slug>D1-E</slug>
+            <path>outcomes/D1-E</path>
+            <description>
+                I can explain the relationship between place values in the base ten decimal system, and how the base ten blocks help demonstrate that relationship.
+            </description>
+        </outcome> -->
+    </outcomes>
 </bank>
