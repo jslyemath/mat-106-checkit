@@ -12,7 +12,7 @@ logging.basicConfig(
 BANK_PATH = os.environ.get('BANK_PATH', '../mat-106-bank/outcomes')
 LOCAL_BANK_PATH = os.environ.get('LOCAL_BANK_PATH', '../local-mat-106-bank')
 CHECKIT_PATH = os.environ.get('CHECKIT_PATH', './outcomes')
-DIRS = [f'D{i}' for i in range(1, 10)] + [f'W{i}' for i in range(1, 7)]
+DIRS = [f'D{i}' for i in range(1, 4)] + [f'W{i}' for i in range(1, 7)] + [f'F{i}' for i in range(1, 5)] + [f'G{i}' for i in range(1, 3)] + [f'N{i}' for i in range(1, 5)]
 
 def safe_copy(src, dst):
     if not os.path.exists(src):
