@@ -321,8 +321,15 @@ def str_int_base_op(num1, num2, op, base):
     return base_conv(eval(str(int(num1, base=base)) + op + str(int(num2, base=base))), base, output='str')
 
 
-def to_egyptian(num):
-    egy_python = ('\\Hone', '\\Hten', '\\Hhundred', '\\Hthousand', '\\HXthousand', '\\HCthousand', '\\Hmillion')
+def to_egyptian(num, mode='html'):
+    egy_html = ('\U000133FA', '\U00013386', '\U00013362', '\U000131BC', '\U000130AD', '\U00013190', '\U00013068')
+    egy_latex = ('\\Hone', '\\Hten', '\\Hhundred', '\\Hthousand', '\\HXthousand', '\\HCthousand', '\\Hmillion')
+    egy_powers = []
+
+    if mode == 'html':
+        egy_powers = egy_html
+    else:
+        egy_powers = egy_latex
 
     egyptian_list = []
 
@@ -330,17 +337,29 @@ def to_egyptian(num):
     for ten_power, digit in enumerate(rev_digits):
         digit = int(digit)
         for i in range(0, digit):
-            egyptian_list += [egy_python[ten_power]]
+            egyptian_list += [egy_powers[ten_power]]
 
     return ''.join(egyptian_list[::-1])
 
 
-def to_simple_babylonian(num):
+def to_simple_babylonian(num, mode='html'):
     base_60 = base_conv(num, 60)
 
-    bab_python_zero = '\\babz'
+    bab_html_zero = '\U000120F5'
+    bab_html = ('\U00012079', '\U0001230B')
 
-    bab_python = ('\\babo', '\\babt')
+    bab_latex_zero = '\\babz'
+    bab_latex = ('\\babo', '\\babt')
+
+    bab_zero = '0'
+    bab_powers = []
+
+    if mode == 'html':
+        bab_zero = bab_html_zero
+        bab_powers = bab_html
+    else:
+        bab_zero = bab_latex_zero
+        bab_powers = bab_latex
 
     babylonian_list = []
 
@@ -348,14 +367,14 @@ def to_simple_babylonian(num):
         if index != 0:
             babylonian_list += ['\\hspace{30pt}']
         if value == 0 and index != 0:
-            babylonian_list += [bab_python_zero]
+            babylonian_list += [bab_zero]
         else:
             current_numeral = []
             rev_digits = str(value)[::-1]
             for ten_power, digit in enumerate(rev_digits):
                 digit = int(digit)
                 for i in range(0, digit):
-                    current_numeral += [bab_python[ten_power]]
+                    current_numeral += [bab_powers[ten_power]]
             babylonian_list += ''.join(current_numeral[::-1])
 
     return ''.join(babylonian_list)
