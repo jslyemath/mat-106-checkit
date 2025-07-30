@@ -1,0 +1,9 @@
+WARNING:File exists, not overwriting: outcomes/D1/template.xml
+WARNING:File exists, not overwriting: outcomes/D1/pygenerator.py
+WARNING:File exists, not overwriting: outcomes/D1/textemplate.tex
+ERROR:Source directory missing: mat-106-bank/outcomes/D4
+ERROR:Source directory missing: mat-106-bank/outcomes/D5
+ERROR:Source directory missing: mat-106-bank/outcomes/D6
+ERROR:Source directory missing: mat-106-bank/outcomes/D7
+ERROR:Source directory missing: mat-106-bank/outcomes/D8
+ERROR:Source directory missing: mat-106-bank/outcomes/D9
