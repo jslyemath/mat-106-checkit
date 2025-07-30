@@ -39,7 +39,7 @@ jobs:
           LOCAL_BANK_PATH: ../local-mat-106-bank
           CHECKIT_PATH: ./outcomes
         run: |
-          python3 ../.github/scripts/sync_outcomes.py
+          python3 .github/scripts/sync_outcomes.py
 
       - name: Upload error log
         if: always()
