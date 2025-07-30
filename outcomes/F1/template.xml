@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.2">
+    <knowl>
+        <content>
+            <p>Write <m>{{simplify_prob}}</m> in simplest form.</p>
+        </content>
+        <outtro>
+            <p>The above simplifies to <m>{{simplify_ans}}</m>, after pulling out {{factors_sequence}} from both the numerator and denominator.</p>
+        </outtro>
+    </knowl>
+    
+    <knowl>
+        <content>
+            <p>Convert <m>{{convert_prob}}</m> to {{convert_type}}.</p>
+        </content>
+        <outtro>
+            <p><m>{{convert_ans}}</m></p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>Determine if <me>{{equiv_prob_ab}} \text{ and } {{equiv_prob_cd}} </me> and  are equivalent fractions. You may use any method of your choosing, but you must show correct work in order to pass.</p>
+        </content>
+        <outtro>
+            <p>The fraction <m>{{equiv_prob_ab}}</m> simplifies to <m>{{equiv_ans_ab}}</m>.</p>
+            <p>The fraction <m>{{equiv_prob_cd}}</m> simplifies to <m>{{equiv_ans_cd}}</m>.</p>
+            <p>{{equiv_ans_supp_1}}</p>
+            <p>Alternatively, we see that the product of one pair of diagonal entries is <me>{{equiv_prob_a}} \times {{equiv_prob_d}} = {{equiv_ans_axd}}</me> while the other diagonal product is <me>{{equiv_prob_b}} \times {{equiv_prob_c}} = {{equiv_ans_bxc}}</me> {{equiv_ans_supp_2}}</p>
+        </outtro>
+    </knowl>
+</knowl>

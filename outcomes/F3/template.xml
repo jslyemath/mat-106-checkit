@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.2">
+    <knowl>
+        <content>
+            <p>Find <m>{{p1_how_many}}</m> rational numbers between <m>{{p1_a}}</m> and <m>{{p1_b}}</m>. {{num_line_directions}}</p>
+        </content>
+        <outtro>
+            <p>
+                <image
+                    source="assets/F3/generated/{{__seed__}}/line_with_dec_marked.png"
+                    description="Number line with points {{p1_numbers}} graphed accurately between {{p1_a}} and {{p1_b}}."/>
+            </p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>Find <m>{{p2_how_many}}</m> rational numbers between <m>{{p2_a}}</m> and <m>{{p2_b}}</m>.</p>
+        </content>
+        <outtro>
+            <p><me>{{p2_numbers}}</me></p>
+        </outtro>
+    </knowl>
+    
+</knowl>
