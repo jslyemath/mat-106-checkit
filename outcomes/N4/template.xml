@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.2">
+    <knowl>
+        <content>
+        <p>Find <m>{{listing_prob}}</m> using the listing method (sometimes called the set intersection method). You must show correct lists and a final answer.</p>
+        </content>
+        <outtro>
+            <p>(Some) multiples of <m>{{listing_a}}</m>: {{listing_list_a}}</p>
+            <p>(Some) multiples of <m>{{listing_b}}</m>: {{listing_list_b}}</p>
+            <p>The smallest nonzero multiple appearing in both lists simultaneously is {{listing_lcm}}, so <m>{{listing_prob}} = {{listing_lcm}}</m></p>
+        </outtro>
+    </knowl>
+    
+    <knowl>
+        <content>
+        <p>Find <m>{{factorization_prob}}</m> using the prime factorization method. You must show your factorizations before giving the final answer. You may leave your answer in factored form.</p>
+        </content>
+        <outtro>
+            <p>Prime factorization of <m>{{factorization_a}}</m>: <m>{{factorization_mult_a}}</m></p>
+            <p>Prime factorization of <m>{{factorization_b}}</m>: <m>{{factorization_mult_b}}</m></p>
+            <p>Multiplying together all prime factors of <m>{{factorization_a}}</m> and <m>{{factorization_b}}</m>, then removing the overlapping prime factors gives us <m>{{factorization_mult_lcm}}</m>, so <m>{{factorization_prob}} = {{factorization_lcm}}</m></p>
+        </outtro>
+    </knowl>
+</knowl>

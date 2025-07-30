@@ -1,0 +1,48 @@
+\setvseed{\VAR{seed}}
+\skillheader{F1}
+
+\begin{enumerate}
+    \item Write $\VAR{simplify_prob}$ in simplest form.
+
+    \vfill
+    \begin{ansenv}
+        The above simplifies to $\VAR{simplify_ans}$, after pulling out \VAR{factors_sequence} from both the numerator and denominator.
+    \end{ansenv}
+    \vfill
+
+    \item Convert $\VAR{convert_prob}$ to \VAR{convert_type}.
+
+    \vfill
+    \begin{ansenv}
+        $\VAR{convert_ans}$
+    \end{ansenv}
+    \vfill
+
+    \item Determine if \[\VAR{equiv_prob_ab} \text{  and  } \VAR{equiv_prob_cd}\] are equivalent fractions. You may use any method of your choosing, but you must show correct work in order to pass.
+
+    \vfill
+    \begin{ansenv}
+            The fraction $\VAR{equiv_prob_ab}$ simplifies to $\VAR{equiv_ans_ab}$.\\
+
+            The fraction $\VAR{equiv_prob_cd}$ simplifies to $\VAR{equiv_ans_cd}$.\\
+
+            \VAR{equiv_ans_supp_1}\\
+            Alternatively, we see that the product of one pair of diagonal entries is \[\VAR{equiv_prob_a} \times \VAR{equiv_prob_d} = \VAR{equiv_ans_axd}\] while the other diagonal product is \[\VAR{equiv_prob_b} \times \VAR{equiv_prob_c} = \VAR{equiv_ans_bxc}\] \VAR{equiv_ans_supp_2}
+    \end{ansenv}
+    \vfill
+    \vfill
+
+    By my work above, the given fractions are... \hfill \textbf{%
+        \ifthenelse{\boolean{anstoggle} \AND \equal{\IfNoValueTF{\VAR{equivalent}}{dummy}{\VAR{equivalent}}}{True}}%
+            {\fcolorbox{scCOLOR}{white}{Equivalent}}{Equivalent}%
+    }
+    \hspace{5pt} / \hspace{5pt}
+    \textbf{%
+        \ifthenelse{\boolean{anstoggle} \AND \equal{\IfNoValueTF{\VAR{equivalent}}{dummy}{\VAR{equivalent}}}{False}}%
+            {\fcolorbox{scCOLOR}{white}{NOT Equivalent}}{NOT Equivalent}%
+    }
+    \vspace{30pt}
+
+\end{enumerate}
+
+\trueemptypage

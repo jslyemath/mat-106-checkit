@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.2">
+    <intro>
+        <p>For each of the following, write a word problem which is best suited for the given context. Your word problem should be appropriate for elementary school students, use sentences with proper English grammar, and require only one operation for solving. You should not solve your word problems.</p>
+    </intro>
+    <knowl>
+        <content>
+            <p>{{prob_1}}</p>
+        </content>
+        <outtro>
+            <p>{{ans_text_1}}</p>
+            <p>(This can be modeled by the equation <m>{{ans_math_1}}</m>.)</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p>{{prob_2}}</p>
+        </content>
+        <outtro>
+            <p>{{ans_text_2}}</p>
+            <p>(This can be modeled by the equation <m>{{ans_math_2}}</m>.)</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p>{{prob_3}}</p>
+        </content>
+        <outtro>
+            <p>{{ans_text_3}}</p>
+            <p>(This can be modeled by the equation <m>{{ans_math_3}}</m>.)</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p>{{prob_4}}</p>
+        </content>
+        <outtro>
+            <p>{{ans_text_4}}</p>
+            <p>(This can be modeled by the equation <m>{{ans_math_4}}</m>.)</p>
+        </outtro>
+    </knowl>
+</knowl>
