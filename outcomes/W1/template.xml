@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.2">
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
     <knowl>
         <content>
             <p>Convert {{to_a_modern}} to {{to_a_system}}.</p>
@@ -18,26 +18,36 @@
         </outtro>
     </knowl>
 
-    <!-- newpage -->
-
-    <!-- TODO: Find a way to put this W1 text into the checkit. -->
-    <p>For the following questions, consider the {{expl_system}} numeral “<m>{{expl_ancient}}</m>” and the modern base-ten numeral “<m>{{expl_modern}}</m>”.</p>
+    <!-- W1-E -->
+    <!-- FIXME: The formatting for W1-E is not ideal. I also can't get title to work. -->
     <knowl>
-        <content>
-            <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> similar?</p>
-        </content>
-        <outtro>
-            <p>Answers will vary.</p>
-        </outtro>
-    </knowl>
+        <title>
+            W1-E
+        </title>
+        <intro>
+        <p>W1-E (This explanation skill appears on the back of W1. Passing W1-E is separate from W1.)</p>
+            <p>For the following questions, consider the {{expl_system}} numeral “<m>{{expl_ancient}}</m>” and the modern base-ten numeral “<m>{{expl_modern}}</m>”.</p>
+        </intro>
 
-    <knowl>
-        <content>
-            <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> different? <strong>Why?</strong> What is fundamentally different about these two numeration systems that is key to understanding this difference?</p>
-        </content>
-        <outtro>
-            <p>Answers will vary.</p>
-        </outtro>
+        <knowl>
+
+            <content>
+                <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> similar?</p>
+            </content>
+            
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> different? <em>Why?</em> What is fundamentally different about these two numeration systems that is key to understanding this difference?</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
     </knowl>
 
 </knowl>
