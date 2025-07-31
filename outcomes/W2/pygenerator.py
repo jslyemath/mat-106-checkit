@@ -89,6 +89,8 @@ def generate(**kwargs):
     base_b_prob = f'{base_b_num_a}_\\text{{{base_b_base_text}}} {base_b_op} {base_b_num_b}_\\text{{{base_b_base_text}}}'
     base_b_ans = f'{base_b_num_c}_\\text{{{base_b_base_text}}}'
 
+    # TODO: Create logic for each of the addition/subtraction algorithms, and find a way to format their answers.
+
     return {
         'base_ten_prob': base_ten_prob,
         'base_ten_alg': base_ten_alg,

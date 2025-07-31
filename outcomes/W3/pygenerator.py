@@ -1,9 +1,11 @@
 import slye_math as sm
 import random
+import re
 
 
 def generate(**kwargs):
     mult_allowed = False
+    mode = kwargs.get('mode', 'latex')
     if int(kwargs['course_progress']) > 1:
         mult_allowed = True
 
@@ -311,6 +313,20 @@ def generate(**kwargs):
         prob_ans_ver.append(create_dist(gen_inserts(excl_zero=True, excl_one=True)))
 
     random.shuffle(prob_ans_ver)
+
+    def clean_latex_string(s):
+        #Used for getting rid of the formatting specific to latex printing
+        s = s.replace('$', '')
+        s = re.sub(r'\\mbox\{(.*?)\}', r'\1', s)
+        s = s.replace(r'\:', '')
+        return s
+    
+    if mode == 'html':
+        for i, row in enumerate(prob_ans_ver):
+            row = list(row)  
+            row[0] = clean_latex_string(row[0])
+            prob_ans_ver[i] = tuple(row)
+
 
     expl_choices = ['Commutative Property of Addition', 'Associative Property of Addition',
                     'Identity Property of Addition']

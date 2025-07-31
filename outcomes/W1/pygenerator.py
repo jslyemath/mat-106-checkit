@@ -55,6 +55,8 @@ def generate(**kwargs):
                                                    (11111, large_egy(sm.to_egyptian(5, mode=mode))),
                                                    (111111, large_egy(sm.to_egyptian(6, mode=mode)))])
 
+    # TODO: Add logic for explanation.
+
     return {
         'to_a_modern': f'{int(to_a_modern):,}',
         'to_a_system': f'{to_a_system}',

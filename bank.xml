@@ -30,7 +30,7 @@
                 I can convert the ancient Roman/Babylonian/Egyptian numeration systems to modern Hindu-Arabic base ten, and vice versa.
             </description>
         </outcome>
-    <!-- 
+
         <outcome>
             <title>Base-b Addition and Subtraction Algorithms</title>
             <slug>W2</slug>
@@ -39,7 +39,7 @@
                 I can compute addition and subtraction of multi-digit base-b whole numbers using non-standard addition and subtraction algorithms.
             </description>
         </outcome>
-
+ 
         <outcome>
             <title>Properties of Addition and Multiplication</title>
             <slug>W3</slug>
@@ -48,7 +48,7 @@
                 I can identify uses of the associative, commutative, identity, zero product, and distributive properties of addition and multiplication.
             </description>
         </outcome>
-
+    <!--
         <outcome>
             <title>Generating Appropriate Word Problems</title>
             <slug>W4</slug>
