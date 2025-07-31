@@ -1,30 +1,16 @@
-# Template CheckIt Bank
+# CheckIt Bank for Number Systems and Operations
 
-## Usage
+## Purpose
 
-- Click "Use this template" to create a new repository.
-- On the new repository, click "Code" and select the "Codespaces" tab.
-  Then click "Create codespace on main".
-- You should be good to go once the following message finishes:
+This repo is for MAT 106 - Number Systems and Operations at SUNY Oswego. It uses both the CheckIt system for online practice and a personal python-based script for local LaTeX generation.
 
-```
-Use Cmd/Ctrl + Shift + P -> View Creation Log to see full logs
-✔ Finishing up...
-⠏ Running postCreateCommand...
-  › bash .devcontainer/setup.sh
-```
+## Warning
 
-- Open a new terminal and run `python -m checkit --help` for options.
+The file structure of this project is different from your typical CheckIt bank, due to the need to create more customized LaTeX files locally. If you have interest in using CheckIt directly for local printing, I would suggest moving the generation logic out of the pygenerator.py files and back into the generator.sage files.
 
-## Previewing bank
+## To-Dos
 
-Quick instructions:
-
-```
-python -m checkit generate
-python -m checkit viewer
-python -m http.server -d docs
-```
+TODO: Find a better way to format explanation skills online.
 
 ## About CheckIt
 
