@@ -48,6 +48,8 @@ def generate(**kwargs):
     base_b_alg = mult_alg_vars[1][0]
     base_b_ans = f'{sm.str_int_base_op(base_b_num1, base_b_num2, "*", base_b_base)}_\\text{{{base_b_ss}}}'
 
+    # TODO: Create logic for each of the multiplication algorithms, and find a way to format their answers.
+
     return {
         'base_ten_prob': base_ten_prob,
         'base_ten_alg': base_ten_alg,

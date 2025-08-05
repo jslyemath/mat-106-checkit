@@ -31,8 +31,8 @@ def generate(**kwargs):
         dividend = divisor * quotient
         remainder = random.choice(list(range(0, divisor)))
         dividend += remainder
-        quotient = f'{quotient:,}'
-        dividend = f'{dividend:,}'
+        quotient = f'{quotient:,}'.replace(",", "{,}")
+        dividend = f'{dividend:,}'.replace(",", "{,}")
         answer = f'{quotient} remainder {remainder}'
     else:
         quotient_offset = random.choice(list(range(0, -1 * (quotient_pv + 1), -1)))
@@ -46,6 +46,8 @@ def generate(**kwargs):
         answer = f'{quotient}'
 
     div_prob = f'{dividend} \\div {divisor}'
+
+    # TODO: Create logic for each of the division algorithms, and find a way to format their answers.
 
     return {
         'algorithm': algorithm,

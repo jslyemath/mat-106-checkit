@@ -33,7 +33,7 @@ def generate(**kwargs):
         },
         {
             'category': 'building blocks',
-            'items': ('Legos', 'Duplos', 'Mega Bloks'),
+            'items': ('LEGO', 'Duplos', 'Mega Bloks'),
             'container': 'sets',
             'layout': 'a flat starting grid',
             'many_cat': 'many',
