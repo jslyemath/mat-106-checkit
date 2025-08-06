@@ -25,7 +25,7 @@
             W1-E
         </title>
         <intro>
-        <p>W1-E (This explanation skill appears on the back of W1. Passing W1-E is separate from W1.)</p>
+        <p>W1-E (This explanation skill appears on the back of W1. Passing W1-E is separate from passing W1.)</p>
             <p>For the following questions, consider the {{expl_system}} numeral “<m>{{expl_ancient}}</m>” and the modern base-ten numeral “<m>{{expl_modern}}</m>”.</p>
         </intro>
         <knowl>

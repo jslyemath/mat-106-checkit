@@ -9,7 +9,30 @@
         </content>
         <outtro>
             <p>{{answer}}</p>
-            <p><m>{{quotients_and_remainders}}</m></p>
+            <p><me>\begin{aligned}{{quotients_and_remainders}}\end{aligned}</me></p>
         </outtro>
+    </knowl>
+    <knowl>
+        <intro>
+        <p>N2-E (This explanation skill appears on the back of N2. Passing N2-E is separate from passing N2.)</p>
+            <p>The questions below are meant to prompt you to fully explain why our class's method for testing primes is designed the way it is, and why it works. </p>
+        </intro>
+        <knowl>
+            <content>
+                <p>On the front side, you didn't test <m>{{the_number}}</m> for divisibility by every number from 1 to <m>{{the_number}}</m>. You should have only tested a few numbers. <em>Why?</em> What sort of numbers did you skip out on testing, and why were you allowed to skip them?</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>At the end, either you claimed that <m>{{the_number}}</m> was prime, or that it was composite. How did your work bring you to this conclusion?</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
     </knowl>
 </knowl>

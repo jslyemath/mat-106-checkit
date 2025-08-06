@@ -3,9 +3,8 @@ import random
 
 
 def generate(**kwargs):
-    force_listing = False
-    if kwargs['n3_n4_force_listing_method']:
-        force_listing = True
+    force_listing = kwargs.get('n3_n4_force_listing_method', False)
+    
     # Part (a): Listing method
 
     rel_prime_dict = {

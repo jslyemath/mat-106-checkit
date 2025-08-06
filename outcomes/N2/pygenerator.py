@@ -1,8 +1,10 @@
 import random
 import math
+import re
 
 
 def generate(**kwargs):
+    mode = kwargs.get('mode', 'latex')
     prime_problem = random.choices([True, False], [0.7, 0.3], k=1)[0]
 
     # If editing the primes and composites list to add greater numbers, you may need to update this list as well.
@@ -68,6 +70,15 @@ def generate(**kwargs):
             f'{the_number} has at least three divisors (1, {the_divisor}, and {the_number}), and must be '
             'composite! Our work for testing potential prime divisors is shown below.'
         )
+    
+    def latex_to_unicode(s):
+        s = re.sub(r'\$\\sqrt\{(.*?)\}\$',      r'√\1', s)
+        s = re.sub(r'\$(.*?)\^2\$',             r'\1²', s)
+        return s
+
+
+    if mode == 'html':
+        answer = latex_to_unicode(answer)
 
     return {
         'the_number': the_number,

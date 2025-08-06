@@ -84,7 +84,7 @@
                 I can identify divisibility statements as true or false.
             </description>
         </outcome>
-    <!--
+
         <outcome>
             <title>Prime and Composite Numbers</title>
             <slug>N2</slug>
@@ -111,7 +111,7 @@
                 I can compute the least common multiple (LCM) of two numbers using appropriate methods.
             </description>
         </outcome>
-
+    <!--
         <outcome>
             <title>Fraction Equivalence</title>
             <slug>F1</slug>

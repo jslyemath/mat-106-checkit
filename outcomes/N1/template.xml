@@ -69,13 +69,10 @@
     </knowl>
 
     <!-- N1-E -->
-    <!-- FIXME: The formatting for N1-E is not ideal. I also can't get title to work. -->
+    <!-- FIXME: The formatting for N1-E is not ideal.  -->
     <knowl>
-        <title>
-            N1-E
-        </title>
         <intro>
-        <p>N1-E (This explanation skill appears on the back of N1. Passing N1-E is separate from N1.)</p>
+        <p>N1-E (This explanation skill appears on the back of N1. Passing N1-E is separate from passing N1.)</p>
             <p>Fully explain why each of the following statements from the previous page are true or false. If a statement is <em>false</em>, provide a <em>counterexample</em>. If it is <em>true</em>, provide a <em>general explanation</em> appropriate for elementary students. Any general explanations must be logically sound, and must be general enough to cover all possible cases (not relying on specific examples).</p>
         </intro>
         <knowl>
