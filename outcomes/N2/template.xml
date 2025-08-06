@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.2">
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
     <intro>
         <p>Determine if the number below is prime or composite. If it is prime, you must show all work from our prime testing method. If it is composite, you must defend your answer with the appropriate work and/or explanation.</p>
     </intro>

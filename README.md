@@ -10,7 +10,7 @@ The file structure of this project is different from your typical CheckIt bank, 
 
 ## To-Dos
 
-TODO: Find a better way to format explanation skills online.
+TODO: Edit G1 JSON to get the first 20 problems aligned properly.
 
 ## About CheckIt
 

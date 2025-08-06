@@ -4,7 +4,7 @@
     <slug>mat-106-bank</slug>
     <url>https://jslyemath.github.io/mat-106-checkit</url>
     <outcomes>        
-        <!-- <outcome>
+        <outcome>
             <title>Analyzing Student Work</title>
             <slug>G1</slug>
             <path>outcomes/G1</path>
@@ -12,7 +12,7 @@
                 I can identify hypothetical student work as correct or incorrect, analyze the reasoning for incorrect mistakes, and make appropriate suggestions for improvement.
             </description>
         </outcome>
-
+        <!-- 
         <outcome>
             <title>>Word Problems (Basic Arithmetic)</title>
             <slug>G2</slug>
