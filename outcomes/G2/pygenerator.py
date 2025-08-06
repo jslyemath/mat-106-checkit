@@ -7,6 +7,7 @@ from datetime import datetime
 
 def generate(**kwargs):
     course_progress = int(kwargs['course_progress'])
+    mode = kwargs.get('mode', 'latex')
 
     def temperature_change():
         season = random.choice(['fall', 'winter'])
@@ -58,6 +59,7 @@ def generate(**kwargs):
             f"{sm.convert_to_12_hour(start_time)}?"
         )
 
+        #TODO: Make solution for temperature problem human readable.
         solution = (
             f"Start temp $= {start_temp}$\\newline "
             f"Temp2 $= {temp_2}$\\newline "
@@ -297,6 +299,11 @@ def generate(**kwargs):
     prob_sol_function = random.choice(available_versions)
 
     problem, solution = prob_sol_function()
+
+    if mode == 'html':
+        problem = problem.replace('\\', '')
+        solution = solution.replace('\\', '')
+
     return {
         'problem': problem,
         'solution': solution,

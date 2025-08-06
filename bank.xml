@@ -12,15 +12,15 @@
                 I can identify hypothetical student work as correct or incorrect, analyze the reasoning for incorrect mistakes, and make appropriate suggestions for improvement.
             </description>
         </outcome>
-        <!-- 
+        
         <outcome>
-            <title>>Word Problems (Basic Arithmetic)</title>
+            <title>Word Problems (Basic Arithmetic)</title>
             <slug>G2</slug>
             <path>outcomes/G2</path>
             <description>
                 I can solve word problems using basic arithmetic operations.
             </description>
-        </outcome> -->
+        </outcome>
 
         <outcome>
             <title>Ancient and Modern Numeration</title>
