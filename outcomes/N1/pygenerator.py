@@ -1,8 +1,32 @@
 import slye_math as sm
 import random
+import re
 
 
 def generate(**kwargs):
+    mode = kwargs.get('mode', 'latex')
+
+    def mathify_sentence(s: str):
+        """
+        Turn a sentence with inline $...$ math into one big math-mode string
+        where non-math text is wrapped in \\text{...} and $ delimiters are dropped.
+        """
+        # Split on any $...$ (non-greedy), keeping the delimiters in the result list
+        parts = re.split(r'(\$.*?\$)', s)
+        
+        all_math_version = []
+        for part in parts:
+            if not part:
+                # Skip over empty strings.
+                continue
+            if part.startswith('$') and part.endswith('$'):
+                # math segment: drop the delimiters
+                all_math_version.append(part[1:-1])
+            else:
+                # text segment: wrap exactly, preserving spaces
+                all_math_version.append(r'\text{' + part + '}')
+        return ''.join(all_math_version)
+
     def check_and_cast_to_int(value):
         try:
             return int(value), True
@@ -252,17 +276,17 @@ def generate(**kwargs):
 
     prob_ans = list(zip(problems, answers))
 
-    explain_prob_1, explain_ans_1 = prob_ans[4]
-    explain_prob_2, explain_ans_2 = prob_ans[5]
-    explain_prob_3, explain_ans_3 = prob_ans[6]
+    if mode == 'html':
+        for i, entry in enumerate(prob_ans):
+            entry = list(entry)
+            entry[0] = mathify_sentence(entry[0])
+            prob_ans[i] = tuple(entry)
 
-    explain_prob_ans = prob_ans[4:]
+    explain_prob_ans = prob_ans[4:7]
 
     random.shuffle(explain_prob_ans)
 
     random.shuffle(prob_ans)
-
-
 
     return {
         'p1_prob': prob_ans[0][0],

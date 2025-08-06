@@ -75,7 +75,7 @@
                 I can compute the quotient of two whole or decimal numbers using standard and non-standard algorithms.
             </description>
         </outcome>
-    <!--
+
         <outcome>
             <title>Divisibility Statements</title>
             <slug>N1</slug>
@@ -84,7 +84,7 @@
                 I can identify divisibility statements as true or false.
             </description>
         </outcome>
-
+    <!--
         <outcome>
             <title>Prime and Composite Numbers</title>
             <slug>N2</slug>
