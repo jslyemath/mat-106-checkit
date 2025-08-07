@@ -686,6 +686,9 @@ def generate(**kwargs):
         p3_label_b = None
         p3_label_c = None
 
+#TODO: Bring area_model_tikz.py into the main script for latex generation, align textemplate to this.
+#TODO: Generate standalone tikz pictures locally based on seeds.
+
     return {
         'p1_type': p1_type,
         'p1_orig_loc': p1_orig_loc,
