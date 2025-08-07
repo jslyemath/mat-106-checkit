@@ -111,7 +111,7 @@
                 I can compute the least common multiple (LCM) of two numbers using appropriate methods.
             </description>
         </outcome>
-    <!--
+
         <outcome>
             <title>Fraction Equivalence</title>
             <slug>F1</slug>
@@ -120,7 +120,7 @@
                 I can convert fractions to different forms (including simplest form), and determine if two fractions are equivalent.
             </description>
         </outcome>
-
+    <!--
         <outcome>
             <title>Fraction Models</title>
             <slug>F2</slug>
