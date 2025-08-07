@@ -165,7 +165,7 @@
                 I can identify place values in decimal numbers using both numerical notation and English words, and represent decimal numbers using base-ten blocks.
             </description>
         </outcome>
-    <!-- 
+
         <outcome>
             <title>Decimal Conversions</title>
             <slug>D2</slug>
@@ -183,7 +183,7 @@
                 I can order any rational numbers, including decimals, from least to greatest.
             </description>
         </outcome>
-
+    <!-- 
         <outcome>
             <title>Percent Word Problems</title>
             <slug>D4</slug>
@@ -193,94 +193,6 @@
             </description>
         </outcome>
 
-        <outcome>
-            <title>Explaining Arithmetic Word Problems</title>
-            <slug>G2-E</slug>
-            <path>outcomes/G2-E</path>
-            <description>
-                I can explain my reasoning for each step of work in solving a word problem with the basic arithmetic operations, in language that supports elementary students' understanding of how to solve such problems.
-            </description>
-        </outcome>
-
-        <outcome>
-            <title>Explaining Numeration Systems</title>
-            <slug>W1-E</slug>
-            <path>outcomes/W1-E</path>
-            <description>
-                I can compare and contrast the ancient and modern numeration systems, and explain how they represent values.
-            </description>
-        </outcome>
-
-        <outcome>
-            <title>Explaining Operation Properties</title>
-            <slug>W3-E</slug>
-            <path>outcomes/W3-E</path>
-            <description>
-                I can explain why the properties of addition and multiplication work, in terms that elementary students would understand.
-            </description>
-        </outcome>
-
-        <outcome>
-            <title>Explaining Problem Structures</title>
-            <slug>W4-E</slug>
-            <path>outcomes/W4-E</path>
-            <description>
-                I can explain why word problems are most suitable for particular problem structures.
-            </description>
-        </outcome>
-
-        <outcome>
-            <title>Explaining Divisibility</title>
-            <slug>N1-E</slug>
-            <path>outcomes/N1-E</path>
-            <description>
-                I can explain why divisibility statements are logically correct or incorrect, using general logic that elementary students would understand.
-            </description>
-        </outcome>
-
-        <outcome>
-            <title>Explaining Prime Testing</title>
-            <slug>N2-E</slug>
-            <path>outcomes/N2-E</path>
-            <description>
-                I can explain why the method for testing primes is designed the way it is, and why it works.
-            </description>
-        </outcome>
-
-        <outcome>
-            <title>Explaining Fraction Models</title>
-            <slug>F2-E</slug>
-            <path>outcomes/F2-E</path>
-            <description>
-                I can explain how to construct fraction models, and how students can understand how they represent the numerator and denominator of a fraction.
-            </description>
-        </outcome>
-
-        <outcome>
-            <title>Explaining Rational Denseness</title>
-            <slug>F3-E</slug>
-            <path>outcomes/F3-E</path>
-            <description>
-                I can explain the denseness property of the rational numbers, by using language appropriate for an elementary student, and by using concrete examples.
-            </description>
-        </outcome>
-
-        <outcome>
-            <title>Explaining Proportional Reasoning</title>
-            <slug>F5-E</slug>
-            <path>outcomes/F5-E</path>
-            <description>
-                I can explain my reasoning for each step of work in solving a proportional reasoning word problem, in language that supports elementary students' understanding of how to solve such problems.
-            </description>
-        </outcome>
-
-        <outcome>
-            <title>Explaining Decimal Place Value</title>
-            <slug>D1-E</slug>
-            <path>outcomes/D1-E</path>
-            <description>
-                I can explain the relationship between place values in the base ten decimal system, and how the base ten blocks help demonstrate that relationship.
-            </description>
-        </outcome> -->
+       -->
     </outcomes>
 </bank>

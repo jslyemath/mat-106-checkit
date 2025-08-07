@@ -12,7 +12,7 @@
 
     <knowl>
         <content>
-            <p>Convert <m>{{p2_prob}}</m> to a <m>{{p2_ans_type}}</m>.</p>
+            <p>Convert <m>{{p2_prob}}</m> to a {{p2_ans_type}}.</p>
         </content>
         <outtro>
             <p><m>{{p2_ans}}</m></p>
@@ -21,7 +21,7 @@
 
     <knowl>
         <content>
-            <p>Convert <m>{{p3_prob}}</m> to a <m>{{p3_ans_type}}</m>.</p>
+            <p>Convert <m>{{p3_prob}}</m> to a {{p3_ans_type}}.</p>
         </content>
         <outtro>
             <p><m>{{p3_ans}}</m></p>
