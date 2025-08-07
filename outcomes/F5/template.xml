@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <intro>
+            <p>Solve the word problem below. You must show all work in order to pass. Do not forget to state your final answer, including any appropriate units.</p>
+    </intro>
+
+    <knowl>
+        <content>
+            <p>{{problem}}</p>
+        </content>
+        <outtro>
+            <p>{{solution}}</p>
+        </outtro>
+    </knowl>
+    
+    <knowl>
+        <intro>
+        <p>F5-E (This explanation skill appears on the back of F5. Passing F5-E is separate from passing F5.)</p>
+        </intro>
+        <knowl>
+            <content>
+                <p>Explain <em>why</em> proportional reasoning is an appropriate approach to solving the given problem.</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>How do you know that any proportions, diagrams, or equations you used are set up correctly? Explain the process of setting up your solution method as if to a hypothetical student.</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>After you set up your solution method, was there anything tricky or in need of further explanation for a hypothetical student? If so, continue your explanation.</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+    </knowl>
+</knowl>

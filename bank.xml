@@ -138,7 +138,7 @@
                 I can, given two rational numbers, find any number of rational numbers between them and, in the case of decimals, place these numbers accurately on a number line.
             </description>
         </outcome>
-    <!--
+
         <outcome>
             <title>Mixed Number Operations</title>
             <slug>F4</slug>
@@ -147,7 +147,7 @@
                 I can compute the sum, difference, product, and quotient of mixed numbers.
             </description>
         </outcome>
-
+    
         <outcome>
             <title>Proportional Reasoning</title>
             <slug>F5</slug>
@@ -155,7 +155,7 @@
             <description>
                 I can solve word problems using proportional reasoning.
             </description>
-        </outcome> -->
+        </outcome>
 
         <outcome>
             <title>Decimal Place Values</title>

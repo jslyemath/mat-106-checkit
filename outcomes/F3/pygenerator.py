@@ -79,6 +79,8 @@ def generate(**kwargs):
 
     expl_how_many = random.choice(['1,000', '10,000', '100,000'])
 
+    #TODO: Create images for html version.
+
     return {
         'p1_how_many': p1_how_many,
         'p1_a': p1_a,
