@@ -6,8 +6,8 @@
     <outcomes>        
         <outcome>
             <title>Analyzing Student Work</title>
-            <slug>G1</slug>
-            <path>outcomes/G1</path>
+            <slug>R1</slug>
+            <path>outcomes/R1</path>
             <description>
                 I can identify hypothetical student work as correct or incorrect, analyze the reasoning for incorrect mistakes, and make appropriate suggestions for improvement.
             </description>
@@ -15,8 +15,8 @@
         
         <outcome>
             <title>Word Problems (Basic Arithmetic)</title>
-            <slug>G2</slug>
-            <path>outcomes/G2</path>
+            <slug>R2</slug>
+            <path>outcomes/R2</path>
             <description>
                 I can solve word problems using basic arithmetic operations.
             </description>

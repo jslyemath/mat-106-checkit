@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <intro>
+            <p>Suppose your student submits the work shown below. {{work_desc_1}}<m>{{work_math}}</m>{{work_desc_2}}</p>
+            <p>
+                <image source="assets/G1/{{version}}.png" description="A picture of the work described above."/>
+            </p>
+    </intro>
+
+    <knowl>
+        <content>
+            <p>What is incorrect about the work shown above? (Identify every incorrect step, not just the first.)</p>
+        </content>
+        <outtro>
+            <p>{{incorrect}}</p>
+        </outtro>
+    </knowl>
+
+    
+    <knowl>
+        <content>
+            <p>For each mistake, describe why the student made that mistake. What were they probably thinking? What was their reasoning?</p>
+        </content>
+        <outtro>
+            <p>{{thinking}}</p>
+        </outtro>
+    </knowl>
+
+    
+    <knowl>
+        <content>
+            <p>What feedback would you give this student? Your feedback should not only give the correct steps to take, but also address their misconceptions.</p>
+        </content>
+        <outtro>
+            <p>{{feedback}}</p>
+        </outtro>
+    </knowl>
+</knowl>
