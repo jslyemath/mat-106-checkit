@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <intro>
+        <p><m>\textbf{W1}</m></p>
+    </intro>
     <knowl>
-        <intro>
-            <p><m>\textbf{W1}</m></p>
-        </intro>
         <content>
             <p>Convert {{to_a_modern}} to {{to_a_system}}.</p>
         </content>
