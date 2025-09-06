@@ -1,11 +1,13 @@
 import csv
 import importlib
+import importlib.util
 import os
 import random
 import re
 import subprocess
 import sys
 import tkinter as tk
+import xml.etree.ElementTree as ET
 
 from pathlib import Path
 from tkinter import filedialog
@@ -139,9 +141,9 @@ full_title = f'{title} {date}'
 
 # Handle and create default directories/file paths
 main_dir = Path(__file__).resolve().parent
-default_pdf_dir = main_dir / 'PDF Files'
+default_pdf_dir = main_dir / 'PDF Outputs'
 default_pdf_dir.mkdir(exist_ok=True)
-tex_files_dir = main_dir / 'TeX Files'
+tex_files_dir = main_dir / 'TeX Outputs'
 tex_files_dir.mkdir(exist_ok=True)
 main_template = main_dir / 'main_template.tex'
 sty_file = tex_files_dir / 'skillcheckpoints.sty'
@@ -193,7 +195,63 @@ if not skill_list_csv.exists():
             file.write(f'\\setskilldesc{{{skill_row[0]}}}{{{skill_row[1]}}}\n')
 
 # Load skills for later, and create folders for future TeX file generation
-skill_array = [row[:2] for row in load_csv(skill_list_csv) if row[2] == 'm']
+
+# Old:
+# skill_array = [row[:2] for row in load_csv(skill_list_csv) if row[2] == 'm']
+
+# XML default namespace for CheckIt bank.xml
+NS = {'c': 'https://checkit.clontz.org'}
+
+def _clean_text(node: ET.Element | None) -> str:
+    """
+    Return a cleaned, single-line string of all text inside `node`.
+    - Uses itertext() to collect text even when the node has nested tags.
+    - Collapses whitespace/newlines into single spaces.
+    """
+    if node is None:
+        return ''
+    raw = ''.join(node.itertext())
+    return ' '.join(raw.split())
+
+def parse_bank_with_kinds(xml_path: str | Path) -> list[tuple[str, str, str, str]]:
+    """
+    Parse bank.xml and return a list of tuples:
+        (slug, description, kind, path)
+    where `kind` is 'main' for <outcome> and 'associated' for <associate>.
+    """
+    xml_path = str(xml_path)
+    tree = ET.parse(xml_path)
+    root = tree.getroot()
+
+    items: list[tuple[str, str, str, str]] = []
+
+    # Gather <outcome> elements (the original/main skills)
+    for outcome in root.findall('.//c:outcome', NS):
+        slug_el = outcome.find('c:slug', NS)
+        desc_el = outcome.find('c:description', NS)
+        path_el = outcome.find('c:path', NS)
+
+        slug = (slug_el.text or '').strip() if slug_el is not None else ''
+        desc = _clean_text(desc_el)
+        path = (path_el.text or '').strip() if path_el is not None and path_el.text else ''
+
+        items.append((slug, desc, path, 'm'))
+
+    # Gather <associate> elements (explanation skills)
+    for associate in root.findall('.//c:associate', NS):
+        slug_el = associate.find('c:slug', NS)
+        desc_el = associate.find('c:description', NS)
+        path_el = associate.find('c:path', NS)
+
+        slug = (slug_el.text or '').strip() if slug_el is not None else ''
+        desc = _clean_text(desc_el)
+        path = (path_el.text or '').strip() if path_el is not None and path_el.text else ''
+
+        items.append((slug, desc, path, 'a'))
+
+    return items
+
+# TODO: Finish refactoring to use bank.xml
 skill_dict = {sk: {'dsc': de, 'gen': f'{sk}_generator', 'tpl': f'{sk}_template.tex'} for sk, de in skill_array}
 skills = list(skill_dict)
 for skill in skills:
@@ -263,6 +321,7 @@ loaded_main_template = env.get_template(str(relative_main_template_path))
 
 main_var_dict = {k: v for k, v in locals().items() if k in ['course', 'semester', 'professor', 'full_title']}
 
+# TODO: Refactor to fix the paths for the new file structure.
 # Build PDF
 main_document = loaded_main_template.render(main_var_dict)
 for skill in chosen_skills:
