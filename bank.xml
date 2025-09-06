@@ -192,7 +192,88 @@
                 I can solve word problems using percents.
             </description>
         </outcome>
-
-      
     </outcomes>
+
+    <associates>
+        <associate>
+            <slug>G2-E</slug>
+            <path>outcomes/G2</path>
+            <description>
+                I can explain my reasoning for each step of work in solving a word problem with the basic arithmetic operations, in language that supports elementary students' understanding of how to solve such problems.
+            </description>
+        </associate>
+
+        <associate>
+            <slug>W1-E</slug>
+            <path>outcomes/W1</path>
+            <description>
+                I can compare and contrast the ancient and modern numeration systems, and explain how they represent values.
+            </description>
+        </associate>
+
+        <associate>
+            <slug>W3-E</slug>
+            <path>outcomes/W3</path>
+            <description>
+                I can explain why the properties of addition and multiplication work, in terms that elementary students would understand.
+            </description>
+        </associate>
+
+        <associate>
+            <slug>W4-E</slug>
+            <path>outcomes/W4</path>
+            <description>
+                I can explain why word problems are most suitable for particular problem structures.
+            </description>
+        </associate>
+
+        <associate>
+            <slug>N1-E</slug>
+            <path>outcomes/N1</path>
+            <description>
+                I can explain why divisibility statements are logically correct or incorrect, using general logic that elementary students would understand.
+            </description>
+        </associate>
+
+        <associate>
+            <slug>N2-E</slug>
+            <path>outcomes/N2</path>
+            <description>
+                I can explain why the method for testing primes is designed the way it is, and why it works.
+            </description>
+        </associate>
+
+        <associate>
+            <slug>F2-E</slug>
+            <path>outcomes/F2</path>
+            <description>
+                I can explain how to construct fraction models, and how students can understand how they represent the numerator and denominator of a fraction.
+            </description>
+        </associate>
+
+        <associate>
+            <slug>F3-E</slug>
+            <path>outcomes/F3</path>
+            <description>
+                I can explain the denseness property of the rational numbers, by using language appropriate for an elementary student, and by using concrete examples.
+            </description>
+        </associate>
+
+        <associate>
+            <slug>F5-E</slug>
+            <path>outcomes/F5</path>
+            <description>
+                I can explain my reasoning for each step of work in solving a proportional reasoning word problem, in language that supports elementary students' understanding of how to solve such problems.
+            </description>
+        </associate>
+
+        <associate>
+            <slug>D1-E</slug>
+            <path>outcomes/D1</path>
+            <description>
+                I can explain the relationship between place values in the base ten decimal system, and how the base ten blocks help demonstrate that relationship.
+            </description>
+        </associate>
+    </associates>
+
 </bank>
