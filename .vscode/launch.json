@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug debug_blocks.py",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/outcomes/D1/debug_blocks.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

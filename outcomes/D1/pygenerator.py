@@ -73,7 +73,7 @@ def generate(**kwargs):
     hundredths_block = []
     
     for i, units_block_choice_i in enumerate(units_block_choices):
-        blocks_dec_i, blocks_ans_text_i, units_block_i, tenths_block_i, hundredths_block_i = blocks_prob_ans(units_block_choice=units_block_choice)
+        blocks_dec_i, blocks_ans_text_i, units_block_i, tenths_block_i, hundredths_block_i = blocks_prob_ans(units_block_choice=units_block_choice_i)
 
         blocks_dec.append(blocks_dec_i)
         units_block_choice.append(units_block_choice_i)
