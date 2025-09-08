@@ -39,31 +39,33 @@
         <intro>
             <p><m>\textbf{D1-E}</m> (This explanation skill appears on the back of D1. Passing D1-E is separate from passing D1.)</p>
         </intro>
-        <content>
-            <p>If one {{units_block_a}} represents one unit, which type of block represents one tenth? Why? Relate your answer back to the base ten place value system.</p>
-        </content>
-        
-        <outtro>
-            <p>It takes ten tenths to create a single unit. Likewise, it takes ten {{tenths_block_a}}s to create a single {{units_block_a}}. Thus, a {{tenths_block_a}} represents one tenth.</p> 
-        </outtro>
-    </knowl>
+        <knowl>
+            <content>
+                <p>If one {{units_block_a}} represents one unit, which type of block represents one tenth? Why? Relate your answer back to the base ten place value system.</p>
+            </content>
+            
+            <outtro>
+                <p>It takes ten tenths to create a single unit. Likewise, it takes ten {{tenths_block_a}}s to create a single {{units_block_a}}. Thus, a {{tenths_block_a}} represents one tenth.</p> 
+            </outtro>
+        </knowl>
 
-    <knowl>
-        <content>
-            <p>If one {{units_block_a}} represents one unit, which type of block represents one hundredth? Why? Relate your answer back to the base ten place value system.</p>
-        </content>
-        
-        <outtro>
-            <p>It takes one hundred hundredths to create a single unit. Likewise, it takes one hundred {{hundredths_block_a}}s to create a single {{units_block_a}}. Thus, a {{hundredths_block_a}} represents one hundredth. </p>
-        </outtro>
-    </knowl>
+        <knowl>
+            <content>
+                <p>If one {{units_block_a}} represents one unit, which type of block represents one hundredth? Why? Relate your answer back to the base ten place value system.</p>
+            </content>
+            
+            <outtro>
+                <p>It takes one hundred hundredths to create a single unit. Likewise, it takes one hundred {{hundredths_block_a}}s to create a single {{units_block_a}}. Thus, a {{hundredths_block_a}} represents one hundredth. </p>
+            </outtro>
+        </knowl>
 
-    <knowl>
-        <content>
-            <p>How do base-ten blocks physically demonstrate how a base-ten place value system works?</p>
-        </content>
-        <outtro>
-            <p>In a base-ten place value system, each place value must be ten times the place value to its right. It takes ten units to make a long, ten longs to make a flat, and ten flats to make a large cube. Thus, the four types of base ten blocks can be used for any 4 consecutive base-ten place values. </p>
-        </outtro>
+        <knowl>
+            <content>
+                <p>How do base-ten blocks physically demonstrate how a base-ten place value system works?</p>
+            </content>
+            <outtro>
+                <p>In a base-ten place value system, each place value must be ten times the place value to its right. It takes ten units to make a long, ten longs to make a flat, and ten flats to make a large cube. Thus, the four types of base ten blocks can be used for any 4 consecutive base-ten place values. </p>
+            </outtro>
+        </knowl>
     </knowl>
 </knowl>
