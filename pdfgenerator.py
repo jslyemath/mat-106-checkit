@@ -4,6 +4,7 @@ import importlib.util
 import os
 import random
 import re
+import shutil
 import subprocess
 import sys
 import tkinter as tk
@@ -18,9 +19,9 @@ from latex.jinja2 import make_env
 from latex import build_pdf
 
 
-def load_csv(filename):
-    """Load the CSV file into a list of rows."""
-    with open(filename, mode='r') as file:
+def load_csv(filename: str | Path) -> list[list[str]]:
+    """Load the CSV file into a list of rows (safe on Windows)."""
+    with open(filename, mode='r', newline='', encoding='utf-8') as file:
         return list(csv.reader(file))
 
 
@@ -146,9 +147,15 @@ default_pdf_dir.mkdir(exist_ok=True)
 tex_files_dir = main_dir / 'TeX Outputs'
 tex_files_dir.mkdir(exist_ok=True)
 main_template = main_dir / 'main_template.tex'
-sty_file = tex_files_dir / 'skillcheckpoints.sty'
+orig_sty_file = main_dir / 'skillcheckpoints.sty'
+copied_sty_file = tex_files_dir / 'skillcheckpoints.sty'
+bank_xml = main_dir / 'bank.xml'
 skill_list_csv = main_dir / 'Skill List.csv'
 skill_list_tex = tex_files_dir / 'Skill Descriptions.tex'
+outcomes_dir = main_dir / 'outcomes'
+
+if str(outcomes_dir) not in sys.path:
+    sys.path.insert(0, str(outcomes_dir))
 
 full_title_filename = f'{sanitize_filename(full_title)}'
 pdf_path = default_pdf_dir / f'{full_title_filename}.pdf'
@@ -163,38 +170,46 @@ if not main_template.exists():
     root.destroy()
     sys.exit()
 
-# Ask for skill list csv if it doesn't exist
-if not skill_list_csv.exists():
-    messagebox.showinfo('Skill List Needed', 'Please select the csv file containing the relevant skills descriptions. '
-                                             'The skills and descriptions should be in a two-column format, '
-                                             'with headers "Skill:" and "Description:".')
-    skill_list_import = filedialog.askopenfilename()
-    if not skill_list_import:
-        root.destroy()
-        sys.exit()
-    skill_list_data = load_csv(skill_list_import)
+def update_skill_list_tex(skill_data: list[tuple[str, str]]) -> None:
+    skill_list_tex.touch(exist_ok=True)
 
-    skill_list_tex.touch(exist_ok=False)
-
-    skill_array_data = get_named_range(skill_list_data, 'Skill:', direction='below', height=None, width=2)
-    skill_array_data = [row + 'm' for row in skill_array_data]
-    assoc_skill_array_data = []
-    if 'Associated Skill:' in skill_list_data[0]:
-        assoc_skill_array_data = get_named_range(skill_list_data, 'Associated Skill:',
-                                                 direction='below', height=len(skill_list_data)-1, width=2)
-        assoc_skill_array_data = [x + ['a'] for x in assoc_skill_array_data if x[0]]
-    with skill_list_csv.open(mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerows(skill_array_data)
-        if assoc_skill_array_data:
-            writer.writerows(assoc_skill_array_data)
     with skill_list_tex.open(mode='w') as file:
-        for skill_row in skill_array_data:
-            file.write(f'\\setskilldesc{{{skill_row[0]}}}{{{skill_row[1]}}}\n')
-        for skill_row in assoc_skill_array_data:
+        for skill_row in skill_data:
             file.write(f'\\setskilldesc{{{skill_row[0]}}}{{{skill_row[1]}}}\n')
 
-# Load skills for later, and create folders for future TeX file generation
+# Old
+# Ask for skill list csv if it doesn't exist
+# if not skill_list_csv.exists():
+#     messagebox.showinfo('Skill List Needed', 'Please select the csv file containing the relevant main_skills descriptions. '
+#                                              'The main_skills and descriptions should be in a two-column format, '
+#                                              'with headers "Skill:" and "Description:".')
+#     skill_list_import = filedialog.askopenfilename()
+#     if not skill_list_import:
+#         root.destroy()
+#         sys.exit()
+#     skill_list_data = load_csv(skill_list_import)
+
+#     skill_list_tex.touch(exist_ok=False)
+
+#     skill_array_data = get_named_range(skill_list_data, 'Skill:', direction='below', height=None, width=2)
+#     skill_array_data = [row + 'm' for row in skill_array_data]
+#     assoc_skill_array_data = []
+#     if 'Associated Skill:' in skill_list_data[0]:
+#         assoc_skill_array_data = get_named_range(skill_list_data, 'Associated Skill:',
+#                                                  direction='below', height=len(skill_list_data)-1, width=2)
+#         assoc_skill_array_data = [x + ['a'] for x in assoc_skill_array_data if x[0]]
+#     with skill_list_csv.open(mode='w', newline='') as file:
+#         writer = csv.writer(file)
+#         writer.writerows(skill_array_data)
+#         if assoc_skill_array_data:
+#             writer.writerows(assoc_skill_array_data)
+#     with skill_list_tex.open(mode='w') as file:
+#         for skill_row in skill_array_data:
+#             file.write(f'\\setskilldesc{{{skill_row[0]}}}{{{skill_row[1]}}}\n')
+#         for skill_row in assoc_skill_array_data:
+#             file.write(f'\\setskilldesc{{{skill_row[0]}}}{{{skill_row[1]}}}\n')
+
+# Load main_skills for later, and create folders for future TeX file generation
 
 # Old:
 # skill_array = [row[:2] for row in load_csv(skill_list_csv) if row[2] == 'm']
@@ -213,7 +228,7 @@ def _clean_text(node: ET.Element | None) -> str:
     raw = ''.join(node.itertext())
     return ' '.join(raw.split())
 
-def parse_bank_with_kinds(xml_path: str | Path) -> list[tuple[str, str, str, str]]:
+def parse_bank(xml_path: str | Path) -> list[tuple[str, str, str, str]]:
     """
     Parse bank.xml and return a list of tuples:
         (slug, description, kind, path)
@@ -251,16 +266,26 @@ def parse_bank_with_kinds(xml_path: str | Path) -> list[tuple[str, str, str, str
 
     return items
 
-# TODO: Finish refactoring to use bank.xml
-skill_dict = {sk: {'dsc': de, 'gen': f'{sk}_generator', 'tpl': f'{sk}_template.tex'} for sk, de in skill_array}
-skills = list(skill_dict)
-for skill in skills:
+
+skill_array = parse_bank(bank_xml)
+
+main_skill_dict = {
+    slug: {
+        'dsc': desc,
+        'gen': main_dir / path / 'pygenerator.py',
+        'tpl': main_dir / path / 'textemplate.tex'
+    }
+    for slug, desc, path, kind in skill_array
+    if kind == "m"
+}
+
+main_skills = list(main_skill_dict)
+
+for skill in main_skills:
     skill_tex_gen_dir = tex_files_dir / skill
     skill_tex_gen_dir.mkdir(exist_ok=True)
-    # template_path = main_dir / f'{skill}_template.tex'
-    # template_path.touch(exist_ok=True)
-    # generator_path = main_dir / f'{skill}_generator.py'
-    # generator_path.touch(exist_ok=True)
+
+shutil.copyfile(orig_sty_file, copied_sty_file)
 
 # Set remaining variables from raw data
 include_names = True
@@ -309,8 +334,8 @@ else:
     for variant in variants:
         variant_dict[variant] = seeds[0]
 
-chosen_skills_array = get_named_range(full_choices_array, '1:', direction='below', width=100, filter_blanks=True)
-chosen_skills = list({sk for row in chosen_skills_array for sk in row})
+chosen_main_skills_array = get_named_range(full_choices_array, '1:', direction='below', width=100, filter_blanks=True)
+chosen_main_skills = list({sk for row in chosen_main_skills_array for sk in row})
 
 # create a jinja2 environment with latex-compatible markup and instantiate a template
 env = make_env(loader=FileSystemLoader('.'))
@@ -321,16 +346,16 @@ loaded_main_template = env.get_template(str(relative_main_template_path))
 
 main_var_dict = {k: v for k, v in locals().items() if k in ['course', 'semester', 'professor', 'full_title']}
 
-# TODO: Refactor to fix the paths for the new file structure.
 # Build PDF
 main_document = loaded_main_template.render(main_var_dict)
-for skill in chosen_skills:
-    if skill in skills:
-        generator_name = skill_dict[skill]['gen']
-        current_generator = importlib.import_module(generator_name)
+for skill in chosen_main_skills:
+    if skill in main_skills:
+        generator_path = main_skill_dict[skill]['gen']
+        spec = importlib.util.spec_from_file_location('pygenerator', generator_path)
+        current_generator = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(current_generator)
 
-        template_name = skill_dict[skill]['tpl']
-        current_template = main_dir / template_name
+        current_template = main_skill_dict[skill]['tpl']
         relative_template_path = current_template.relative_to(main_dir)
         loaded_current_template = env.get_template(str(relative_template_path))
 
@@ -367,7 +392,11 @@ for row in full_choices_array[1:]:
     student_text += '\n'
 
 # Build answer key versions
-sorted_used_versions = sorted(list(used_versions), key=lambda x: (skills.index(x[:2]), x))
+sorted_used_versions = sorted(
+    used_versions,
+    key=lambda x: (main_skills.index(x.split('/', 1)[0]), x)
+)
+
 key_name = 'Key'
 key_section = 'Blank'
 key_text = ('\\setboolean{anstoggle}{true}\n'
