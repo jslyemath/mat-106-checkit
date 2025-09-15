@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
     <intro>
+        <p><m>\textbf{W3}</m></p>
         <p>For each of the following equations, state the property that is being exemplified.</p>
     </intro>
     <knowl>
@@ -92,8 +93,7 @@
             W3-E
         </title>
         <intro>
-        <p>W3-E (This explanation skill appears on the back of W3. Passing W3-E is separate from passing W3.)</p>
-            <p>For the following questions, consider the {{expl_system}} numeral “<m>{{expl_ancient}}</m>” and the modern base-ten numeral “<m>{{expl_modern}}</m>”.</p>
+            <p><m>\textbf{W3-E}</m> (This explanation skill appears on the back of W3. Passing W3-E is separate from passing W3.)</p>
         </intro>
         <knowl>
             <content>
