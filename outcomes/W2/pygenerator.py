@@ -16,15 +16,16 @@ def generate(**kwargs):
         allowed_bases += [11]
     if base_12_allowed:
         allowed_bases += [12]
-    base_b_base = random.choice(allowed_bases)
+    base_b_base, base_b2_base = sm.samples(allowed_bases, k=2)
     base_names = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve']
     base_b_base_text = base_names[base_b_base]
-    add_alg_choices = sm.samples(add_algs, k=2)
+    base_b2_base_text = base_names[base_b2_base]
+    add_alg_choices = sm.samples(add_algs, k=3)
     if sub_allowed:
         ops_algs = [('+', add_alg_choices[0]), ('-', random.choice(sub_algs))]
         random.shuffle(ops_algs)
     else:
-        ops_algs = [('+', add_alg_choices[0]), ('+', add_alg_choices[1])]
+        ops_algs = [('+', add_alg_choices[0]), ('+', add_alg_choices[1]), ('+', add_alg_choices[2])]
 
     def add_sub_triad(op = '+', num_digits=4, base=10):
         leading_digits = []
@@ -89,6 +90,15 @@ def generate(**kwargs):
     base_b_prob = f'{base_b_num_a}_\\text{{{base_b_base_text}}} {base_b_op} {base_b_num_b}_\\text{{{base_b_base_text}}}'
     base_b_ans = f'{base_b_num_c}_\\text{{{base_b_base_text}}}'
 
+    if not sub_allowed:
+        base_b2_op = ops_algs[2][0]
+        base_b2_alg = ops_algs[2][1]
+        base_b2_num_a, base_b2_num_b, base_b2_num_c = add_sub_triad(base_b2_op, num_digits=4, base = base_b2_base)
+        base_b2_prob = f'{base_b2_num_a}_\\text{{{base_b2_base_text}}} {base_b2_op} {base_b2_num_b}_\\text{{{base_b2_base_text}}}'
+        base_b2_ans = f'{base_b2_num_c}_\\text{{{base_b2_base_text}}}'
+    else:
+        base_b2_alg, base_b2_prob, base_b2_ans = None, None, None
+
     # TODO: Create logic for each of the addition/subtraction algorithms, and find a way to format their answers.
 
     return {
@@ -97,5 +107,8 @@ def generate(**kwargs):
         'base_ten_ans': base_ten_ans,
         'base_b_prob': base_b_prob,
         'base_b_alg': base_b_alg,
-        'base_b_ans': base_b_ans
+        'base_b_ans': base_b_ans,
+        'base_b2_prob': base_b2_prob,
+        'base_b2_alg': base_b2_alg,
+        'base_b2_ans': base_b2_ans
     }
