@@ -67,14 +67,5 @@
                 <p>Answers will vary.</p>
             </outtro>
         </knowl>
-
-        <knowl>
-            <content>
-                <p>Explain the {{expl_text}} using your picture(s) above, as if to an elementary school student. What should they notice about the picture(s) that helps to solidify their understanding of why the {{expl_text}} is true?</p>
-            </content>
-            <outtro>
-                <p>Answers will vary.</p>
-            </outtro>
-        </knowl>
     </knowl>
 </knowl>
