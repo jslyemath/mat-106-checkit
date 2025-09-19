@@ -39,4 +39,42 @@
             <p>(This can be modeled by the equation <m>{{ans_math_4}}</m>.)</p>
         </outtro>
     </knowl>
+
+    
+    <!-- W4-E -->
+    <!-- FIXME: The formatting for W4-E is not ideal. I also can't get title to work. -->
+    <knowl>
+        <title>
+            W4-E
+        </title>
+        <intro>
+            <p><m>\textbf{W4-E}</m> (This explanation skill appears on the back of W4. Passing W4-E is separate from passing W4.)</p>
+        </intro>
+        <knowl>
+            <content>
+                <p>Explain why your word problem for "{{expl_prob_1}}" is best suited for the "{{expl_prob_context_1}}" problem structure. Compare and contrast with one other similar problem structure which uses the same operations. Why would that other problem structure not be as appropriate as "{{expl_prob_context_1}}" for your particular word problem?</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>Explain why your word problem for "{{expl_prob_2}}" is best suited for the "{{expl_prob_context_2}}" problem structure. Compare and contrast with one other similar problem structure which uses the same operations. Why would that other problem structure not be as appropriate as "{{expl_prob_context_2}}" for your particular word problem?</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>Explain the {{expl_text}} using your picture(s) above, as if to an elementary school student. What should they notice about the picture(s) that helps to solidify their understanding of why the {{expl_text}} is true?</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+    </knowl>
 </knowl>
