@@ -339,7 +339,7 @@ def to_egyptian(num, mode='latex'):
         for i in range(0, digit):
             egyptian_list += [egy_powers[ten_power]]
 
-    return ''.join(egyptian_list[::-1])
+    return ''.join(egyptian_list)
 
 
 def to_simple_babylonian(num, mode='latex'):
