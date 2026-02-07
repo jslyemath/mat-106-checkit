@@ -328,8 +328,7 @@ def generate(**kwargs):
             prob_ans_ver[i] = tuple(row)
 
 
-    expl_choices = ['Commutative Property of Addition', 'Associative Property of Addition',
-                    'Identity Property of Addition']
+    expl_choices = ['Commutative Property of Addition', 'Associative Property of Addition']
 
     if mult_allowed:
         expl_choices += ['Commutative Property of Multiplication', 'Identity Property of Multiplication',

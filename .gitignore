@@ -1,5 +1,6 @@
 assets/**/generated
 assets/bank.json
+assets/R1/used_versions.json
 *.ipynb.sage-jupyter2
 dashboard.ipynb
 venv

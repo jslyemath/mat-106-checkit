@@ -41,7 +41,7 @@
         </intro>
         <knowl>
             <content>
-                <p>If one {{units_block_a}} represents one unit, which type of block represents one tenth? Why? Relate your answer back to the base ten place value system.</p>
+                <p>If one {{units_block_}} represents one unit, which type of block represents one tenth? Why? Relate your answer back to the base ten place value system.</p>
             </content>
             
             <outtro>
