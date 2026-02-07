@@ -2,3 +2,15 @@ assets/**/generated
 assets/bank.json
 *.ipynb.sage-jupyter2
 dashboard.ipynb
+venv
+
+# Ignore IDE settings
+.idea/
+
+# Ignore Python "noise"
+**/__pycache__/
+*.pyc
+
+# Ignore Generated Outputs
+PDF Outputs/
+TeX Outputs/
