@@ -376,7 +376,7 @@ def generate(**kwargs):
         version_name = random.choice(available_versions)
         version_data = html_versions[version_name]
     else:
-        used_versions_file = Path('assets/G1/used_versions.json')
+        used_versions_file = Path('assets/R1/used_versions.json')
 
         used_versions = load_used_keys(used_versions_file)
         available_by_progress = get_available_versions(course_progress)

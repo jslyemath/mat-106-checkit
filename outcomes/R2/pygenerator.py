@@ -89,7 +89,7 @@ def generate(**kwargs):
             return p.number_to_words(num)
 
         problem = (
-            f"{person.name}'s family is travelling to their {destination} for vacation. "
+            f"{person.name}'s family is traveling to their {destination} for vacation. "
             f"Yesterday, they drove from {start_time_standard} to {end_time_standard}, with no stops until they made it to their hotel for the night. "
             f"In that time, they drove {day_one_distance} miles. Today {person.name}'s family continued driving at the same average speed for {number_to_words(day_two_hours)} more hours, after which they arrived at the {destination}. "
             f"During the past two days, how many miles did they travel to get to their {destination}?")
@@ -102,6 +102,88 @@ def generate(**kwargs):
         )
 
         return problem, solution
+
+
+    def pizza_party():
+        person = sm.random_person()
+        guests = random.randint(8, 30)
+        slices_per_pizza = random.choice([6, 8, 10, 12])
+        slices_per_guest = random.randint(2, 4)
+        price_per_pizza = random.randint(10, 20)
+
+        total_slices_needed = guests * slices_per_guest
+        pizzas_needed = (total_slices_needed + slices_per_pizza - 1) // slices_per_pizza  # ceiling division
+        total_cost = pizzas_needed * price_per_pizza
+
+        problem = (
+            f"{person.name} is ordering pizza for a party of {guests} people. Each person will eat {slices_per_guest} slices. "
+            f"Each pizza has {slices_per_pizza} slices and costs \\${price_per_pizza}. "
+            f"What is the fewest number of whole pizzas {person.name} should order to have enough slices for everyone, and how much will the order cost?"
+        )
+
+        solution = (
+            f"Total slices needed = {guests} guests times {slices_per_guest} slices = {total_slices_needed} slices. "
+            f"Each pizza has {slices_per_pizza} slices, so number of pizzas needed is the smallest whole number greater than or equal to {total_slices_needed}/{slices_per_pizza}. "
+            f"That is ({total_slices_needed} + {slices_per_pizza} - 1) // {slices_per_pizza} = {pizzas_needed} pizzas. "
+            f"Total cost = {pizzas_needed} times \\${price_per_pizza} = \\${total_cost}."
+        )
+
+        return problem, solution
+
+    def egg_cartons():
+        person = sm.random_person()
+        hens = random.randint(10, 40)
+        eggs_per_hen_per_day = random.randint(1, 3)
+        days = random.randint(3, 7)
+        price_per_dozen = random.randint(2, 6)
+
+        total_eggs = hens * eggs_per_hen_per_day * days
+        dozens = total_eggs // 12
+        leftover_eggs = total_eggs % 12
+        revenue = dozens * price_per_dozen
+
+        problem = (
+            f"{person.name}'s family has {hens} hens. Each hen lays {eggs_per_hen_per_day} eggs per day. "
+            f"They collect eggs for {days} days and pack them in cartons of 12 eggs. "
+            f"If each dozen can be sold for \\${price_per_dozen}, how many full dozens can they sell, how many eggs will be left over, and how much money will they make from selling the full dozens?"
+        )
+
+        solution = (
+            f"Total eggs = {hens} hens times {eggs_per_hen_per_day} eggs/hen/day times {days} days = {total_eggs} eggs. "
+            f"Full dozens = {total_eggs} // 12 = {dozens} dozens, leftover eggs = {total_eggs} % 12 = {leftover_eggs} eggs. "
+            f"Revenue = {dozens} dozens times \\${price_per_dozen} = \\${revenue}."
+        )
+
+        return problem, solution
+
+    def moving_boxes():
+        person = sm.random_person()
+        shelves = random.randint(4, 10)
+        books_per_shelf = random.randint(18, 36)
+        box_capacity = random.randint(8, 15)  # books per box
+        boxes_per_trip = random.randint(4, 8)
+        cost_per_trip = random.randint(5, 12)  # dollars per moving trip
+
+        total_books = shelves * books_per_shelf
+        boxes_needed = (total_books + box_capacity - 1) // box_capacity
+        trips_needed = (boxes_needed + boxes_per_trip - 1) // boxes_per_trip
+        total_move_cost = trips_needed * cost_per_trip
+
+        problem = (
+            f"{person.name} is packing {shelves} shelves of books with {books_per_shelf} books on each shelf into moving boxes. "
+            f"Each box holds {box_capacity} books. A helper can carry {boxes_per_trip} boxes per trip and charges \\${cost_per_trip} per trip. "
+            f"How many boxes are required, how many trips will the helper need to make, and how much will the moving help cost in total?"
+        )
+
+        solution = (
+            f"Total books = {shelves} shelves times {books_per_shelf} books = {total_books} books. "
+            f"Boxes needed = ceiling({total_books}/{box_capacity}) = ({total_books} + {box_capacity} - 1) // {box_capacity} = {boxes_needed} boxes. "
+            f"Trips needed = ceiling({boxes_needed}/{boxes_per_trip}) = ({boxes_needed} + {boxes_per_trip} - 1) // {boxes_per_trip} = {trips_needed} trips. "
+            f"Total cost = {trips_needed} trips times \\${cost_per_trip} = \\${total_move_cost}."
+        )
+
+        return problem, solution
+
 
     def contractor_selection():
         person = sm.random_person()
@@ -258,6 +340,50 @@ def generate(**kwargs):
 
         return problem, solution
 
+    def lemonade_stand():
+        person = sm.random_person()
+        # base recipe makes base_cups using sugar_scoops and lemons; scale up for customers (multiplication) then calculate leftover ingredients (subtraction)
+        base_cups = random.randint(8, 12)
+        sugar_scoops = random.randint(3, 6)  # scoops needed for base recipe
+        lemons = random.randint(4, 8)  # lemons for base recipe
+        customers = random.randint(20, 60)
+        cups_per_customer = random.randint(1, 2)
+
+        cups_needed = customers * cups_per_customer
+        # compute scale factor as whole number of base recipes needed (ceiling)
+        recipes_needed = (cups_needed + base_cups - 1) // base_cups
+        total_sugar_needed = recipes_needed * sugar_scoops
+        total_lemons_needed = recipes_needed * lemons
+
+        # supplies on hand (to allow subtraction)
+        sugar_on_hand = total_sugar_needed + random.randint(-3, 8)  # could be slightly short or have extra
+        lemons_on_hand = total_lemons_needed + random.randint(-2, 6)
+
+        sugar_short = total_sugar_needed - sugar_on_hand
+        lemons_short = total_lemons_needed - lemons_on_hand
+
+        problem = (
+            f"{person.name} has a lemonade recipe that makes {base_cups} cups using {sugar_scoops} scoops of sugar and {lemons} lemons. "
+            f"{person.name} expects {customers} customers and plans for each customer to have {cups_per_customer} cup(s). "
+            f"How many full recipes does {person.subj_pronoun()} need to make to have enough lemonade, how much sugar and how many lemons are needed in total, and does {person.subj_pronoun()} have enough supplies if {sugar_on_hand} scoops of sugar and {lemons_on_hand} lemons are on hand? "
+            f"Show the computations and explain any shortages or extras."
+        )
+
+        sugar_note = ("enough sugar" if sugar_short <= 0 else f"short of sugar by {sugar_short} scoop(s)")
+        lemon_note = ("enough lemons" if lemons_short <= 0 else f"short of lemons by {lemons_short} lemon(s)")
+
+        solution = (
+            f"Cups needed = {customers} times {cups_per_customer} = {cups_needed} cups. "
+            f"Recipes needed = ceiling({cups_needed}/{base_cups}) = ({cups_needed} + {base_cups} - 1) // {base_cups} = {recipes_needed} recipes. "
+            f"Sugar needed = {recipes_needed} times {sugar_scoops} = {total_sugar_needed} scoops. "
+            f"Lemons needed = {recipes_needed} times {lemons} = {total_lemons_needed} lemons. "
+            f"On hand: {sugar_on_hand} scoops sugar, {lemons_on_hand} lemons. "
+            f"Sugar status: {sugar_note}. Lemon status: {lemon_note}."
+        )
+
+        return problem, solution
+
+
     def buying_house():
         person = sm.random_person()
         house_price = random.randint(200000, 300000)
@@ -284,7 +410,17 @@ def generate(**kwargs):
 
     beginning_0 = [] #
     sub_whole_1 = []
-    mult_div_whole_2 = [travel_to_cabin, contractor_selection, cookie_stand, can_production, buying_house]
+    mult_div_whole_2 = [
+                        contractor_selection,
+                        cookie_stand,
+                        can_production,
+                        buying_house,
+                        travel_to_cabin,
+                        pizza_party,
+                        egg_cartons,
+                        moving_boxes,
+                        lemonade_stand,
+                        ]
     int_pemdas_3 = [temperature_change]
     add_sub_frac_4 = [christmas_decorations, walking_distance]
     mult_div_frac_5 = []
