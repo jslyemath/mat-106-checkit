@@ -18,6 +18,13 @@ from jinja2 import FileSystemLoader
 from latex.jinja2 import make_env
 from latex import build_pdf
 
+COLOR_MAP = {
+    'R': 'Orange',
+    'W': 'Violet',
+    'N': 'Red',
+    'F': 'Teal',
+    'D': 'ForestGreen'
+}
 
 def load_csv(filename: str | Path) -> list[list[str]]:
     """Load the CSV file into a list of rows (safe on Windows)."""
@@ -134,7 +141,7 @@ pdf_location_raw = get_named_value(data, 'PDF Location:', 'right')
 course = get_named_value(data, 'Course:', 'right')
 semester = get_named_value(data, 'Semester:', 'right')
 professor = get_named_value(data, 'Professor:', 'right')
-course_progress_raw = get_named_value(data, 'G1, G2, W3, W4, F4:', 'below')
+course_progress_raw = get_named_value(data, 'R1, R2, W3, W4, F4:', 'below')
 w6_allow_terminating_raw = get_named_value(data, 'W6:', 'below')
 n3_n4_force_listing_method_raw = get_named_value(data, 'N3, N4:', 'below')
 d2_allow_repeating_raw = get_named_value(data, 'D2:', 'below')
@@ -170,49 +177,12 @@ if not main_template.exists():
     root.destroy()
     sys.exit()
 
-def update_skill_list_tex(skill_data: list[tuple[str, str]]) -> None:
+def update_skill_list_tex(skill_data: list[tuple[str, str, str]]) -> None:
     skill_list_tex.touch(exist_ok=True)
-
-    with skill_list_tex.open(mode='w') as file:
-        for skill_row in skill_data:
-            file.write(f'\\setskilldesc{{{skill_row[0]}}}{{{skill_row[1]}}}\n')
-
-# Old
-# Ask for skill list csv if it doesn't exist
-# if not skill_list_csv.exists():
-#     messagebox.showinfo('Skill List Needed', 'Please select the csv file containing the relevant main_skills descriptions. '
-#                                              'The main_skills and descriptions should be in a two-column format, '
-#                                              'with headers "Skill:" and "Description:".')
-#     skill_list_import = filedialog.askopenfilename()
-#     if not skill_list_import:
-#         root.destroy()
-#         sys.exit()
-#     skill_list_data = load_csv(skill_list_import)
-
-#     skill_list_tex.touch(exist_ok=False)
-
-#     skill_array_data = get_named_range(skill_list_data, 'Skill:', direction='below', height=None, width=2)
-#     skill_array_data = [row + 'm' for row in skill_array_data]
-#     assoc_skill_array_data = []
-#     if 'Associated Skill:' in skill_list_data[0]:
-#         assoc_skill_array_data = get_named_range(skill_list_data, 'Associated Skill:',
-#                                                  direction='below', height=len(skill_list_data)-1, width=2)
-#         assoc_skill_array_data = [x + ['a'] for x in assoc_skill_array_data if x[0]]
-#     with skill_list_csv.open(mode='w', newline='') as file:
-#         writer = csv.writer(file)
-#         writer.writerows(skill_array_data)
-#         if assoc_skill_array_data:
-#             writer.writerows(assoc_skill_array_data)
-#     with skill_list_tex.open(mode='w') as file:
-#         for skill_row in skill_array_data:
-#             file.write(f'\\setskilldesc{{{skill_row[0]}}}{{{skill_row[1]}}}\n')
-#         for skill_row in assoc_skill_array_data:
-#             file.write(f'\\setskilldesc{{{skill_row[0]}}}{{{skill_row[1]}}}\n')
-
-# Load main_skills for later, and create folders for future TeX file generation
-
-# Old:
-# skill_array = [row[:2] for row in load_csv(skill_list_csv) if row[2] == 'm']
+    with skill_list_tex.open(mode='w', encoding='utf-8') as file:
+        for slug, desc, color in skill_data:
+            # Writes \setskilldesc[ColorName]{Slug}{Description}
+            file.write(f'\\setskilldesc[{color}]{{{slug}}}{{{desc}}}\n')
 
 # XML default namespace for CheckIt bank.xml
 NS = {'c': 'https://checkit.clontz.org'}
@@ -228,41 +198,39 @@ def _clean_text(node: ET.Element | None) -> str:
     raw = ''.join(node.itertext())
     return ' '.join(raw.split())
 
-def parse_bank(xml_path: str | Path) -> list[tuple[str, str, str, str]]:
+def parse_bank(xml_path: str | Path) -> list[tuple[str, str, str, str, str]]:
     """
     Parse bank.xml and return a list of tuples:
-        (slug, description, kind, path)
-    where `kind` is 'main' for <outcome> and 'associated' for <associate>.
+        (slug, description, path, kind, color)
     """
     xml_path = str(xml_path)
     tree = ET.parse(xml_path)
     root = tree.getroot()
 
-    items: list[tuple[str, str, str, str]] = []
+    items = []
 
-    # Gather <outcome> elements (the original/main skills)
-    for outcome in root.findall('.//c:outcome', NS):
-        slug_el = outcome.find('c:slug', NS)
-        desc_el = outcome.find('c:description', NS)
-        path_el = outcome.find('c:path', NS)
+    # Helper to find color or default based on slug
+    def get_color(element, slug):
+        color_el = element.find('c:color', NS)
+        if color_el is not None and color_el.text:
+            return color_el.text.strip()
+        # Fallback to mapping based on first letter of slug
+        first_letter = slug[0].upper() if slug else ''
+        return COLOR_MAP.get(first_letter, 'scCOLOR')
 
-        slug = (slug_el.text or '').strip() if slug_el is not None else ''
-        desc = _clean_text(desc_el)
-        path = (path_el.text or '').strip() if path_el is not None and path_el.text else ''
+    # Process outcomes (m) and associates (a)
+    for tag, kind in [('.//c:outcome', 'm'), ('.//c:associate', 'a')]:
+        for entry in root.findall(tag, NS):
+            slug_el = entry.find('c:slug', NS)
+            desc_el = entry.find('c:description', NS)
+            path_el = entry.find('c:path', NS)
 
-        items.append((slug, desc, path, 'm'))
+            slug = (slug_el.text or '').strip() if slug_el is not None else ''
+            desc = _clean_text(desc_el)
+            path = (path_el.text or '').strip() if path_el is not None and path_el.text else ''
+            color = get_color(entry, slug)
 
-    # Gather <associate> elements (explanation skills)
-    for associate in root.findall('.//c:associate', NS):
-        slug_el = associate.find('c:slug', NS)
-        desc_el = associate.find('c:description', NS)
-        path_el = associate.find('c:path', NS)
-
-        slug = (slug_el.text or '').strip() if slug_el is not None else ''
-        desc = _clean_text(desc_el)
-        path = (path_el.text or '').strip() if path_el is not None and path_el.text else ''
-
-        items.append((slug, desc, path, 'a'))
+            items.append((slug, desc, path, kind, color))
 
     return items
 
@@ -275,17 +243,20 @@ main_skill_dict = {
         'gen': main_dir / path / 'pygenerator.py',
         'tpl': main_dir / path / 'textemplate.tex'
     }
-    for slug, desc, path, kind in skill_array
+    for slug, desc, path, kind, color in skill_array
     if kind == "m"
 }
 
 main_skills = list(main_skill_dict)
+skill_desc_list = [(row[0], row[1], row[4]) for row in skill_array]
 
 for skill in main_skills:
     skill_tex_gen_dir = tex_files_dir / skill
     skill_tex_gen_dir.mkdir(exist_ok=True)
 
 shutil.copyfile(orig_sty_file, copied_sty_file)
+
+update_skill_list_tex(skill_desc_list)
 
 # Set remaining variables from raw data
 include_names = True
@@ -342,7 +313,7 @@ env = make_env(loader=FileSystemLoader('.'))
 
 # Convert main_template to a relative path
 relative_main_template_path = main_template.relative_to(main_dir)
-loaded_main_template = env.get_template(str(relative_main_template_path))
+loaded_main_template = env.get_template(relative_main_template_path.as_posix())
 
 main_var_dict = {k: v for k, v in locals().items() if k in ['course', 'semester', 'professor', 'full_title']}
 
@@ -357,7 +328,7 @@ for skill in chosen_main_skills:
 
         current_template = main_skill_dict[skill]['tpl']
         relative_template_path = current_template.relative_to(main_dir)
-        loaded_current_template = env.get_template(str(relative_template_path))
+        loaded_current_template = env.get_template(relative_template_path.as_posix())
 
         for current_seed in seeds:
             random.seed(current_seed)
