@@ -600,3 +600,14 @@ title=#2,#1}
 
 % For creating trueemptypages when we need to force double-siding with one-siders mixed with two-siders
 \newcommand{\trueemptypage}{\clearpage\begingroup\pagestyle{empty}\cleardoublepage\endgroup}
+
+% For handling students not getting mixed up in double-sided printing
+\newcommand{\preparefornextstudent}{%
+    \clearpage % Force current student to finish
+    \ifodd\value{page}% If we ended on a FRONT...
+        \thispagestyle{empty}%
+        \hbox{}% Insert invisible filler
+        \newpage% Move to the next (even) page
+    \fi
+    % If it wasn't odd, LaTeX skips the 'if' and just stops here.
+}

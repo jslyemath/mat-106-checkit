@@ -360,7 +360,7 @@ for row in full_choices_array[1:]:
         student_text += f'\\skillpage{{{choice_tex_path}}}\n'
         used_versions.add(choice_tex_path)
 
-    student_text += '\n'
+    student_text += "\\preparefornextstudent\n\n"
 
 # Build answer key versions
 sorted_used_versions = sorted(
@@ -374,9 +374,16 @@ key_text = ('\\setboolean{anstoggle}{true}\n'
             f'\\setname{{{key_name}}}\n'
             f'\\setsect{{{key_section}}}\n')
 if int(key_amount) > 0:
+    # Create a single complete key first
+    single_key = ""
     for used_version in sorted_used_versions:
-        key_text += f'\\skillpage{{{used_version}}}\n'
-    key_text += key_text*(int(key_amount) - 1)
+        single_key += f'\\skillpage{{{used_version}}}\n'
+    
+    # Add the buffer to the end of the key
+    single_key += "\\preparefornextstudent\n"
+    
+    # Now multiply the entire "packet" (Key + Buffer)
+    key_text += single_key * int(key_amount)
 
 
 beginning, ending = main_document.split('% Student copies')
