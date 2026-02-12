@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <intro>
+        <p><m>\textbf{D1}</m></p>
+    </intro>
+    <knowl>
+        <content>
+            <p>Consider the number {{pv_dec_string}}. Identify and name each of the place values used in this number. Write these names using both a numerical label (e.g. ``10s'') and an English-word label (e.g. ``tens''). Numeric labels must use fractions for values smaller than one.</p>
+        </content>
+        
+        <outtro>
+            <p>{{pv_ans_text}}</p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>Using {{units_block_choice_a}} to represent the units, draw a base-ten block representation of the number {{blocks_dec_a}}.</p>
+        </content>
+        
+        <outtro>
+            <p>{{blocks_ans_text_a}}</p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>Using {{units_block_choice_b}} to represent the units, draw a base-ten block representation of the number {{blocks_dec_b}}.</p>
+        </content>
+        
+        <outtro>
+            <p>{{blocks_ans_text_b}}</p>
+        </outtro>
+    </knowl>
+
+    <!-- D1-E -->
+    <!-- FIXME: The formatting for D1-E is not ideal. -->
+    <knowl>
+        <intro>
+            <p><m>\textbf{D1-E}</m> (This explanation skill appears on the back of D1. Passing D1-E is separate from passing D1.)</p>
+        </intro>
+        <knowl>
+            <content>
+                <p>If one {{units_block_}} represents one unit, which type of block represents one tenth? Why? Relate your answer back to the base ten place value system.</p>
+            </content>
+            
+            <outtro>
+                <p>It takes ten tenths to create a single unit. Likewise, it takes ten {{tenths_block_a}}s to create a single {{units_block_a}}. Thus, a {{tenths_block_a}} represents one tenth.</p> 
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>If one {{units_block_a}} represents one unit, which type of block represents one hundredth? Why? Relate your answer back to the base ten place value system.</p>
+            </content>
+            
+            <outtro>
+                <p>It takes one hundred hundredths to create a single unit. Likewise, it takes one hundred {{hundredths_block_a}}s to create a single {{units_block_a}}. Thus, a {{hundredths_block_a}} represents one hundredth. </p>
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>How do base-ten blocks physically demonstrate how a base-ten place value system works?</p>
+            </content>
+            <outtro>
+                <p>In a base-ten place value system, each place value must be ten times the place value to its right. It takes ten units to make a long, ten longs to make a flat, and ten flats to make a large cube. Thus, the four types of base ten blocks can be used for any 4 consecutive base-ten place values. </p>
+            </outtro>
+        </knowl>
+    </knowl>
+</knowl>

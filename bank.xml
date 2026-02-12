@@ -167,6 +167,15 @@
         </outcome>
 
         <outcome>
+            <title>Explaining Decimal Place Values with Blocks</title>
+            <slug>D1-E</slug>
+            <path>outcomes/D1-E</path>
+            <description>
+                I can explain the relationship between place values in the base ten decimal system, and how the base ten blocks help demonstrate that relationship.
+            </description>
+        </outcome>
+
+        <outcome>
             <title>Decimal Conversions</title>
             <slug>D2</slug>
             <path>outcomes/D2</path>
