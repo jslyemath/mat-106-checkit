@@ -20,31 +20,4 @@
             <p>{{to_m_modern}}</p>
         </outtro>
     </knowl>
-
-    <!-- W1-E -->
-    <!-- FIXME: The formatting for W1-E is not ideal. I also can't get title to work. -->
-    <knowl>
-        <intro>
-            <p><m>\textbf{W1-E}</m> (This explanation skill appears on the back of W1. Passing W1-E is separate from passing W1.)</p>
-            <p>For the following questions, consider the {{expl_system}} numeral “<m>{{expl_ancient}}</m>” and the modern base-ten numeral “<m>{{expl_modern}}</m>”.</p>
-        </intro>
-        <knowl>
-            <content>
-                <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> similar?</p>
-            </content>
-            <outtro>
-                <p>Answers will vary.</p>
-            </outtro>
-        </knowl>
-
-        <knowl>
-            <content>
-                <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> different? <em>Why?</em> What is fundamentally different about these two numeration systems that is key to understanding this difference?</p>
-            </content>
-            <outtro>
-                <p>Answers will vary.</p>
-            </outtro>
-        </knowl>
-    </knowl>
-
 </knowl>

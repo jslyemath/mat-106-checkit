@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <knowl>
+        <content>
+            <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> similar?</p>
+        </content>
+        <outtro>
+            <p>Answers will vary.</p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> different? <em>Why?</em> What is fundamentally different about these two numeration systems that is key to understanding this difference?</p>
+        </content>
+        <outtro>
+            <p>Answers will vary.</p>
+        </outtro>
+    </knowl>
+</knowl>

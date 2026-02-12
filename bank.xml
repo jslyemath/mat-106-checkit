@@ -32,6 +32,15 @@
         </outcome>
 
         <outcome>
+            <title>Compare and Contrast Ancient and Modern Numeration</title>
+            <slug>W1-E</slug>
+            <path>outcomes/W1-E</path>
+            <description>
+                I can compare and contrast the ancient and modern numeration systems, and explain how they represent values.
+            </description>
+        </outcome>
+
+        <outcome>
             <title>Base-b Addition and Subtraction Algorithms</title>
             <slug>W2</slug>
             <path>outcomes/W2</path>
@@ -209,14 +218,6 @@
             <path>outcomes/R2</path>
             <description>
                 I can explain my reasoning for each step of work in solving a word problem with the basic arithmetic operations, in language that supports elementary students' understanding of how to solve such problems.
-            </description>
-        </associate>
-
-        <associate>
-            <slug>W1-E</slug>
-            <path>outcomes/W1</path>
-            <description>
-                I can compare and contrast the ancient and modern numeration systems, and explain how they represent values.
             </description>
         </associate>
 

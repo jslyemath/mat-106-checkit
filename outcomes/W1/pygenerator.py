@@ -40,22 +40,20 @@ def generate(**kwargs):
     to_a_ancient, to_a_modern, to_a_system = to_ancient_func()
     to_m_ancient, to_m_modern, to_m_system = to_modern_func()
 
-    if expl_system_func == rom_modern:
-        expl_system = 'Roman'
-        expl_modern, expl_ancient = random.choice([(11, f'\\text{{{sm.to_roman(2)}}}'),
-                                                   (111, f'\\text{{{sm.to_roman(3)}}}'),
-                                                   (51, f'\\text{{{sm.to_roman(6)}}}'),
-                                                   (511, f'\\text{{{sm.to_roman(7)}}}'),
-                                                   (5111, f'\\text{{{sm.to_roman(8)}}}')])
-    else:
-        expl_system = 'ancient Egyptian'
-        expl_modern, expl_ancient = random.choice([(11, large_egy(sm.to_egyptian(2, mode=mode))),
-                                                   (111, large_egy(sm.to_egyptian(3, mode=mode))),
-                                                   (1111, large_egy(sm.to_egyptian(4, mode=mode))),
-                                                   (11111, large_egy(sm.to_egyptian(5, mode=mode))),
-                                                   (111111, large_egy(sm.to_egyptian(6, mode=mode)))])
-
-    # TODO: Add logic for explanation.
+    # if expl_system_func == rom_modern:
+    #     expl_system = 'Roman'
+    #     expl_modern, expl_ancient = random.choice([(11, f'\\text{{{sm.to_roman(2)}}}'),
+    #                                                (111, f'\\text{{{sm.to_roman(3)}}}'),
+    #                                                (51, f'\\text{{{sm.to_roman(6)}}}'),
+    #                                                (511, f'\\text{{{sm.to_roman(7)}}}'),
+    #                                                (5111, f'\\text{{{sm.to_roman(8)}}}')])
+    # else:
+    #     expl_system = 'ancient Egyptian'
+    #     expl_modern, expl_ancient = random.choice([(11, large_egy(sm.to_egyptian(2, mode=mode))),
+    #                                                (111, large_egy(sm.to_egyptian(3, mode=mode))),
+    #                                                (1111, large_egy(sm.to_egyptian(4, mode=mode))),
+    #                                                (11111, large_egy(sm.to_egyptian(5, mode=mode))),
+    #                                                (111111, large_egy(sm.to_egyptian(6, mode=mode)))])
 
     return {
         'to_a_modern': f'{int(to_a_modern):,}',
@@ -64,7 +62,4 @@ def generate(**kwargs):
         'to_m_ancient': f'{to_m_ancient}',
         'to_m_system': f'{to_m_system}',
         'to_m_modern': f'{int(to_m_modern):,}',
-        'expl_modern': f'{expl_modern}',
-        'expl_ancient': f'{expl_ancient}',
-        'expl_system': f'{expl_system}',
     }
