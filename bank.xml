@@ -41,11 +41,20 @@
         </outcome>
 
         <outcome>
-            <title>Base-b Addition and Subtraction Algorithms</title>
+            <title>Base-b Addition Algorithms</title>
             <slug>W2</slug>
             <path>outcomes/W2</path>
             <description>
-                I can compute addition and subtraction of multi-digit base-b whole numbers using non-standard addition and subtraction algorithms.
+                I can compute addition of multi-digit base-b whole numbers using non-standard addition algorithms.
+            </description>
+        </outcome>
+
+        <outcome>
+            <title>Base-b Subtraction Algorithms</title>
+            <slug>W3</slug>
+            <path>outcomes/W3</path>
+            <description>
+                I can compute subtraction of multi-digit base-b whole numbers using non-standard subtraction algorithms.
             </description>
         </outcome>
  

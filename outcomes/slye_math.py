@@ -11,6 +11,69 @@ def main():
     pass
 
 
+def base_int_to_word(raw_int: int | str | float) -> str:
+    try:
+        clean_int = abs(int(float(raw_int))) 
+    except (ValueError, TypeError):
+        return TypeError(f'Input "{raw_int}" is not a valid number.')
+    
+    base_names = ('zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thriteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty')
+
+    return base_names[clean_int]
+
+
+def add_sub_triad(op = '+', num_digits=4, base=10):
+    leading_digits = []
+    if op == '+':
+        leading_digit_offset = 0
+    else:
+        leading_digit_offset = 1
+        if base == 2:
+            a = 0
+            b = 0
+        else:
+            a = random.randint(1, base - 2)
+            b = random.randint(0, base - a - 2)
+        leading_digits = [[a, b, a+b]]
+
+    forced_regroupings = random.randint(1, num_digits - leading_digit_offset)
+    # print(f"{forced_regroupings=}")
+    addends_sum = []
+    for i in range(forced_regroupings):
+        a = random.randint(1, base - 1)
+        b = random.randint(base - a, base - 1)
+        addends_sum.append([a, b, a+b])
+    for i in range(num_digits - forced_regroupings - leading_digit_offset):
+        if base == 2:
+            a = random.randint(0, 1)
+            b = random.randint(0, 1)
+        else:
+            a = random.randint(1, base - 1)
+            b = random.randint(0, base - a - 1) if a != base-1 else 0
+        addends_sum.append([a, b, a+b])
+
+    random.shuffle(addends_sum)
+    addends_sum += leading_digits
+    # print(f"{addends_sum=}")
+
+    num_a = 0
+    num_b = 0
+    num_c = 0
+    for p, abc in enumerate(addends_sum):
+        num_a += base ** p * abc[0]
+        num_b += base ** p * abc[1]
+        num_c += base ** p * abc[2]
+
+    num_a = sm.base_conv(num_a, base=base, output='str')
+    num_b = sm.base_conv(num_b, base=base, output='str')
+    num_c = sm.str_int_base_op(num_a, num_b, '+', base)
+
+    if op == '-':
+        num_a, num_b, num_c = num_c, num_a, num_b
+
+    return num_a, num_b, num_c
+
+
 def normalize_time_str(time_str):
     """Normalize time string to a consistent format (e.g., 8:00 AM or 23:00 for 24-hour)."""
     try:
