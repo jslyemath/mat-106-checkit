@@ -60,8 +60,8 @@
 
         <outcome>
             <title>Generating Appropriate Word Problems</title>
-            <slug>W4</slug>
-            <path>outcomes/W4</path>
+            <slug>W5</slug>
+            <path>outcomes/W5</path>
             <description>
                 I can generate elementary word problems most suitable for each of the problem structures of addition, subtraction, multiplication, and division.
             </description>
@@ -230,8 +230,8 @@
         </associate>
 
         <associate>
-            <slug>W4-E</slug>
-            <path>outcomes/W4</path>
+            <slug>W5-E</slug>
+            <path>outcomes/W5</path>
             <description>
                 I can explain why word problems are most suitable for particular problem structures.
             </description>

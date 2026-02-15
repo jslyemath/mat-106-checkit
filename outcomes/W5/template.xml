@@ -41,14 +41,14 @@
     </knowl>
 
     
-    <!-- W4-E -->
-    <!-- FIXME: The formatting for W4-E is not ideal. I also can't get title to work. -->
+    <!-- W5-E -->
+    <!-- FIXME: The formatting for W5-E is not ideal. I also can't get title to work. -->
     <knowl>
         <title>
-            W4-E
+            W5-E
         </title>
         <intro>
-            <p><m>\textbf{W4-E}</m> (This explanation skill appears on the back of W4. Passing W4-E is separate from passing W4.)</p>
+            <p><m>\textbf{W5-E}</m> (This explanation skill appears on the back of W5. Passing W5-E is separate from passing W5.)</p>
         </intro>
         <knowl>
             <content>
