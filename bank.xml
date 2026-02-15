@@ -69,8 +69,8 @@
 
         <outcome>
             <title>Base-b Multiplication Algorithms</title>
-            <slug>W5</slug>
-            <path>outcomes/W5</path>
+            <slug>W6</slug>
+            <path>outcomes/W6</path>
             <description>
                 I can compute multiplication of multi-digit base-b whole numbers using non-standard multiplication algorithms.
             </description>
