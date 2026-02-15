@@ -5,7 +5,7 @@ import random
 def generate(**kwargs):
     # Repeating decimals come later in the semester, so this generator will not allow for repeating decimals
     decimals_allowed = False
-    if kwargs['w6_allow_terminating']:
+    if kwargs['w7_allow_terminating']:
         decimals_allowed = True
 
     algorithm = 'Standard'

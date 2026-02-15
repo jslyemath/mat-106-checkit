@@ -142,7 +142,7 @@ course = get_named_value(data, 'Course:', 'right')
 semester = get_named_value(data, 'Semester:', 'right')
 professor = get_named_value(data, 'Professor:', 'right')
 course_progress_raw = get_named_value(data, 'R1, R2, W3, W4, F4:', 'below')
-w6_allow_terminating_raw = get_named_value(data, 'W6:', 'below')
+w7_allow_terminating_raw = get_named_value(data, 'W7:', 'below')
 n3_n4_force_listing_method_raw = get_named_value(data, 'N3, N4:', 'below')
 d2_allow_repeating_raw = get_named_value(data, 'D2:', 'below')
 full_title = f'{title} {date}'
@@ -270,11 +270,11 @@ if 'default'.casefold() not in pdf_location_raw.casefold():
 
 # Save settings to settings dictionary, which will be passed to the generator functions
 course_progress = int(course_progress_raw[0])
-w6_allow_terminating = True if w6_allow_terminating_raw.casefold() == 'TRUE'.casefold() else False
+w7_allow_terminating = True if w7_allow_terminating_raw.casefold() == 'TRUE'.casefold() else False
 d2_allow_repeating = True if d2_allow_repeating_raw.casefold() == 'TRUE'.casefold() else False
 n3_n4_force_listing_method = True if n3_n4_force_listing_method_raw.casefold() == 'TRUE'.casefold() else False
 settings = {k: v for k, v in locals().items() if k in ['course_progress',
-                                                       'w6_allow_terminating',
+                                                       'w7_allow_terminating',
                                                        'n3_n4_force_listing_method',
                                                        'd2_allow_repeating']}
 
