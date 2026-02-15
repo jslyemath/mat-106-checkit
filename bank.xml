@@ -68,6 +68,15 @@
         </outcome>
 
         <outcome>
+            <title>Explaining Properties of Addition and Multiplication</title>
+            <slug>W4-E</slug>
+            <path>outcomes/W4</path>
+            <description>
+                I can explain why the properties of addition and multiplication work, in terms that elementary students would understand.
+            </description>
+        </outcome>
+
+        <outcome>
             <title>Generating Appropriate Word Problems</title>
             <slug>W5</slug>
             <path>outcomes/W5</path>
@@ -227,14 +236,6 @@
             <path>outcomes/R2</path>
             <description>
                 I can explain my reasoning for each step of work in solving a word problem with the basic arithmetic operations, in language that supports elementary students' understanding of how to solve such problems.
-            </description>
-        </associate>
-
-        <associate>
-            <slug>W4-E</slug>
-            <path>outcomes/W4</path>
-            <description>
-                I can explain why the properties of addition and multiplication work, in terms that elementary students would understand.
             </description>
         </associate>
 

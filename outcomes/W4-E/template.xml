@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    
+    <knowl>
+        <content>
+            <p>Which physical model would be the best for explaining the <em>{{expl_text}}</em> to an elementary school student?</p>
+        </content>
+        <outtro>
+            <p>Answers will vary.</p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>Draw a picture or two of that model which could be used to demonstrate the {{expl_text}}.</p>
+        </content>
+        <outtro>
+            <p>Answers will vary.</p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>Explain the {{expl_text}} using your picture(s) above, as if to an elementary school student. What should they notice about the picture(s) that helps to solidify their understanding of why the {{expl_text}} is true?</p>
+        </content>
+        <outtro>
+            <p>Answers will vary.</p>
+        </outtro>
+    </knowl>
+
+</knowl>

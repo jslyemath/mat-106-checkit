@@ -328,13 +328,13 @@ def generate(**kwargs):
             prob_ans_ver[i] = tuple(row)
 
 
-    expl_choices = ['Commutative Property of Addition', 'Associative Property of Addition']
+    # expl_choices = ['Commutative Property of Addition', 'Associative Property of Addition']
 
-    if mult_allowed:
-        expl_choices += ['Commutative Property of Multiplication', 'Identity Property of Multiplication',
-                         'Distributive Property of Multiplication over Addition']
+    # if mult_allowed:
+    #     expl_choices += ['Commutative Property of Multiplication', 'Identity Property of Multiplication',
+    #                      'Distributive Property of Multiplication over Addition']
 
-    expl_text = random.choice(expl_choices)
+    # expl_text = random.choice(expl_choices)
 
     return {
         'p1_prob': prob_ans_ver[0][0],
@@ -367,5 +367,4 @@ def generate(**kwargs):
         'p10_prob': prob_ans_ver[9][0],
         'p10_ans': prob_ans_ver[9][1],
         'p10_ver': prob_ans_ver[9][2],
-        'expl_text': expl_text
     }
