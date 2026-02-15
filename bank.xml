@@ -51,8 +51,8 @@
  
         <outcome>
             <title>Properties of Addition and Multiplication</title>
-            <slug>W3</slug>
-            <path>outcomes/W3</path>
+            <slug>W4</slug>
+            <path>outcomes/W4</path>
             <description>
                 I can identify uses of the associative, commutative, identity, zero product, and distributive properties of addition and multiplication.
             </description>
@@ -222,8 +222,8 @@
         </associate>
 
         <associate>
-            <slug>W3-E</slug>
-            <path>outcomes/W3</path>
+            <slug>W4-E</slug>
+            <path>outcomes/W4</path>
             <description>
                 I can explain why the properties of addition and multiplication work, in terms that elementary students would understand.
             </description>

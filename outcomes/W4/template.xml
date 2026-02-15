@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <intro>
+        <p><m>\textbf{W4}</m></p>
+        <p>For each of the following equations, state the property that is being exemplified.</p>
+    </intro>
+    <knowl>
+        <content>
+            <p><m>{{p1_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p1_ans}}</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{p2_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p2_ans}}</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{p3_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p3_ans}}</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{p4_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p4_ans}}</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{p5_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p5_ans}}</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{p6_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p6_ans}}</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{p7_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p7_ans}}</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{p8_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p8_ans}}</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{p9_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p9_ans}}</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{p10_prob}}</m></p>
+        </content>
+        <outtro>
+            <p>{{p10_ans}}</p>
+        </outtro>
+    </knowl>
+
+    
+    <!-- W4-E -->
+    <!-- FIXME: The formatting for W4-E is not ideal. I also can't get title to work. -->
+    <knowl>
+        <title>
+            W4-E
+        </title>
+        <intro>
+            <p><m>\textbf{W4-E}</m> (This explanation skill appears on the back of W4. Passing W4-E is separate from passing W4.)</p>
+        </intro>
+        <knowl>
+            <content>
+                <p>Which physical model would be the best for explaining the <em>{{expl_text}}</em> to an elementary school student?</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>Draw a picture or two of that model which could be used to demonstrate the {{expl_text}}.</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+
+        <knowl>
+            <content>
+                <p>Explain the {{expl_text}} using your picture(s) above, as if to an elementary school student. What should they notice about the picture(s) that helps to solidify their understanding of why the {{expl_text}} is true?</p>
+            </content>
+            <outtro>
+                <p>Answers will vary.</p>
+            </outtro>
+        </knowl>
+    </knowl>
+
+</knowl>
