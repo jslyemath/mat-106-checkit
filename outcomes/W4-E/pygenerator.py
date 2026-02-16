@@ -1,6 +1,5 @@
 import slye_math as sm
 import random
-import re
 
 
 def generate(**kwargs):
