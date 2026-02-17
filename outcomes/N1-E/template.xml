@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <intro>
+        <p>Fully explain why each of the following statements from the previous page are true or false. If a statement is <em>false</em>, provide a <em>counterexample</em>. If it is <em>true</em>, provide a <em>general explanation</em> appropriate for elementary students. Any general explanations must be logically sound, and must be general enough to cover all possible cases (not relying on specific examples).</p>
+    </intro>
+    <knowl>
+        <content>
+            <p><m>{{explain_prob_1}}</m></p>
+        </content>
+        <outtro>
+            <p>This statement was {{explain_ans_1}}. The argument or counterexample will vary from person to person.</p>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <p><m>{{explain_prob_2}}</m></p>
+        </content>
+        <outtro>
+            <p>This statement was {{explain_ans_2}}. The argument or counterexample will vary from person to person.</p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p><m>{{explain_prob_3}}</m></p>
+        </content>
+        <outtro>
+            <p>This statement was {{explain_ans_3}}. The argument or counterexample will vary from person to person.</p>
+        </outtro>
+    </knowl>
+
+</knowl>

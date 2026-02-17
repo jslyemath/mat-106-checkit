@@ -113,6 +113,16 @@
         </outcome>
 
         <outcome>
+            <title>Explaining Divisibility Statements</title>
+            <slug>N1-E</slug>
+            <path>outcomes/N1-E</path>
+            <description>
+                I can explain why divisibility statements are logically correct or incorrect, using general logic that elementary students would understand.
+            </description>
+        </outcome>
+
+
+        <outcome>
             <title>Prime and Composite Numbers</title>
             <slug>N2</slug>
             <path>outcomes/N2</path>
@@ -246,14 +256,6 @@
                 I can explain why word problems are most suitable for particular problem structures.
             </description>
         </associate> -->
-
-        <associate>
-            <slug>N1-E</slug>
-            <path>outcomes/N1</path>
-            <description>
-                I can explain why divisibility statements are logically correct or incorrect, using general logic that elementary students would understand.
-            </description>
-        </associate>
 
         <!-- <associate>
             <slug>N2-E</slug>

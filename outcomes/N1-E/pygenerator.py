@@ -246,9 +246,7 @@ def generate(**kwargs):
     already_used_mult = []
     last_used_sum = ''
 
-    vocab_statements_answers = random.choices([True, False], [0.5, 0.5], k=4)
-    problems = [div_statement(vocab_mode=x, default_order=order_logic) for x,
-    order_logic in zip(['o', 'e', 'f', 'm'], vocab_statements_answers)]
+    problems =[]
 
     if_then_answers = [False, True] + random.choices([True, False], [0.5, 0.5], k=2)
     if_then_versions = ['sum', 'mult', 'sum', 'mult']
@@ -272,7 +270,7 @@ def generate(**kwargs):
             already_used_mult.append(ver)
         problems.append(prob)
 
-    answers = list(map(lambda x: str(x), vocab_statements_answers + if_then_answers))
+    answers = list(map(lambda x: str(x), if_then_answers))
 
     prob_ans = list(zip(problems, answers))
 
@@ -282,27 +280,15 @@ def generate(**kwargs):
             entry[0] = mathify_sentence(entry[0])
             prob_ans[i] = tuple(entry)
 
-    # explain_prob_ans = prob_ans[4:7]
+    explain_prob_ans = prob_ans[0:3]
 
-    # random.shuffle(explain_prob_ans)
-
-    random.shuffle(prob_ans)
+    random.shuffle(explain_prob_ans)
 
     return {
-        'p1_prob': prob_ans[0][0],
-        'p1_ans': prob_ans[0][1],
-        'p2_prob': prob_ans[1][0],
-        'p2_ans': prob_ans[1][1],
-        'p3_prob': prob_ans[2][0],
-        'p3_ans': prob_ans[2][1],
-        'p4_prob': prob_ans[3][0],
-        'p4_ans': prob_ans[3][1],
-        'p5_prob': prob_ans[4][0],
-        'p5_ans': prob_ans[4][1],
-        'p6_prob': prob_ans[5][0],
-        'p6_ans': prob_ans[5][1],
-        'p7_prob': prob_ans[6][0],
-        'p7_ans': prob_ans[6][1],
-        'p8_prob': prob_ans[7][0],
-        'p8_ans': prob_ans[7][1],
+        'explain_prob_1': explain_prob_ans[0][0],
+        'explain_ans_1': explain_prob_ans[0][1],
+        'explain_prob_2': explain_prob_ans[1][0],
+        'explain_ans_2': explain_prob_ans[1][1],
+        'explain_prob_3': explain_prob_ans[2][0],
+        'explain_ans_3': explain_prob_ans[2][1],
     }
