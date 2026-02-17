@@ -12,7 +12,7 @@
             <p><me>\begin{aligned}{{quotients_and_remainders}}\end{aligned}</me></p>
         </outtro>
     </knowl>
-    <knowl>
+    <!-- <knowl>
         <intro>
         <p>N2-E (This explanation skill appears on the back of N2. Passing N2-E is separate from passing N2.)</p>
             <p>The questions below are meant to prompt you to fully explain why our class's method for testing primes is designed the way it is, and why it works. </p>
@@ -34,5 +34,5 @@
                 <p>Answers will vary.</p>
             </outtro>
         </knowl>
-    </knowl>
+    </knowl> -->
 </knowl>

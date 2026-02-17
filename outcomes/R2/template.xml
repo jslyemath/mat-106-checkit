@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
     <intro>
-        <p><m>\textbf{R2}</m></p>
         <p>Solve the word problem below. You must show all work in order to pass. Do not forget to state your final answer, including any appropriate units.</p>
     </intro>
 
@@ -14,6 +13,8 @@
         </outtro>
     </knowl>
     
+</knowl>
+<!-- 
     <knowl>
         <intro>
         <p><m>\textbf{R2-E}</m> (This explanation skill appears on the back of R2. Passing R2-E is separate from passing R2.)</p>
@@ -44,6 +45,4 @@
                 <p>Answers will vary.</p>
             </outtro>
         </knowl>
-    </knowl>
-</knowl>
-
+    </knowl> -->

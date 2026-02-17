@@ -231,21 +231,21 @@
     </outcomes>
 
     <associates>
-        <associate>
+        <!-- <associate>
             <slug>R2-E</slug>
             <path>outcomes/R2</path>
             <description>
                 I can explain my reasoning for each step of work in solving a word problem with the basic arithmetic operations, in language that supports elementary students' understanding of how to solve such problems.
             </description>
-        </associate>
+        </associate> -->
 
-        <associate>
+        <!-- <associate>
             <slug>W5-E</slug>
             <path>outcomes/W5</path>
             <description>
                 I can explain why word problems are most suitable for particular problem structures.
             </description>
-        </associate>
+        </associate> -->
 
         <associate>
             <slug>N1-E</slug>
@@ -255,13 +255,13 @@
             </description>
         </associate>
 
-        <associate>
+        <!-- <associate>
             <slug>N2-E</slug>
             <path>outcomes/N2</path>
             <description>
                 I can explain why the method for testing primes is designed the way it is, and why it works.
             </description>
-        </associate>
+        </associate> -->
 
         <associate>
             <slug>F2-E</slug>
@@ -286,14 +286,5 @@
                 I can explain my reasoning for each step of work in solving a proportional reasoning word problem, in language that supports elementary students' understanding of how to solve such problems.
             </description>
         </associate>
-
-        <associate>
-            <slug>D1-E</slug>
-            <path>outcomes/D1</path>
-            <description>
-                I can explain the relationship between place values in the base ten decimal system, and how the base ten blocks help demonstrate that relationship.
-            </description>
-        </associate>
-    </associates>
 
 </bank>

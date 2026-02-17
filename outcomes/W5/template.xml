@@ -41,9 +41,7 @@
     </knowl>
 
     
-    <!-- W5-E -->
-    <!-- FIXME: The formatting for W5-E is not ideal. I also can't get title to work. -->
-    <knowl>
+     <!-- <knowl>
         <title>
             W5-E
         </title>
@@ -67,5 +65,5 @@
                 <p>Answers will vary.</p>
             </outtro>
         </knowl>
-    </knowl>
+    </knowl> -->
 </knowl>
