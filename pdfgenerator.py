@@ -17,12 +17,13 @@ from tkinter import messagebox
 from jinja2 import FileSystemLoader
 from latex.jinja2 import make_env
 from latex import build_pdf
+from latex.exc import LatexBuildError
 
 COLOR_MAP = {
     'R': 'Orange',
     'W': 'Violet',
     'N': 'Red',
-    'F': 'Teal',
+    'F': 'teal',
     'D': 'ForestGreen'
 }
 
@@ -129,6 +130,7 @@ if not csv_data_path:
     root.destroy()
     sys.exit()
 data = load_csv(csv_data_path)
+print(f"✅ Loaded CSV: '{Path(csv_data_path).name}' ({len(data)} total rows)")
 
 # Get raw forms for relevant variables from data
 title = get_named_value(data, 'Title:', 'right')
@@ -236,6 +238,7 @@ def parse_bank(xml_path: str | Path) -> list[tuple[str, str, str, str, str]]:
 
 
 skill_array = parse_bank(bank_xml)
+print(f"✅ Parsed XML Bank: Found {len(skill_array)} total skills.")
 
 main_skill_dict = {
     slug: {
@@ -292,6 +295,11 @@ for i, row in enumerate(data):
             if student_row[start_col].strip() != '':
                 full_choices_array.append(student_row[start_col:])
         break
+student_count = len(full_choices_array) - 1 if len(full_choices_array) > 0 else 0
+print(f"✅ Roster Loaded: {student_count} students found.")
+if student_count == 0:
+    print("⚠️ WARNING: 0 students found.")
+
 sec_col_index = 3
 var_col_index = 4
 first_choice_col_index = 5
@@ -331,6 +339,7 @@ loaded_main_template = env.get_template(relative_main_template_path.as_posix())
 main_var_dict = {k: v for k, v in locals().items() if k in ['course', 'semester', 'professor', 'full_title']}
 
 # Build PDF
+print(f"⚙️ Generating TeX files for {len(chosen_main_skills)} unique skills...")
 main_document = loaded_main_template.render(main_var_dict)
 for skill in chosen_main_skills:
     if skill in main_skills:
@@ -344,6 +353,7 @@ for skill in chosen_main_skills:
         loaded_current_template = env.get_template(relative_template_path.as_posix())
 
         for current_seed in seeds:
+            print(f"   -> Creating {skill} (Seed: {current_seed})")
             random.seed(current_seed)
             settings['seed'] = current_seed
             generated_skill_data = current_generator.generate(**settings)
@@ -407,8 +417,25 @@ main_document = beginning + key_text + ending
 main_document = main_document.replace(f'{tex_files_dir.stem}/', '')
 main_tex_file_path.write_text(main_document, encoding='utf-8')
 
-pdf = build_pdf(main_document, texinputs=[str(tex_files_dir), str(main_dir), ''])
-pdf.save_to(pdf_path)
+print("📝 Compiling final PDF (this may take a moment)...")
+
+try:
+    pdf = build_pdf(main_document, texinputs=[str(tex_files_dir), str(main_dir), ''])
+    pdf.save_to(pdf_path)
+    print(f"📄✨ Success! PDF saved to: {pdf_path.name}")
+except LatexBuildError as e:
+    print("\n❌ LaTeX Compilation Failed...")
+    
+    # Save the massive error log to a file instead of the terminal
+    error_log_path = main_dir / "latex_error_log.txt"
+    with open(error_log_path, "w", encoding="utf-8") as f:
+        f.write(str(e))
+        
+    print(f"⚠️ The terminal was saved from a LaTeX log avalanche.")
+    print(f"⚠️ Please open '{error_log_path.name}' to see the exact LaTeX error.")
+    
+    # Stop the script safely
+    sys.exit(1)
 
 # Detect the OS and open the newly created PDF file accordingly
 if os.name == 'nt':  # For Windows

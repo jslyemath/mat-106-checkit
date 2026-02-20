@@ -64,9 +64,9 @@ def add_sub_triad(op = '+', num_digits=4, base=10):
         num_b += base ** p * abc[1]
         num_c += base ** p * abc[2]
 
-    num_a = sm.base_conv(num_a, base=base, output='str')
-    num_b = sm.base_conv(num_b, base=base, output='str')
-    num_c = sm.str_int_base_op(num_a, num_b, '+', base)
+    num_a = base_conv(num_a, base=base, output='str')
+    num_b = base_conv(num_b, base=base, output='str')
+    num_c = str_int_base_op(num_a, num_b, '+', base)
 
     if op == '-':
         num_a, num_b, num_c = num_c, num_a, num_b

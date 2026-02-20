@@ -16,3 +16,4 @@ mat-106-checkit.code-workspace
 # Ignore Generated Outputs
 PDF Outputs/
 TeX Outputs/
+latex_error_log.txt

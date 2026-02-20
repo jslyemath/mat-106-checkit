@@ -408,7 +408,7 @@ def generate(**kwargs):
 
     # Lists of problem generator functions, split up by course progress cutoff points.
 
-    beginning_0 = [] #
+    beginning_0 = [cookie_stand,] #
     sub_whole_1 = []
     mult_div_whole_2 = [
                         contractor_selection,
