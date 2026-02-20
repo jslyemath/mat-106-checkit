@@ -278,7 +278,20 @@ settings = {k: v for k, v in locals().items() if k in ['course_progress',
                                                        'n3_n4_force_listing_method',
                                                        'd2_allow_repeating']}
 
-full_choices_array = get_named_range(data, 'Full Name:')
+# Trying to make full_choices_array non empty if a row is empty
+# full_choices_array = get_named_range(data, 'Full Name:')
+# Find the header row manually and grab everything below it
+full_choices_array = []
+for i, row in enumerate(data):
+    if 'Full Name:' in row:
+        start_col = row.index('Full Name:')
+        # Grab the header row
+        full_choices_array.append(row[start_col:])
+        # Grab all subsequent rows where the Full Name isn't blank
+        for student_row in data[i+1:]:
+            if student_row[start_col].strip() != '':
+                full_choices_array.append(student_row[start_col:])
+        break
 sec_col_index = 3
 var_col_index = 4
 first_choice_col_index = 5
@@ -391,11 +404,11 @@ main_document = beginning + student_text + ending
 beginning, ending = main_document.split('% Keys')
 main_document = beginning + key_text + ending
 
-pdf = build_pdf(main_document, texinputs=[str(tex_files_dir), str(main_dir), ''])
-pdf.save_to(pdf_path)
-
 main_document = main_document.replace(f'{tex_files_dir.stem}/', '')
 main_tex_file_path.write_text(main_document, encoding='utf-8')
+
+pdf = build_pdf(main_document, texinputs=[str(tex_files_dir), str(main_dir), ''])
+pdf.save_to(pdf_path)
 
 # Detect the OS and open the newly created PDF file accordingly
 if os.name == 'nt':  # For Windows
