@@ -3,6 +3,15 @@
     <title>MAT 106 - Number Systems and Operations - CheckIt Bank</title>
     <slug>mat-106-bank</slug>
     <url>https://jslyemath.github.io/mat-106-checkit</url>
+
+    <color_map>
+        <category prefix="R" color="Orange" />
+        <category prefix="W" color="Violet" />
+        <category prefix="N" color="Red" />
+        <category prefix="F" color="teal" />
+        <category prefix="D" color="ForestGreen" />
+    </color_map>
+
     <outcomes>        
         <outcome>
             <title>Analyzing Student Work</title>

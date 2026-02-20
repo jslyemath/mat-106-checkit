@@ -19,13 +19,6 @@ from latex.jinja2 import make_env
 from latex import build_pdf
 from latex.exc import LatexBuildError
 
-COLOR_MAP = {
-    'R': 'Orange',
-    'W': 'Violet',
-    'N': 'Red',
-    'F': 'teal',
-    'D': 'ForestGreen'
-}
 
 def load_csv(filename: str | Path) -> list[list[str]]:
     """Load the CSV file into a list of rows (safe on Windows)."""
@@ -209,18 +202,30 @@ def parse_bank(xml_path: str | Path) -> list[tuple[str, str, str, str, str]]:
     tree = ET.parse(xml_path)
     root = tree.getroot()
 
+    # --- 1. Build the dynamic color map from the XML ---
+    dynamic_color_map = {}
+    for elem in root.iter():
+        if elem.tag.endswith('category'):
+            prefix = elem.get('prefix')
+            color_attr = elem.get('color')
+            if prefix and color_attr:
+                dynamic_color_map[prefix] = color_attr
+
     items = []
 
-    # Helper to find color or default based on slug
+    # --- 2. Helper to find color or default based on slug ---
     def get_color(element, slug):
+        # First check if the outcome has a specific color tag overriding the map
         color_el = element.find('c:color', NS)
         if color_el is not None and color_el.text:
             return color_el.text.strip()
-        # Fallback to mapping based on first letter of slug
+        
+        # Fallback to mapping based on the first letter of the slug
         first_letter = slug[0].upper() if slug else ''
-        return COLOR_MAP.get(first_letter, 'scCOLOR')
+        # We now use the local dictionary we just built!
+        return dynamic_color_map.get(first_letter, 'scCOLOR')
 
-    # Process outcomes (m) and associates (a)
+    # --- 3. Process outcomes (m) and associates (a) ---
     for tag, kind in [('.//c:outcome', 'm'), ('.//c:associate', 'a')]:
         for entry in root.findall(tag, NS):
             slug_el = entry.find('c:slug', NS)
