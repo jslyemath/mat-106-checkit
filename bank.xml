@@ -195,6 +195,15 @@
         </outcome>
 
         <outcome>
+            <title>Explaining the Denseness Property</title>
+            <slug>F3-E</slug>
+            <path>outcomes/F3-E</path>
+            <description>
+                I can explain the denseness property of the rational numbers, by using language appropriate for an elementary student, and by using concrete examples.
+            </description>
+        </outcome>
+
+        <outcome>
             <title>Mixed Number Operations</title>
             <slug>F4</slug>
             <path>outcomes/F4</path>
@@ -282,14 +291,6 @@
                 I can explain why the method for testing primes is designed the way it is, and why it works.
             </description>
         </associate> -->
-
-        <associate>
-            <slug>F3-E</slug>
-            <path>outcomes/F3</path>
-            <description>
-                I can explain the denseness property of the rational numbers, by using language appropriate for an elementary student, and by using concrete examples.
-            </description>
-        </associate>
 
         <associate>
             <slug>F5-E</slug>

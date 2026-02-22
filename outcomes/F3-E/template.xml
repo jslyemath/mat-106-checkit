@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <knowl>
+        <content>
+            <p>In language appropriate for an elementary student, what does the denseness property of the rational numbers say?</p>
+        </content>
+        <outtro>
+            <p>Answers will vary.</p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>Suppose a student challenged you to find {{expl_how_many}} numbers between {{p1_a}} and {{p1_b}}. What steps would you take to find those {{expl_how_many}} numbers? (You do not need to write out the actual {{expl_how_many}} individual numbers.) </p>
+        </content>
+        <outtro>
+            <p>Answers will vary.</p>
+        </outtro>
+    </knowl>
+</knowl>

@@ -23,36 +23,4 @@
             <p>Note that the above are only examples. They may not be the only {{p2_how_many}} numbers possible.</p>
         </outtro>
     </knowl>
-    
-    <knowl>
-        <intro>
-        <p>F3-E (This explanation skill appears on the back of F3. Passing F3-E is separate from passing F3.)</p>
-        </intro>
-        <knowl>
-            <content>
-                <p>In language appropriate for an elementary student, what does the denseness property of the rational numbers say?</p>
-            </content>
-            <outtro>
-                <p>Answers will vary.</p>
-            </outtro>
-        </knowl>
-
-        <knowl>
-            <content>
-                <p>Explain how one or both of your examples from the previous page helps to demonstrate this property. </p>
-            </content>
-            <outtro>
-                <p>Answers will vary.</p>
-            </outtro>
-        </knowl>
-
-        <knowl>
-            <content>
-                <p>Suppose a student challenged you to find {{expl_how_many}} numbers between the given two rational numbers. What would you do? (You do not need to write out {{expl_how_many}} individual numbers.) </p>
-            </content>
-            <outtro>
-                <p>Answers will vary.</p>
-            </outtro>
-        </knowl>
-    </knowl>
 </knowl>
