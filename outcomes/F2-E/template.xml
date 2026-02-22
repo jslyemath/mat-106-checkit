@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <knowl>
+        <content>
+            <p>{{p1_text}}<m>{{p1_math}}</m>.</p>
+            <p>
+                <image
+                    source="assets/F2/generated/{{__seed__}}/p1_prob_model.png"
+                    description="{{p1_prob_text}}"/>
+            </p>
+        </content>
+        <outtro>
+            <p>
+                <image
+                    source="assets/F2/generated/{{__seed__}}/p1_ans_model.png"
+                    description="{{p1_ans_text}}"/>
+            </p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>{{p2_text}}<m>{{p2_math}}</m>.</p>
+            <p>
+                <image
+                    source="assets/F2/generated/{{__seed__}}/p2_prob_model.png"
+                    description="{{p2_prob_text}}"/>
+            </p>
+        </content>
+        <outtro>
+            <p>
+                <image
+                    source="assets/F2/generated/{{__seed__}}/p2_ans_model.png"
+                    description="{{p2_ans_text}}"/>
+            </p>
+        </outtro>
+    </knowl>
+    
+    <knowl>
+        <content>
+            <p>{{p3_text_1}}<m>{{p3_math_1}}</m>{{p3_text_2}}<m>{{p3_math_2}}</m>.</p>
+            <p>
+                <image
+                    source="assets/F2/generated/{{__seed__}}/p3_prob_model.png"
+                    description="{{p3_prob_text}}"/>
+            </p>
+        </content>
+        <outtro>
+            <p>
+                <image
+                    source="assets/F2/generated/{{__seed__}}/p3_ans_model.png"
+                    description="{{p3_ans_text}}"/>
+            </p>
+        </outtro>
+    </knowl>
+    
+</knowl>
