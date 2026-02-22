@@ -177,6 +177,15 @@
         </outcome>
 
         <outcome>
+            <title>Explaining Fraction Models</title>
+            <slug>F2-E</slug>
+            <path>outcomes/F2</path>
+            <description>
+                I can explain how to construct fraction models, and how students can understand how they represent the numerator and denominator of a fraction.
+            </description>
+        </outcome>
+
+        <outcome>
             <title>Exemplifying the Denseness Property</title>
             <slug>F3</slug>
             <path>outcomes/F3</path>
@@ -273,14 +282,6 @@
                 I can explain why the method for testing primes is designed the way it is, and why it works.
             </description>
         </associate> -->
-
-        <associate>
-            <slug>F2-E</slug>
-            <path>outcomes/F2</path>
-            <description>
-                I can explain how to construct fraction models, and how students can understand how they represent the numerator and denominator of a fraction.
-            </description>
-        </associate>
 
         <associate>
             <slug>F3-E</slug>

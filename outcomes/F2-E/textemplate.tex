@@ -1,8 +1,13 @@
 \setvseed{\VAR{seed}}
-\skillheader{F2}
+\skillheader{F2-E}
 
-\begin{enumerate}
-    \item \VAR{p1_text}$\VAR{p1_math}$.
+    Suppose a student of yours is asked to complete the following fraction modeling task.
+
+    \begin{statement}
+        \VAR{p1_text}$\VAR{p1_math}$.
+    \end{statement}
+    
+    Construct the desired model. Then \textbf{explain} each step of its construction process. How is the denominator represented in the model? How is the numerator represented? How does each inform the construction process?
 
     \ifthenelse{\equal{\VAR{p1_type}}{line}}{
     \vspace{20pt}
@@ -16,43 +21,4 @@
     \end{tikzpicture}
     }{\ans{\VAR{p1_ans_text}}}
 
-    \vfill
-
-    \item \VAR{p2_text}$\VAR{p2_math}$.
-
-    \ifthenelse{\equal{\VAR{p2_type}}{line}}{
-    \vspace{20pt}
-    \setmyx{0}{\VAR{p2_ticks}}
-    \begin{tikzpicture}[scale=2.3]
-        \begin{axis}[blank number line style,
-        extra x ticks={0,\VAR{p2_orig_loc},\VAR{p2_requested_loc}},
-        extra x tick labels={0,$\VAR{p2_label_b}$,\ans{$\VAR{p2_label_c}$}}]
-            \ans{\node at (axis cs:\VAR{p2_requested_loc},0) {\tikz \fill[scCOLOR] (0,0) circle (2pt);};}
-        \end{axis}
-    \end{tikzpicture}
-    }{\ans{\VAR{p2_ans_text}}}
-
-    \vfill
-
-    \item \VAR{p3_text_math}.
-
-    \ifthenelse{\equal{\VAR{p3_type}}{line}}{
-    \vspace{20pt}
-    \setmyx{0}{\VAR{p3_ticks}}
-    \begin{tikzpicture}[scale=2.3]
-        \begin{axis}[blank number line style,
-        extra x ticks={0,\VAR{p3_orig_loc},\VAR{p3_requested_loc}},
-        extra x tick labels={0,$\VAR{p3_label_b}$,\ans{$\VAR{p3_label_c}$}}]
-            \ans{\node at (axis cs:\VAR{p3_requested_loc},0) {\tikz \fill[scCOLOR] (0,0) circle (2pt);};}
-        \end{axis}
-    \end{tikzpicture}
-    }{\ans{\VAR{p3_ans_text}}}
-
-    \vfill
-\end{enumerate}
-
-\newpage
-\skillheader{F2-E}
-
-Fully explain how your area model for (a) on the previous page represents $\VAR{p1_math}$. Explain, as if to a student, how you knew to take each step in its construction process. Along the way, explain how the model represents the numerator and denominator of the fraction.
-
+    \VAR{p1_soln_text}

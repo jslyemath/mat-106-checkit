@@ -59,6 +59,9 @@ def generate(**kwargs):
         p1_ans_text = (f'A number line that is the same as the one given above, but with a blue point for '
                        f'{p1_requested_num}/{p1_requested_denom} labeled {p1_requested_loc} '
                        f'spaces to the right of 0.')
+        p1_soln_text = (f'The denominator of {p1_model_denom} tells us to split the whole (represented the distance of {p1_orig_loc} spaces between 0 and 1) into {p1_model_denom} equal parts. '
+                       f'The numerator of  {p1_requested_num} tells us to select '
+                       f'{p1_model_num} of the {p1_model_denom} parts. We show this selection by placing our point {p1_requested_loc} spaces to the right of 0. Thus, we have a model of the fraction {p1_requested_num}/{p1_requested_denom}.')
         p1_model_num = None
         p1_model_denom = None
         p1_ticks = max(p1_orig_loc, p1_requested_loc) + random.randint(1, 4)
@@ -72,6 +75,9 @@ def generate(**kwargs):
         p1_prob_text = ''
         p1_ans_text = (f'A model of {p1_type}(s) each split equally into {p1_model_denom} parts. A total of '
                        f'{p1_model_num}  of these parts are shaded to represent {p1_requested_num}/{p1_requested_denom}.')
+        p1_soln_text = (f'The denominator of {p1_model_denom} tells us to split the whole (represented by a {p1_type}) into {p1_model_denom} equal parts. '
+                       f'The numerator of  {p1_requested_num} tells us to select '
+                       f'{p1_model_num} of the {p1_model_denom} parts. We show this selection by shading. Thus, we have a model of the fraction {p1_requested_num}/{p1_requested_denom}.')
         p1_orig_loc = None
         p1_requested_loc = None
         p1_ticks = None
@@ -95,6 +101,7 @@ def generate(**kwargs):
         'p1_text': p1_text,
         'p1_math': p1_math,
         'p1_prob_text': p1_prob_text,
+        'p1_soln_text': p1_soln_text,
         'p1_ans_text': p1_ans_text,
         'p1_ticks': p1_ticks,
         'p1_label_b': p1_label_b,
