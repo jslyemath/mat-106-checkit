@@ -11,7 +11,7 @@
 
     <knowl>
         <content>
-            <p>Suppose a student challenged you to find {{expl_how_many}} numbers between {{p1_a}} and {{p1_b}}. What steps would you take to find those {{expl_how_many}} numbers? (You do not need to write out the actual {{expl_how_many}} individual numbers.) </p>
+            <p>Suppose a student challenged you to find {{expl_how_many}} numbers between {{num_a}} and {{num_b}}. What steps would you take to find those {{expl_how_many}} numbers? (You do not need to write out the actual {{expl_how_many}} individual numbers.) </p>
         </content>
         <outtro>
             <p>Answers will vary.</p>

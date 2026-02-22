@@ -73,17 +73,23 @@ def generate(**kwargs):
 
     p1_how_many = random.randint(10, 14)
     p1_a, p1_b, p1_numbers, p1_decimal_vals, p1_increment, p1_1_xs, p1_2_xs = decimal_problem(p1_how_many)
-    num_line_directions = f'Graph the given numbers and the additional {p1_how_many} numbers accurately on the number line'
 
     p2_how_many = random.randint(7, 12)
     p2_a, p2_b, p2_numbers = fraction_problem(p2_how_many)
 
+    choose_decimal = random.choice(True, False)
+
+    if choose_decimal:
+        num_a = p1_a
+        num_b = p1_b
+    else:
+        num_a = p2_a
+        num_b = p2_b
+
     expl_how_many = random.choice(['1,000', '10,000', '100,000'])
 
-    #TODO: Create images for html version.
-
     return {
-        'p1_a': p1_a,
-        'p1_b': p1_b,
+        'num_a': num_a,
+        'num_b': num_b,
         'expl_how_many': expl_how_many
     }
