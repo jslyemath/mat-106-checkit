@@ -33,7 +33,7 @@ def generate(**kwargs):
         base_word = sm.base_int_to_word(current_base)
         base_suffix = f"_\\text{{{base_word}}}" if current_base != 10 else ""
         num_a, num_b, num_c = sm.add_sub_triad('-', num_digits=4, base = current_base)
-        prob = f'{num_a}{base_suffix} + {num_b}{base_suffix}'
+        prob = f'{num_a}{base_suffix} - {num_b}{base_suffix}'
         ans = f'{num_c}{base_suffix}'
         prob_ans.append([prob, ans])
 
