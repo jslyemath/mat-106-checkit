@@ -3,6 +3,7 @@ import random
 
 
 def generate(**kwargs):
+    _ = random.random() # Dummy call to offset the sequence
     force_listing = kwargs.get('n3_n4_force_listing_method', False)
     
     # Part (a): Listing method
@@ -41,6 +42,7 @@ def generate(**kwargs):
 
     # Part (b): Factorization Method
 
+    _ = random.random() # Dummy call to offset the sequence
     primes = [2, 3, 5, 7, 11, 13]
     primes_wts = [0.3, 0.25, 0.2, 0.15, 0.05, 0.05]
 
