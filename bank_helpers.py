@@ -1,3 +1,19 @@
+"""Helper functions shared by this bank's generators.
+
+Formerly `outcomes/slye_math.py`. It moved to the bank root because that is the
+directory CheckIt puts on the import path when a generator runs -- `outcomes/`
+is not on it -- so a plain `import bank_helpers` now works from any outcome
+however deeply nested. The name matches the convention `checkit new` scaffolds,
+so anyone who has seen one bank knows where to look in this one.
+
+Generators import it as:
+
+    import bank_helpers as sm
+
+The `sm` alias is kept from the old module name so the hundreds of existing
+`sm.*` call sites did not have to change.
+"""
+
 import random
 import math
 from fractions import Fraction

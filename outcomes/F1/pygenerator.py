@@ -1,4 +1,4 @@
-import slye_math as sm
+import bank_helpers as sm
 import random
 from fractions import Fraction
 

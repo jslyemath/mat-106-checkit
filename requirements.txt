@@ -1,4 +1,16 @@
-checkit-dashboard == 0.2.7
+# The CheckIt platform, from the jslyemath fork.
+#
+# Not `checkit-dashboard == 0.2.8`: that name on PyPI is Steven Clontz's
+# upstream project, and its 0.2.8 is different code that happens to share a
+# version number. This fork's changes -- the plain-Python generator runtime,
+# precomputed exercise formats, a 50-version viewer -- exist only in the wheel
+# below.
+#
+# Working on the platform itself? Install it editable instead, so edits to the
+# checkit checkout take effect here without rebuilding a wheel:
+#     pip install -e C:/Users/slye/Projects/checkit/dashboard
+checkit-dashboard @ https://github.com/jslyemath/checkit/releases/download/v0.2.8.1/checkit_dashboard-0.2.8.1-py3-none-any.whl
+
 Jinja2~=3.1.4
 latex~=0.7.0
 inflect~=7.4.0
