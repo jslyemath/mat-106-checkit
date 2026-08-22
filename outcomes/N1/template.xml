@@ -5,66 +5,66 @@
     </intro>
     <knowl>
         <content>
-            <p><m>{{p1_prob}}</m></p>
+            <p><m>{{{p1_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p1_ans}}</p>
+            <p>{{{p1_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p2_prob}}</m></p>
+            <p><m>{{{p2_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p2_ans}}</p>
+            <p>{{{p2_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p3_prob}}</m></p>
+            <p><m>{{{p3_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p3_ans}}</p>
+            <p>{{{p3_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p4_prob}}</m></p>
+            <p><m>{{{p4_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p4_ans}}</p>
+            <p>{{{p4_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p5_prob}}</m></p>
+            <p><m>{{{p5_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p5_ans}}</p>
+            <p>{{{p5_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p6_prob}}</m></p>
+            <p><m>{{{p6_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p6_ans}}</p>
+            <p>{{{p6_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p7_prob}}</m></p>
+            <p><m>{{{p7_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p7_ans}}</p>
+            <p>{{{p7_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p8_prob}}</m></p>
+            <p><m>{{{p8_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p8_ans}}</p>
+            <p>{{{p8_ans}}}</p>
         </outtro>
     </knowl>
 
@@ -75,27 +75,27 @@
         </intro>
         <knowl>
             <content>
-                <p><m>{{explain_prob_1}}</m></p>
+                <p><m>{{{explain_prob_1}}}</m></p>
             </content>
             <outtro>
-                <p>This statement was {{explain_ans_1}}. The argument or counterexample will vary from person to person.</p>
+                <p>This statement was {{{explain_ans_1}}}. The argument or counterexample will vary from person to person.</p>
             </outtro>
         </knowl>
         <knowl>
             <content>
-                <p><m>{{explain_prob_2}}</m></p>
+                <p><m>{{{explain_prob_2}}}</m></p>
             </content>
             <outtro>
-                <p>This statement was {{explain_ans_2}}. The argument or counterexample will vary from person to person.</p>
+                <p>This statement was {{{explain_ans_2}}}. The argument or counterexample will vary from person to person.</p>
             </outtro>
         </knowl>
 
         <knowl>
             <content>
-                <p><m>{{explain_prob_3}}</m></p>
+                <p><m>{{{explain_prob_3}}}</m></p>
             </content>
             <outtro>
-                <p>This statement was {{explain_ans_3}}. The argument or counterexample will vary from person to person.</p>
+                <p>This statement was {{{explain_ans_3}}}. The argument or counterexample will vary from person to person.</p>
             </outtro>
         </knowl>
     </knowl> -->

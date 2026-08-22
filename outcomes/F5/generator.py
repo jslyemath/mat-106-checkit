@@ -1,3 +1,4 @@
+import bank_helpers as bh
 import bank_helpers as sm
 import random
 from fractions import Fraction
@@ -8,7 +9,6 @@ import re
 
 
 def generate(**kwargs):
-    mode = kwargs.get('mode', 'latex')
 
     def flag_dimensions():
         locations_with_adjectives = [
@@ -225,9 +225,8 @@ def generate(**kwargs):
         return s
 
 
-    if mode == 'html':
-        problem = html_string(problem)
-        solution = html_string(solution)
+    problem = bh.spatext_math(problem)
+    solution = bh.spatext_math(solution)
 
     return {
         'problem': problem,
@@ -247,4 +246,4 @@ def generate(**kwargs):
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
     def data(self):
-        return generate(mode='html', course_progress=6)
+        return generate(course_progress=6)

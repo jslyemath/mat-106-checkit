@@ -1,3 +1,4 @@
+import bank_helpers as bh
 import bank_helpers as sm
 import random
 import re
@@ -5,7 +6,6 @@ import re
 
 def generate(**kwargs):
     mult_allowed = False
-    mode = kwargs.get('mode', 'latex')
     if int(kwargs['course_progress']) > 1:
         mult_allowed = True
 
@@ -321,11 +321,13 @@ def generate(**kwargs):
         s = s.replace(r'\:', '')
         return s
     
-    if mode == 'html':
-        for i, row in enumerate(prob_ans_ver):
-            row = list(row)  
-            row[0] = clean_latex_string(row[0])
-            prob_ans_ver[i] = tuple(row)
+    # Both halves, not just the prompt: an answer carries the same maths
+    # and was previously rendered raw.
+    for i, row in enumerate(prob_ans_ver):
+        row = list(row)
+        row[0] = bh.spatext_math(row[0])
+        row[1] = bh.spatext_math(row[1])
+        prob_ans_ver[i] = tuple(row)
 
 
     # expl_choices = ['Commutative Property of Addition', 'Associative Property of Addition']
@@ -391,4 +393,4 @@ class Generator(BaseGenerator):
 
     def data(self):
         progress = 2 if self.variant == "multiplication" else 1
-        return generate(mode='html', course_progress=progress)
+        return generate(course_progress=progress)

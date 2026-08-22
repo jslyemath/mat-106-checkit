@@ -6,82 +6,82 @@
     </intro>
     <knowl>
         <content>
-            <p><m>{{p1_prob}}</m></p>
+            <p><m>{{{p1_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p1_ans}}</p>
+            <p>{{{p1_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p2_prob}}</m></p>
+            <p><m>{{{p2_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p2_ans}}</p>
+            <p>{{{p2_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p3_prob}}</m></p>
+            <p><m>{{{p3_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p3_ans}}</p>
+            <p>{{{p3_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p4_prob}}</m></p>
+            <p><m>{{{p4_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p4_ans}}</p>
+            <p>{{{p4_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p5_prob}}</m></p>
+            <p><m>{{{p5_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p5_ans}}</p>
+            <p>{{{p5_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p6_prob}}</m></p>
+            <p><m>{{{p6_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p6_ans}}</p>
+            <p>{{{p6_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p7_prob}}</m></p>
+            <p><m>{{{p7_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p7_ans}}</p>
+            <p>{{{p7_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p8_prob}}</m></p>
+            <p><m>{{{p8_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p8_ans}}</p>
+            <p>{{{p8_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p9_prob}}</m></p>
+            <p><m>{{{p9_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p9_ans}}</p>
+            <p>{{{p9_ans}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p><m>{{p10_prob}}</m></p>
+            <p><m>{{{p10_prob}}}</m></p>
         </content>
         <outtro>
-            <p>{{p10_ans}}</p>
+            <p>{{{p10_ans}}}</p>
         </outtro>
     </knowl>
 
@@ -97,7 +97,7 @@
         </intro>
         <knowl>
             <content>
-                <p>Which physical model would be the best for explaining the <em>{{expl_text}}</em> to an elementary school student?</p>
+                <p>Which physical model would be the best for explaining the <em>{{{expl_text}}}</em> to an elementary school student?</p>
             </content>
             <outtro>
                 <p>Answers will vary.</p>
@@ -106,7 +106,7 @@
 
         <knowl>
             <content>
-                <p>Draw a picture or two of that model which could be used to demonstrate the {{expl_text}}.</p>
+                <p>Draw a picture or two of that model which could be used to demonstrate the {{{expl_text}}}.</p>
             </content>
             <outtro>
                 <p>Answers will vary.</p>
@@ -115,7 +115,7 @@
 
         <knowl>
             <content>
-                <p>Explain the {{expl_text}} using your picture(s) above, as if to an elementary school student. What should they notice about the picture(s) that helps to solidify their understanding of why the {{expl_text}} is true?</p>
+                <p>Explain the {{{expl_text}}} using your picture(s) above, as if to an elementary school student. What should they notice about the picture(s) that helps to solidify their understanding of why the {{{expl_text}}} is true?</p>
             </content>
             <outtro>
                 <p>Answers will vary.</p>

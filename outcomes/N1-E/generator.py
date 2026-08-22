@@ -1,10 +1,10 @@
+import bank_helpers as bh
 import bank_helpers as sm
 import random
 import re
 
 
 def generate(**kwargs):
-    mode = kwargs.get('mode', 'latex')
 
     def mathify_sentence(s: str):
         """
@@ -274,11 +274,14 @@ def generate(**kwargs):
 
     prob_ans = list(zip(problems, answers))
 
-    if mode == 'html':
-        for i, entry in enumerate(prob_ans):
-            entry = list(entry)
-            entry[0] = mathify_sentence(entry[0])
-            prob_ans[i] = tuple(entry)
+    # mathify_sentence turned the whole sentence into one maths expression
+    # with \text{} around the prose, because prose and maths could not be
+    # mixed. They can: the prose stays prose and only the maths is wrapped.
+    for i, entry in enumerate(prob_ans):
+        entry = list(entry)
+        entry[0] = bh.spatext_math(entry[0])
+        entry[1] = bh.spatext_math(entry[1])
+        prob_ans[i] = tuple(entry)
 
     explain_prob_ans = prob_ans[0:3]
 
@@ -306,4 +309,4 @@ def generate(**kwargs):
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
     def data(self):
-        return generate(mode='html', course_progress=6)
+        return generate(course_progress=6)
