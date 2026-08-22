@@ -1,3 +1,14 @@
+"""TikZ sources for the fraction models F2 and F2-E ask for.
+
+Lives at the bank root so both outcomes import one copy; it used to exist twice,
+byte-identical, as an extension-less `area_model_tikz` file inside each outcome
+folder -- which is why nothing could import it and it was only ever run by hand
+to make images for print.
+
+Each function returns TikZ *source*. CheckIt writes it to <seed>/<name>.tikz and
+compiles it to a PNG, so one definition now serves the viewer and print alike.
+"""
+
 # area_model_tikz.py
 
 from math import ceil, sqrt, cos, sin, radians
@@ -168,7 +179,6 @@ def tikz_hexagons(numer, denom):
                 (pts[j][1] + pts[(j+1)%6][1]) / 2)
                 for j in range(6)
             ]
-            print(mids)
             parts = [
                 [ center,
                 pts[0],
@@ -273,3 +283,36 @@ def generate_tikz(shape, numer, denom):
 # Example usage:
 # if __name__ == "__main__":
 #     print(generate_tikz('semicircle', 4, 3))
+
+
+# --------------------------------------------------------------------------
+# Number lines.
+#
+# The shape functions above came from the print-only script; number lines did
+# not, because that half was drawn with matplotlib in a graphics() method that
+# is now commented out inside the generators. This replaces it, so both kinds
+# of model come from one place and neither needs SageMath or matplotlib.
+
+def tikz_number_line(ticks, labels, point=None):
+    """A number line with `ticks` intervals and labelled positions.
+
+    `labels` maps an integer position to LaTeX shown beneath it; `point` is an
+    optional position to mark with a filled dot, which is what distinguishes an
+    answer diagram from its problem.
+    """
+    # Long lines have to shrink or the picture runs off the page. The shape
+    # functions can assume a fixed scale because each is about one unit across;
+    # a number line is as wide as its tick count.
+    scale = min(1.2, 11.0 / max(ticks, 1))
+    out = [
+        r"\begin{tikzpicture}[scale=%.3f, line width=1pt]" % scale,
+        r"\draw[->] (-0.4,0) -- (%.2f,0);" % (ticks + 0.7),
+    ]
+    for i in range(ticks + 1):
+        out.append(r"\draw (%d,0.14) -- (%d,-0.14);" % (i, i))
+    for position, text in sorted(labels.items()):
+        out.append(r"\node[below=2pt] at (%d,-0.14) {$%s$};" % (position, text))
+    if point is not None:
+        out.append(r"\fill[blue] (%d,0) circle (3pt);" % point)
+    out.append(r"\end{tikzpicture}")
+    return "\n".join(out)

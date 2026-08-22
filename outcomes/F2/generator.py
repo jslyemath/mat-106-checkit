@@ -756,6 +756,48 @@ def generate(**kwargs):
 # SageMath could not reach a plain-Python file and the bank root was not
 # importable; both gaps are closed, so the file extension now selects the
 # plain-Python runtime directly.
+import area_model_tikz as amt
+
+
 class Generator(BaseGenerator):
+    # Both kinds of diagram now come from TikZ source that CheckIt compiles, so
+    # the viewer and print use one definition. Previously the online images were
+    # drawn by a matplotlib graphics() method (now commented out below) that
+    # needed SageMath, while print used a separate hand-run area_model_tikz
+    # script -- two implementations of the same picture, and the online half had
+    # stopped working, which is why these PNGs do not exist in the published
+    # site even though the template asks for them.
+    @provide_data
+    def tikz_graphics(data):
+        models = {}
+        for part in ("p1", "p2", "p3"):
+            kind = data[part + "_type"]
+            if kind == "line":
+                ticks = int(data[part + "_ticks"])
+                one = int(data[part + "_orig_loc"])
+                mark = int(data[part + "_requested_loc"])
+                num = int(data[part + "_requested_num"])
+                den = int(data[part + "_requested_denom"])
+
+                labels = {0: "0", one: "1"}
+                models[part + "_prob_model"] = amt.tikz_number_line(ticks, labels)
+
+                answered = dict(labels)
+                answered[mark] = r"\frac{%d}{%d}" % (num, den)
+                models[part + "_ans_model"] = amt.tikz_number_line(
+                    ticks, answered, point=mark
+                )
+            else:
+                # An area-model question shows no picture until it is answered:
+                # the prompt is "if one <shape> represents 1, draw ...". The
+                # template omits the problem image when its description is
+                # empty, which is exactly these cases.
+                models[part + "_ans_model"] = amt.generate_tikz(
+                    kind,
+                    int(data[part + "_model_num"]),
+                    int(data[part + "_model_denom"]),
+                )
+        return models
+
     def data(self):
         return generate(mode='html', course_progress=6)

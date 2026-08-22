@@ -3,11 +3,13 @@
     <knowl>
         <content>
             <p>{{p1_text}}<m>{{p1_math}}</m>.</p>
+            <!-- {{#p1_prob_text}} -->
             <p>
                 <image
                     source="assets/F2/generated/{{__seed__}}/p1_prob_model.png"
                     description="{{p1_prob_text}}"/>
             </p>
+            <!-- {{/p1_prob_text}} -->
         </content>
         <outtro>
             <p>
@@ -21,11 +23,13 @@
     <knowl>
         <content>
             <p>{{p2_text}}<m>{{p2_math}}</m>.</p>
+            <!-- {{#p2_prob_text}} -->
             <p>
                 <image
                     source="assets/F2/generated/{{__seed__}}/p2_prob_model.png"
                     description="{{p2_prob_text}}"/>
             </p>
+            <!-- {{/p2_prob_text}} -->
         </content>
         <outtro>
             <p>
@@ -39,11 +43,13 @@
     <knowl>
         <content>
             <p>{{p3_text_1}}<m>{{p3_math_1}}</m>{{p3_text_2}}<m>{{p3_math_2}}</m>.</p>
+            <!-- {{#p3_prob_text}} -->
             <p>
                 <image
                     source="assets/F2/generated/{{__seed__}}/p3_prob_model.png"
                     description="{{p3_prob_text}}"/>
             </p>
+            <!-- {{/p3_prob_text}} -->
         </content>
         <outtro>
             <p>
