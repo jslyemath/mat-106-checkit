@@ -10,7 +10,6 @@ def generate(**kwargs):
     # per seed via the variant, while pdfgenerator.py still passes a
     # progress level and gets the cumulative pool.
     course_progress = kwargs.get('course_progress')
-    mode = kwargs.get('mode', 'latex')
 
     def temperature_change():
         season = random.choice(['fall', 'winter'])
@@ -58,16 +57,16 @@ def generate(**kwargs):
             f"{sm.convert_to_12_hour(start_time)} and {time_1}. By {time_2}, "
             f"the temperature {phrase_2} from what it was at {time_1}. By "
             f"{time_3}, it {phrase_3} from what it was at {time_2}. "
-            f"If the temperature was ${temp_4}$ degrees at {time_3}, what was the original temperature at "
+            f"If the temperature was <m>{temp_4}</m> degrees at {time_3}, what was the original temperature at "
             f"{sm.convert_to_12_hour(start_time)}?"
         )
 
         #TODO: Make solution for temperature problem human readable.
         solution = (
-            f"Start temp $= {start_temp}$\\newline "
-            f"Temp2 $= {temp_2}$\\newline "
-            f"Temp3 $= {temp_3}$\\newline "
-            f"Temp4 $= {temp_4}$"
+            f"Start temp <m>= {start_temp}</m></p><p>"
+            f"Temp2 <m>= {temp_2}</m></p><p>"
+            f"Temp3 <m>= {temp_3}</m></p><p>"
+            f"Temp4 <m>= {temp_4}</m>"
         )
         return problem, solution
 
@@ -120,7 +119,7 @@ def generate(**kwargs):
 
         problem = (
             f"{person.name} is ordering pizza for a party of {guests} people. Each person will eat {slices_per_guest} slices. "
-            f"Each pizza has {slices_per_pizza} slices and costs \\${price_per_pizza}. "
+            f"Each pizza has {slices_per_pizza} slices and costs <m>\\${price_per_pizza}</m>. "
             f"What is the fewest number of whole pizzas {person.name} should order to have enough slices for everyone, and how much will the order cost?"
         )
 
@@ -128,7 +127,7 @@ def generate(**kwargs):
             f"Total slices needed = {guests} guests times {slices_per_guest} slices = {total_slices_needed} slices. "
             f"Each pizza has {slices_per_pizza} slices, so number of pizzas needed is the smallest whole number greater than or equal to {total_slices_needed}/{slices_per_pizza}. "
             f"That is ({total_slices_needed} + {slices_per_pizza} - 1) // {slices_per_pizza} = {pizzas_needed} pizzas. "
-            f"Total cost = {pizzas_needed} times \\${price_per_pizza} = \\${total_cost}."
+            f"Total cost = {pizzas_needed} times <m>\\${price_per_pizza}</m> = <m>\\${total_cost}</m>."
         )
 
         return problem, solution
@@ -148,13 +147,13 @@ def generate(**kwargs):
         problem = (
             f"{person.name}'s family has {hens} hens. Each hen lays {eggs_per_hen_per_day} eggs per day. "
             f"They collect eggs for {days} days and pack them in cartons of 12 eggs. "
-            f"If each dozen can be sold for \\${price_per_dozen}, how many full dozens can they sell, how many eggs will be left over, and how much money will they make from selling the full dozens?"
+            f"If each dozen can be sold for <m>\\${price_per_dozen}</m>, how many full dozens can they sell, how many eggs will be left over, and how much money will they make from selling the full dozens?"
         )
 
         solution = (
             f"Total eggs = {hens} hens times {eggs_per_hen_per_day} eggs/hen/day times {days} days = {total_eggs} eggs. "
             f"Full dozens = {total_eggs} // 12 = {dozens} dozens, leftover eggs = {total_eggs} % 12 = {leftover_eggs} eggs. "
-            f"Revenue = {dozens} dozens times \\${price_per_dozen} = \\${revenue}."
+            f"Revenue = {dozens} dozens times <m>\\${price_per_dozen}</m> = <m>\\${revenue}</m>."
         )
 
         return problem, solution
@@ -174,7 +173,7 @@ def generate(**kwargs):
 
         problem = (
             f"{person.name} is packing {shelves} shelves of books with {books_per_shelf} books on each shelf into moving boxes. "
-            f"Each box holds {box_capacity} books. A helper can carry {boxes_per_trip} boxes per trip and charges \\${cost_per_trip} per trip. "
+            f"Each box holds {box_capacity} books. A helper can carry {boxes_per_trip} boxes per trip and charges <m>\\${cost_per_trip}</m> per trip. "
             f"How many boxes are required, how many trips will the helper need to make, and how much will the moving help cost in total?"
         )
 
@@ -182,7 +181,7 @@ def generate(**kwargs):
             f"Total books = {shelves} shelves times {books_per_shelf} books = {total_books} books. "
             f"Boxes needed = ceiling({total_books}/{box_capacity}) = ({total_books} + {box_capacity} - 1) // {box_capacity} = {boxes_needed} boxes. "
             f"Trips needed = ceiling({boxes_needed}/{boxes_per_trip}) = ({boxes_needed} + {boxes_per_trip} - 1) // {boxes_per_trip} = {trips_needed} trips. "
-            f"Total cost = {trips_needed} trips times \\${cost_per_trip} = \\${total_move_cost}."
+            f"Total cost = {trips_needed} trips times <m>\\${cost_per_trip}</m> = <m>\\${total_move_cost}</m>."
         )
 
         return problem, solution
@@ -209,15 +208,15 @@ def generate(**kwargs):
         cost_difference = abs(contractor1_cost - contractor2_cost)
 
         problem = (
-            f"{person.name}'s mom is trying to find a contractor to work on their house. The first contractor charges \\${contractor1_rate} per hour. "
-            f"The second contractor charges \\${contractor2_rate} per hour, but {person.name}'s mom found a special deal online which will deduct \\${discount} from the total bill. "
+            f"{person.name}'s mom is trying to find a contractor to work on their house. The first contractor charges <m>\\${contractor1_rate}</m> per hour. "
+            f"The second contractor charges <m>\\${contractor2_rate}</m> per hour, but {person.name}'s mom found a special deal online which will deduct <m>\\${discount}</m> from the total bill. "
             f"If {person.poss_adjective()} mom needs the chosen contractor to work for {hours} hours, how will the potential bills compare? Which contractor is the better deal?")
 
         solution = (
             f"To find the total cost for each contractor, we multiply the hourly rate by the number of hours needed. "
-            f"The total cost for the first contractor is \\${contractor1_rate} per hour multiplied by {hours} hours, which equals \\${contractor1_cost}. "
-            f"The total cost for the second contractor is \\${contractor2_rate} per hour multiplied by {hours} hours minus the \\${discount} discount, which equals \\${contractor2_cost}. "
-            f"Therefore, the total bill will be \\${cost_difference} more if they choose the {higher_contractor} contractor. "
+            f"The total cost for the first contractor is <m>\\${contractor1_rate}</m> per hour multiplied by {hours} hours, which equals <m>\\${contractor1_cost}</m>. "
+            f"The total cost for the second contractor is <m>\\${contractor2_rate}</m> per hour multiplied by {hours} hours minus the <m>\\${discount}</m> discount, which equals <m>\\${contractor2_cost}</m>. "
+            f"Therefore, the total bill will be <m>\\${cost_difference}</m> more if they choose the {higher_contractor} contractor. "
             f"{person.name} and {person.poss_adjective()} mom should higher the {lower_contractor} contractor.")
 
         return problem, solution
@@ -398,14 +397,14 @@ def generate(**kwargs):
         final_payment = remaining_amount % monthly_payments
 
         problem = (
-            f"{person.name}'s family is buying a new house. The agreed-upon price for the house at the time of closing is \\${house_price:,}. "
-            f"The bank requires an immediate down payment of \\${down_payment:,}. The remaining amount will be paid over {monthly_payments:,} equal monthly payments, plus one more month for any remaining balance. "
+            f"{person.name}'s family is buying a new house. The agreed-upon price for the house at the time of closing is <m>\\${house_price:,}</m>. "
+            f"The bank requires an immediate down payment of <m>\\${down_payment:,}</m>. The remaining amount will be paid over {monthly_payments:,} equal monthly payments, plus one more month for any remaining balance. "
             f"Assuming there is no interest involved, how much will {person.name}'s family be paying each month? Don't forget to mention the final month, in case there was a remaining balance.")
 
         solution = (
             f"To find out how much {person.name}'s family will need to pay each month, we first subtract the down payment from the house price to find the remaining amount. "
-            f"\\${house_price:,} minus \\${down_payment:,} equals \\${remaining_amount:,}. Dividing this by {monthly_payments:,} monthly payments, we get \\${monthly_payment_amount:,} per month. "
-            f"Therefore, {person.name}'s family will need to pay \\${monthly_payment_amount:,} each month for {monthly_payments} months, followed by a final payment of \\${final_payment:,}.")
+            f"<m>\\${house_price:,}</m> minus <m>\\${down_payment:,}</m> equals <m>\\${remaining_amount:,}</m>. Dividing this by {monthly_payments:,} monthly payments, we get <m>\\${monthly_payment_amount:,}</m> per month. "
+            f"Therefore, {person.name}'s family will need to pay <m>\\${monthly_payment_amount:,}</m> each month for {monthly_payments} months, followed by a final payment of <m>\\${final_payment:,}</m>.")
 
         return problem, solution
 
@@ -455,10 +454,6 @@ def generate(**kwargs):
 
     problem, solution = prob_sol_function()
 
-    if mode == 'html':
-        problem = problem.replace('\\', '')
-        solution = solution.replace('\\', '')
-
     return {
         'problem': problem,
         'solution': solution,
@@ -498,4 +493,4 @@ class Generator(BaseGenerator):
     )
 
     def data(self):
-        return generate(mode='html', group=self.variant)
+        return generate(group=self.variant)

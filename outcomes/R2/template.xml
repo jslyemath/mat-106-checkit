@@ -1,4 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
+<!-- problem and solution are injected with TRIPLE braces: the generator emits
+     SpaTeXt m elements for its maths, and double braces would escape them into
+     visible text. Anything it emits must therefore be valid XML; a bare
+     ampersand or angle bracket in generated prose would break the document. -->
 <knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
     <intro>
         <p>Solve the word problem below. You must show all work in order to pass. Do not forget to state your final answer, including any appropriate units.</p>
@@ -6,10 +10,10 @@
 
     <knowl>
         <content>
-            <p>{{problem}}</p>
+            <p>{{{problem}}}</p>
         </content>
         <outtro>
-            <p>{{solution}}</p>
+            <p>{{{solution}}}</p>
         </outtro>
     </knowl>
     
