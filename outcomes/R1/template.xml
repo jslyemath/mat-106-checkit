@@ -3,7 +3,7 @@
     <intro>
             <p>Suppose your student submits the work shown below. {{work_desc_1}}<m>{{work_math}}</m>{{work_desc_2}}</p>
             <p>
-                <image source="assets/G1/{{version}}.png" description="A picture of the work described above."/>
+                <image source="assets/R1/{{version}}.png" description="A picture of the work described above."/>
             </p>
     </intro>
 
