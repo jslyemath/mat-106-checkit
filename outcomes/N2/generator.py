@@ -1,10 +1,10 @@
+import bank_helpers as bh
 import random
 import math
 import re
 
 
 def generate(**kwargs):
-    mode = kwargs.get('mode', 'latex')
     prime_problem = random.choices([True, False], [0.7, 0.3], k=1)[0]
 
     # If editing the primes and composites list to add greater numbers, you may need to update this list as well.
@@ -71,20 +71,14 @@ def generate(**kwargs):
             'composite! Our work for testing potential prime divisors is shown below.'
         )
     
-    def latex_to_unicode(s):
-        s = re.sub(r'\$\\sqrt\{(.*?)\}\$',      r'√\1', s)
-        s = re.sub(r'\$(.*?)\^2\$',             r'\1²', s)
-        return s
-
-
-    if mode == 'html':
-        answer = latex_to_unicode(answer)
-
     return {
-        'the_number': the_number,
-        'answer': answer,
-        'quotients_and_remainders': quotients_and_remainders,
-        'prime_problem': prime_problem
+        key: bh.spatext_math(value) if isinstance(value, str) else value
+        for key, value in {
+            'the_number': the_number,
+            'answer': answer,
+            'quotients_and_remainders': quotients_and_remainders,
+            'prime_problem': prime_problem
+        }.items()
     }
 
 
@@ -100,4 +94,4 @@ def generate(**kwargs):
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
     def data(self):
-        return generate(mode='html', course_progress=6)
+        return generate(course_progress=6)

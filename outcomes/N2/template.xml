@@ -5,11 +5,11 @@
     </intro>
     <knowl>
         <content>
-            <p><m>{{the_number}}</m></p>
+            <p><m>{{{the_number}}}</m></p>
         </content>
         <outtro>
-            <p>{{answer}}</p>
-            <p><me>\begin{aligned}{{quotients_and_remainders}}\end{aligned}</me></p>
+            <p>{{{answer}}}</p>
+            <p><me>\begin{aligned}{{{quotients_and_remainders}}}\end{aligned}</me></p>
         </outtro>
     </knowl>
     <!-- <knowl>
@@ -19,7 +19,7 @@
         </intro>
         <knowl>
             <content>
-                <p>On the front side, you didn't test <m>{{the_number}}</m> for divisibility by every number from 1 to <m>{{the_number}}</m>. You should have only tested a few numbers. <em>Why?</em> What sort of numbers did you skip out on testing, and why were you allowed to skip them?</p>
+                <p>On the front side, you didn't test <m>{{{the_number}}}</m> for divisibility by every number from 1 to <m>{{{the_number}}}</m>. You should have only tested a few numbers. <em>Why?</em> What sort of numbers did you skip out on testing, and why were you allowed to skip them?</p>
             </content>
             <outtro>
                 <p>Answers will vary.</p>
@@ -28,7 +28,7 @@
 
         <knowl>
             <content>
-                <p>At the end, either you claimed that <m>{{the_number}}</m> was prime, or that it was composite. How did your work bring you to this conclusion?</p>
+                <p>At the end, either you claimed that <m>{{{the_number}}}</m> was prime, or that it was composite. How did your work bring you to this conclusion?</p>
             </content>
             <outtro>
                 <p>Answers will vary.</p>

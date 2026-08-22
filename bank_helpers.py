@@ -609,3 +609,70 @@ def verb_switch(v, g):
 
 if __name__ == "__main__":
     main()
+
+# --------------------------------------------------------------------------
+# Maths inside prose.
+#
+# Generators here were written believing a SpaTeXt text field could not carry
+# maths, so each invented a way around it: N2 substituted unicode (√, ²), F5 and
+# W4 deleted the delimiters, N1 went the other way and wrapped whole sentences
+# in maths mode with \text{} around the prose, and R2 simply removed every
+# backslash. Print took a different branch and was fine; students got the
+# mangled version.
+#
+# A text field can carry maths -- as SpaTeXt <m> elements, which is what the
+# demo bank's WORDS outcome shows. This converts the TeX notation the generators
+# already write into those elements, so one string serves both surfaces and the
+# `mode` parameter goes away.
+#
+# NOTE: a template injecting the result must use TRIPLE braces, or Mustache
+# escapes the markup into visible &lt;m&gt;. That also means the surrounding
+# prose must be XML-safe; `escape_for_spatext` handles the three characters
+# that are not.
+
+import re as _re
+
+_MATH_TOKEN = _re.compile(
+    r"\\\[(?P<display>.+?)\\\]"                     # \[ ... \]  display maths
+    r"|(?<!\\)\$(?P<inline>.+?)(?<!\\)\$"           # $ ... $    inline maths
+    r"|(?P<money>\\\$[0-9][0-9,.]*)",               # \$1,234.56 a bare amount
+    _re.S,
+)
+
+
+def escape_for_spatext(s):
+    """Make prose safe to inject unescaped, without touching markup we add."""
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def spatext_math(s):
+    """Rewrite TeX maths notation as SpaTeXt <m> elements.
+
+    Handles the three forms these generators produce, in one pass so nothing is
+    wrapped twice:
+
+        \\[ x^2 \\]   -> <m mode="display">x^2</m>
+        $x^2$         -> <m>x^2</m>
+        \\$18         -> <m>\\$18</m>
+
+    An escaped \\$ is a dollar amount, not a delimiter, which is why the inline
+    pattern refuses a preceding backslash. Prose between matches is escaped for
+    XML; the maths itself is not, since LaTeX needs its own characters intact.
+
+    Apply this exactly ONCE per string. It is not idempotent: a second pass
+    escapes the <m> elements the first one produced, turning them into
+    visible text.
+    """
+    out = []
+    last = 0
+    for m in _MATH_TOKEN.finditer(s):
+        out.append(escape_for_spatext(s[last:m.start()]))
+        if m.group("display") is not None:
+            out.append('<m mode="display">%s</m>' % m.group("display"))
+        elif m.group("inline") is not None:
+            out.append("<m>%s</m>" % m.group("inline"))
+        else:
+            out.append("<m>%s</m>" % m.group("money"))
+        last = m.end()
+    out.append(escape_for_spatext(s[last:]))
+    return "".join(out)
