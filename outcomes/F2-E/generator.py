@@ -59,9 +59,20 @@ def generate(**kwargs):
         p1_ans_text = (f'A number line that is the same as the one given above, but with a blue point for '
                        f'{p1_requested_num}/{p1_requested_denom} labeled {p1_requested_loc} '
                        f'spaces to the right of 0.')
-        p1_soln_text = (f'The denominator of {p1_model_denom} tells us to split the whole (represented the distance of {p1_orig_loc} spaces between 0 and 1) into {p1_model_denom} equal parts. '
+        # This sentence was copied from the area-model branch below and only
+        # half-adapted: it referred to p1_model_denom and p1_model_num, which
+        # that branch sets to None two lines further down, so every number-line
+        # seed raised UnboundLocalError and this outcome never generated.
+        #
+        # The area-model branch is the guide for what was meant. There
+        # gen_easy_area_prob() returns `requested_num, requested_denom =
+        # model_num, model_denom` -- the two pairs hold the same values, so its
+        # wording is equally true of the requested pair. A number line has no
+        # model numerator or denominator at all, so the requested pair is the
+        # only thing this sentence can be about.
+        p1_soln_text = (f'The denominator of {p1_requested_denom} tells us to split the whole (represented the distance of {p1_orig_loc} spaces between 0 and 1) into {p1_requested_denom} equal parts. '
                        f'The numerator of  {p1_requested_num} tells us to select '
-                       f'{p1_model_num} of the {p1_model_denom} parts. We show this selection by placing our point {p1_requested_loc} spaces to the right of 0. Thus, we have a model of the fraction {p1_requested_num}/{p1_requested_denom}.')
+                       f'{p1_requested_num} of the {p1_requested_denom} parts. We show this selection by placing our point {p1_requested_loc} spaces to the right of 0. Thus, we have a model of the fraction {p1_requested_num}/{p1_requested_denom}.')
         p1_model_num = None
         p1_model_denom = None
         p1_ticks = max(p1_orig_loc, p1_requested_loc) + random.randint(1, 4)

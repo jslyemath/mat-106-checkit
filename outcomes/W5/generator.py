@@ -462,5 +462,14 @@ def generate(**kwargs):
 # importable; both gaps are closed, so the file extension now selects the
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
+    # course_progress is read for exactly one thing here:
+    #     mult_allowed = int(kwargs['course_progress']) > 1
+    # so the generator has two behaviours, not seven. As a variant both are
+    # pregenerated across the bank and the print tool filters to the one the
+    # course has reached, instead of the value being frozen in a shim and the
+    # whole bank being regenerated to advance the semester.
+    variants = ["no_multiplication", "multiplication"]
+
     def data(self):
-        return generate(mode='html', course_progress=6)
+        progress = 2 if self.variant == "multiplication" else 1
+        return generate(mode='html', course_progress=progress)

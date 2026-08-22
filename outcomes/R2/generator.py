@@ -6,7 +6,10 @@ from datetime import datetime
 
 
 def generate(**kwargs):
-    course_progress = int(kwargs['course_progress'])
+    # Only consulted when no explicit group is named -- CheckIt names one
+    # per seed via the variant, while pdfgenerator.py still passes a
+    # progress level and gets the cumulative pool.
+    course_progress = kwargs.get('course_progress')
     mode = kwargs.get('mode', 'latex')
 
     def temperature_change():
@@ -430,7 +433,23 @@ def generate(**kwargs):
     def get_available_versions(n):
         return sum(versions_lists[:n + 1], [])
 
-    available_versions = get_available_versions(course_progress)
+    # A single group, when the caller names one. CheckIt passes `group` so that
+    # each seed is tagged with the topic its problem came from, which is what
+    # print-time filtering selects on; pdfgenerator.py still passes
+    # course_progress and gets the cumulative pool it always did.
+    groups_by_name = {
+        "beginning": beginning_0,
+        "sub_whole": sub_whole_1,
+        "mult_div_whole": mult_div_whole_2,
+        "int_pemdas": int_pemdas_3,
+        "add_sub_frac": add_sub_frac_4,
+        "mult_div_frac": mult_div_frac_5,
+    }
+    group = kwargs.get('group')
+    if group is not None:
+        available_versions = groups_by_name[group]
+    else:
+        available_versions = get_available_versions(int(course_progress))
 
     prob_sol_function = random.choice(available_versions)
 
@@ -457,5 +476,26 @@ def generate(**kwargs):
 # importable; both gaps are closed, so the file extension now selects the
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
+    # One label per topic group, so a seed records which topic its problem came
+    # from and the print tool can include the groups the course has covered.
+    #
+    # The list is WEIGHTED by group size on purpose. build_variant_bag deals out
+    # each *entry*, so repeating a label gives it proportionally more seeds.
+    # One label per group would hand every group an equal share, and since
+    # `beginning` holds a single problem against `mult_div_whole`'s nine, that
+    # lone problem would fill a quarter of the bank -- a student paging through
+    # would meet it a dozen times in fifty versions. Weighting reproduces the
+    # flat distribution the bank has today, where all thirteen problems are
+    # equally likely.
+    #
+    # sub_whole and mult_div_frac are absent because both groups are empty;
+    # naming them would hand random.choice an empty list.
+    variants = (
+        ["beginning"]
+        + ["mult_div_whole"] * 9
+        + ["int_pemdas"]
+        + ["add_sub_frac"] * 2
+    )
+
     def data(self):
-        return generate(mode='html', course_progress=6)
+        return generate(mode='html', group=self.variant)
