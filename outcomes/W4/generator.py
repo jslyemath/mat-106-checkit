@@ -12,6 +12,24 @@ def generate(**kwargs):
     # Yes, I realize there is a lot of repeated code in the child functions.
     # No, I don't have time to clean it up.
 
+    def equation(left, right):
+        """The two sides as separate runs that will not break internally.
+
+        These equations are long, and LaTeX broke them at the operators, which
+        is wrong for a question asking which property an equation exemplifies.
+        That used to be `\\mbox{$...$} \\mbox{$...$}` written straight into the
+        string behind a mode='latex' branch; <nobreak> says the same thing in a
+        medium-neutral way and each stylesheet spells it.
+
+        Two elements rather than one, matching the original: a break between
+        the sides is fine, a break inside either is not.
+
+        Markup is built here rather than left to spatext_math below, because
+        that escapes any markup handed to it.
+        """
+        return (bh.nobreak(bh.as_math(f'{left} =')) + ' '
+                + bh.nobreak(bh.as_math(right)))
+
     def gen_inserts(excl_zero=False, excl_one=False):
 
         v = ['a', 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'm', 'n',
@@ -59,7 +77,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vA'
+            return equation(sides[0], sides[1]), ans,'vA'
 
         def vB(op, inserts, fill_op):
             chunks = sm.samples([f'{inserts[7]}',
@@ -73,7 +91,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vB'
+            return equation(sides[0], sides[1]), ans,'vB'
 
         def vC(op, inserts, fill_op):
             if op == '+':
@@ -93,7 +111,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vC'
+            return equation(sides[0], sides[1]), ans,'vC'
 
         possible_versions = ['vA', 'vB', 'vC']
 
@@ -132,7 +150,7 @@ def generate(**kwargs):
 
         random.shuffle(sides)
 
-        return f'${sides[0]} =$ ${sides[1]}$', ans, 'v0'
+        return equation(sides[0], sides[1]), ans, 'v0'
 
     def create_ident(op='+', fill_op='+', inserts=['a', 'b', 'c', 'd', 'w', 'x', 'y', 'z'], used_versions=[]):
         for o in (op, fill_op):
@@ -166,7 +184,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vA'
+            return equation(sides[0], sides[1]), ans,'vA'
 
         def vB(op, inserts, fill_op):
             op_ident = {'+': '0', '\\times': '1'}
@@ -196,7 +214,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vB'
+            return equation(sides[0], sides[1]), ans,'vB'
 
         possible_versions = ['vA', 'vB']
 
@@ -230,7 +248,7 @@ def generate(**kwargs):
 
         random.shuffle(sides)
 
-        return f'${sides[0]} =$ ${sides[1]}$', ans, 'v0'
+        return equation(sides[0], sides[1]), ans, 'v0'
 
     def create_dist(inserts=['a', 'b', 'c', 'd', 'w', 'x', 'y', 'z']):
         fill_op = '+'
@@ -272,7 +290,7 @@ def generate(**kwargs):
 
         random.shuffle(sides)
 
-        return f'${sides[0]} =$ ${sides[1]}$', ans, 'v0'
+        return equation(sides[0], sides[1]), ans, 'v0'
 
     prob_ans_ver = []
 
@@ -321,11 +339,12 @@ def generate(**kwargs):
     # business in medium-neutral content. Dead since the port; removed
     # 2026-08-27, when N1/N1-E/W4's templates stopped swallowing it.
 
-    # Both halves, not just the prompt: an answer carries the same maths
-    # and was previously rendered raw.
+    # Only the answer half. row[0] is already markup, built by equation()
+    # above, and spatext_math escapes any markup it is given -- it turns
+    # <nobreak> into a visible &lt;nobreak&gt;. row[1] is prose ("Commutative
+    # (Addition)"), where the call is what makes it XML-safe.
     for i, row in enumerate(prob_ans_ver):
         row = list(row)
-        row[0] = bh.spatext_math(row[0])
         row[1] = bh.spatext_math(row[1])
         prob_ans_ver[i] = tuple(row)
 

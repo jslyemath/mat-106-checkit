@@ -260,7 +260,7 @@ def generate(**kwargs):
             f"The total cost for the first contractor is <m>\\${contractor1_rate}</m> per hour multiplied by {hours} hours, which equals <m>\\${contractor1_cost}</m>. "
             f"The total cost for the second contractor is <m>\\${contractor2_rate}</m> per hour multiplied by {hours} hours minus the <m>\\${discount}</m> discount, which equals <m>\\${contractor2_cost}</m>. "
             f"Therefore, the total bill will be <m>\\${cost_difference}</m> more if they choose the {higher_contractor} contractor. "
-            f"{person.name} and {person.poss_adjective()} mom should higher the {lower_contractor} contractor.")
+            f"{person.name} and {person.poss_adjective()} mom should hire the {lower_contractor} contractor.")
 
         return problem, solution
 

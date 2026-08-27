@@ -699,6 +699,20 @@ def spatext_math(s):
     return "".join(out)
 
 
+def nobreak(markup):
+    """Wrap markup that must not be broken across lines.
+
+    latex.xsl renders this as \\mbox{...} and html.xsl as a nowrap span, so the
+    instruction is stated once and each medium spells it. W4 is why it exists:
+    its equations are long enough that LaTeX broke them at the operators, which
+    is wrong for a question asking which property an equation exemplifies.
+
+    The argument is *markup*, not TeX -- typically as_math() or spatext_math()
+    output -- because the element wraps <m> elements rather than replacing them.
+    """
+    return "<nobreak>%s</nobreak>" % markup
+
+
 def as_math(tex):
     """One TeX expression as a standalone <m> element.
 
