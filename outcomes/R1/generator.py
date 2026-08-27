@@ -5,8 +5,9 @@ from pathlib import Path
 
 
 def generate(**kwargs):
-    course_progress = int(kwargs['course_progress'])
-    mode = kwargs.get('mode', 'latex')
+    # Only the legacy print path consults course_progress, so it is read
+    # lazily; CheckIt names a pool instead.
+    course_progress = kwargs.get('course_progress')
 
     # Lists of version keys, split up by course progress cutoff points.
     # These must be the same names as those in the versions dictionary, as well as the name of the png file.
@@ -371,10 +372,26 @@ def generate(**kwargs):
         with open(filepath, 'w') as file:
             json.dump(used_keys, file)
 
-    if mode == 'html':
+    # Two genuinely different problem sets, not two renderings of one. The
+    # study copy fills in `thinking` and `feedback`; the handout leaves them
+    # blank for the student to write in. Which one is wanted is not a question
+    # about the medium but about the purpose, and the seed ranges already
+    # encode that: below PUBLIC_SEEDS a student is browsing, above it the
+    # exercise is feeding an assessment.
+    pool = kwargs.get('pool')
+    if pool == 'self_study':
         available_versions = list(html_versions)
         version_name = random.choice(available_versions)
         version_data = html_versions[version_name]
+    elif pool == 'assessment':
+        # The handout set, chosen without touching used_versions.json. That
+        # file makes generation stateful, so running it once per seed would
+        # make a rebuild non-reproducible; it stays for pdfgenerator.py, which
+        # is picking a handful of versions for one printed assessment and
+        # genuinely wants to avoid repeats across runs.
+        available_versions = list(versions)
+        version_name = random.choice(available_versions)
+        version_data = versions[version_name]
     else:
         used_versions_file = Path('assets/R1/used_versions.json')
 
@@ -408,4 +425,8 @@ def generate(**kwargs):
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
     def data(self):
-        return generate(mode='html', course_progress=6)
+        # PUBLIC_SEEDS comes from the generator namespace: below it a student
+        # browses this version in the viewer, at or above it the version feeds
+        # an assessment, printed or exported to an LMS.
+        studying = self.seed < PUBLIC_SEEDS
+        return generate(pool='self_study' if studying else 'assessment')

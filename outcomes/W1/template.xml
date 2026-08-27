@@ -5,19 +5,19 @@
     </intro>
     <knowl>
         <content>
-            <p>Convert {{to_a_modern}} to {{to_a_system}}.</p>
+            <p>Convert {{{to_a_modern}}} to {{{to_a_system}}}.</p>
         </content>
         <outtro>
-            <p><m>{{to_a_ancient}}</m></p>
+            <p>{{{to_a_ancient}}}</p>
         </outtro>
     </knowl>
     <knowl>
         <content>
-            <p>Convert the following {{to_m_system}} numeral to modern Hindu-Arabic base ten.</p>
-            <p><m>{{to_m_ancient}}</m></p>
+            <p>Convert the following {{{to_m_system}}} numeral to modern Hindu-Arabic base ten.</p>
+            <p>{{{to_m_ancient}}}</p>
         </content>
         <outtro>
-            <p>{{to_m_modern}}</p>
+            <p>{{{to_m_modern}}}</p>
         </outtro>
     </knowl>
 </knowl>

@@ -3,32 +3,35 @@ import random
 
 
 def generate(**kwargs):
-    mode = kwargs.get('mode', 'latex')
 
     def bab_modern():
         modern = random.choice(range(3501, 162000))
-        bab = sm.to_simple_babylonian(modern, mode=mode)
-        if mode == 'html':
-            formatted_bab = bab
-        else:
-            formatted_bab = f'{bab}'
-        return f'{bab}', modern, 'ancient Babylonian'
+        return (
+            sm.glyphs(
+                'babylonian',
+                sm.to_simple_babylonian(modern, mode='html'),
+                sm.to_simple_babylonian(modern, mode='latex'),
+            ),
+            modern,
+            'ancient Babylonian',
+        )
 
     def rom_modern():
         modern = int(sm.int_string(4, (0, 4, 5, 6, 7, 8, 9), wt_0=.03, wt_4=.2, wt_6=.2, wt_9=.2))
         rom = sm.to_roman(modern)
         return f'\\text{{{rom}}}', modern, 'Roman'
     
-    def large_egy(org_egy):
-        if mode == 'html':
-            return f'\\Huge {org_egy}'
-        else:
-            return f'\\Large\\textpmhg{{{org_egy}}}'
-
     def egy_modern():
         modern = random.choice(range(100000, 4000000))
-        egy = sm.to_egyptian(modern, mode=mode)
-        return large_egy(egy), modern, 'ancient Egyptian'
+        return (
+            sm.glyphs(
+                'egyptian',
+                sm.to_egyptian(modern, mode='html'),
+                '\\Large\\textpmhg{%s}' % sm.to_egyptian(modern, mode='latex'),
+            ),
+            modern,
+            'ancient Egyptian',
+        )
 
     non_bab_systems = [rom_modern, egy_modern]
     random.shuffle(non_bab_systems)
@@ -77,4 +80,4 @@ def generate(**kwargs):
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
     def data(self):
-        return generate(mode='html')
+        return generate()

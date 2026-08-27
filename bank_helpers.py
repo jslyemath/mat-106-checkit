@@ -444,7 +444,13 @@ def to_simple_babylonian(num, mode='latex'):
 
     for index, value in enumerate(base_60):
         if index != 0:
-            babylonian_list += ['\\hspace{30pt}']
+            # A LaTeX command, which was safe while the whole numeral was
+            # rendered inside a maths field. The screen form is now plain
+            # text in a <glyphs> element, where it would show literally, so
+            # the two media get their own separator.
+            babylonian_list += [
+                '\\hspace{30pt}' if mode != 'html' else '\u2003\u2003'
+            ]
         if value == 0 and index != 0:
             babylonian_list += [bab_zero]
         else:
@@ -676,3 +682,22 @@ def spatext_math(s):
         last = m.end()
     out.append(escape_for_spatext(s[last:]))
     return "".join(out)
+
+
+# --------------------------------------------------------------------------
+# Numerals from scripts that render differently in each medium.
+#
+# to_egyptian and to_simple_babylonian each return one of two entirely different
+# strings depending on `mode`: Unicode characters for a browser, or LaTeX macros
+# (\Hone, \babo) for print. No font wrapper can bridge that -- the characters
+# themselves differ -- so the element carries both and each stylesheet takes the
+# one it can use. The decision lives in the markup, which is medium-neutral,
+# rather than in a generator that has to be told which medium it is serving.
+
+def glyphs(font, screen, printed):
+    """A <glyphs> element holding a screen form and a print form."""
+    from xml.sax.saxutils import quoteattr, escape
+
+    return "<glyphs font=%s latex=%s>%s</glyphs>" % (
+        quoteattr(font), quoteattr(printed), escape(screen),
+    )

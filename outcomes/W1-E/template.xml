@@ -2,7 +2,7 @@
 <knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
     <knowl>
         <content>
-            <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> similar?</p>
+            <p>In what ways are the numerals {{{expl_ancient}}} and <m>{{{expl_modern}}}</m> similar?</p>
         </content>
         <outtro>
             <p>Answers will vary.</p>
@@ -11,7 +11,7 @@
 
     <knowl>
         <content>
-            <p>In what ways are the numerals <m>{{expl_ancient}}</m> and <m>{{expl_modern}}</m> different? <em>Why?</em> What is fundamentally different about these two numeration systems that is key to understanding this difference?</p>
+            <p>In what ways are the numerals {{{expl_ancient}}} and <m>{{{expl_modern}}}</m> different? <em>Why?</em> What is fundamentally different about these two numeration systems that is key to understanding this difference?</p>
         </content>
         <outtro>
             <p>Answers will vary.</p>
