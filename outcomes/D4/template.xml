@@ -6,10 +6,10 @@
 
     <knowl>
         <content>
-            <p>{{problem}}</p>
+            <p>{{{problem}}}</p>
         </content>
         <outtro>
-            <p>{{solution}}</p>
+            <p>{{{solution}}}</p>
         </outtro>
     </knowl>
     

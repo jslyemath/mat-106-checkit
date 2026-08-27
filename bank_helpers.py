@@ -641,7 +641,11 @@ import re as _re
 _MATH_TOKEN = _re.compile(
     r"\\\[(?P<display>.+?)\\\]"                     # \[ ... \]  display maths
     r"|(?<!\\)\$(?P<inline>.+?)(?<!\\)\$"           # $ ... $    inline maths
-    r"|(?P<money>\\\$[0-9][0-9,.]*)"                # \$1,234.56 a bare amount
+    # \$1,234.56 -- a bare amount. The digit run must *end* in a digit, or the
+    # sentence punctuation after an amount is pulled inside the maths: an
+    # earlier `[0-9,.]*` turned "worth \$982.69." into "<m>\$982.69.</m>",
+    # setting the full stop in italics at the end of every such sentence.
+    r"|(?P<money>\\\$[0-9](?:[0-9,]*[0-9])?(?:\.[0-9]+)?)"
     # Emphasis, for the same reason as the maths above: it was written when the
     # generator knew it was producing LaTeX. Outside a maths field it renders as
     # the literal text "\textbf{width}". <em> is the medium-neutral form -- and

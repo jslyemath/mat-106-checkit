@@ -11,6 +11,23 @@ def generate(**kwargs):
     # progress level and gets the cumulative pool.
     course_progress = kwargs.get('course_progress')
 
+    def divided_up(total, per, leftover_noun, result_noun, result):
+        """One division written out: quotient, remainder, and why it rounds up.
+
+        These worked solutions used to print the *implementation* of ceiling
+        division -- "(a + b - 1) // b" -- along with Python's % for the
+        remainder. Neither is notation a student has been taught, and this
+        outcome's whole point is division with a remainder, so the arithmetic
+        is now shown the way the course teaches it.
+        """
+        whole, left = divmod(total, per)
+        if left == 0:
+            return (f"<m>{total} \\div {per} = {whole}</m> exactly, "
+                    f"so {result} {result_noun}")
+        return (f"<m>{total} \\div {per} = {whole}</m> with {left} "
+                f"{leftover_noun} left over, and those still need one more, "
+                f"so {result} {result_noun}")
+
     def temperature_change():
         season = random.choice(['fall', 'winter'])
         start_time = random.randint(0, 2)
@@ -61,12 +78,33 @@ def generate(**kwargs):
             f"{sm.convert_to_12_hour(start_time)}?"
         )
 
-        #TODO: Make solution for temperature problem human readable.
+        def undo(after, before, operation):
+            """One step backwards, naming the inverse of what happened.
+
+            The question gives the *final* temperature and asks for the
+            original, so the work runs in the opposite direction to the story.
+            """
+            if operation in ('doubled', 'tripled'):
+                return (f"the temperature {operation}, so divide: "
+                        f"<m>{after} \\div {multiplier} = {before}</m>")
+            if operation == 'fell':
+                return (f"the temperature fell {change_temp_2} degrees, so add "
+                        f"them back: <m>{after} + {change_temp_2} = {before}</m>")
+            return (f"the temperature rose {change_temp_2} degrees, so take "
+                    f"them away: <m>{after} - {change_temp_2} = {before}</m>")
+
         solution = (
-            f"Start temp <m>= {start_temp}</m></p><p>"
-            f"Temp2 <m>= {temp_2}</m></p><p>"
-            f"Temp3 <m>= {temp_3}</m></p><p>"
-            f"Temp4 <m>= {temp_4}</m>"
+            f"The final temperature is given and the starting one is not, so "
+            f"work backwards, undoing each change in turn. "
+            f"At {time_3} it was <m>{temp_4}</m> degrees. "
+            f"Between {time_2} and {time_3} {undo(temp_4, temp_3, operation_3)}, "
+            f"so at {time_2} it was <m>{temp_3}</m> degrees. "
+            f"Between {time_1} and {time_2} {undo(temp_3, temp_2, operation_2)}, "
+            f"so at {time_1} it was <m>{temp_2}</m> degrees. "
+            f"Between {sm.convert_to_12_hour(start_time)} and {time_1} the "
+            f"temperature rose {change_temp_1} degrees, so take those away: "
+            f"<m>{temp_2} - {change_temp_1} = {start_temp}</m>. "
+            f"The original temperature was <m>{start_temp}</m> degrees."
         )
         return problem, solution
 
@@ -124,10 +162,10 @@ def generate(**kwargs):
         )
 
         solution = (
-            f"Total slices needed = {guests} guests times {slices_per_guest} slices = {total_slices_needed} slices. "
-            f"Each pizza has {slices_per_pizza} slices, so number of pizzas needed is the smallest whole number greater than or equal to {total_slices_needed}/{slices_per_pizza}. "
-            f"That is ({total_slices_needed} + {slices_per_pizza} - 1) // {slices_per_pizza} = {pizzas_needed} pizzas. "
-            f"Total cost = {pizzas_needed} times <m>\\${price_per_pizza}</m> = <m>\\${total_cost}</m>."
+            f"Total slices needed: <m>{guests} \\times {slices_per_guest} = {total_slices_needed}</m> slices. "
+            f"Each pizza has {slices_per_pizza} slices, so divide the slices among whole pizzas: "
+            f"{divided_up(total_slices_needed, slices_per_pizza, 'slices', 'pizzas', pizzas_needed)}. "
+            f"Total cost: <m>{pizzas_needed} \\times \\${price_per_pizza} = \\${total_cost}</m>."
         )
 
         return problem, solution
@@ -151,9 +189,12 @@ def generate(**kwargs):
         )
 
         solution = (
-            f"Total eggs = {hens} hens times {eggs_per_hen_per_day} eggs/hen/day times {days} days = {total_eggs} eggs. "
-            f"Full dozens = {total_eggs} // 12 = {dozens} dozens, leftover eggs = {total_eggs} % 12 = {leftover_eggs} eggs. "
-            f"Revenue = {dozens} dozens times <m>\\${price_per_dozen}</m> = <m>\\${revenue}</m>."
+            f"Total eggs: <m>{hens} \\times {eggs_per_hen_per_day} \\times {days} = {total_eggs}</m> eggs. "
+            f"Packing them into cartons of 12: <m>{total_eggs} \\div 12 = {dozens}</m>"
+            + (f", with {leftover_eggs} eggs left over. " if leftover_eggs
+               else " exactly, with no eggs left over. ")
+            + f"Only the {dozens} full dozens can be sold: "
+            f"<m>{dozens} \\times \\${price_per_dozen} = \\${revenue}</m>."
         )
 
         return problem, solution
@@ -178,10 +219,12 @@ def generate(**kwargs):
         )
 
         solution = (
-            f"Total books = {shelves} shelves times {books_per_shelf} books = {total_books} books. "
-            f"Boxes needed = ceiling({total_books}/{box_capacity}) = ({total_books} + {box_capacity} - 1) // {box_capacity} = {boxes_needed} boxes. "
-            f"Trips needed = ceiling({boxes_needed}/{boxes_per_trip}) = ({boxes_needed} + {boxes_per_trip} - 1) // {boxes_per_trip} = {trips_needed} trips. "
-            f"Total cost = {trips_needed} trips times <m>\\${cost_per_trip}</m> = <m>\\${total_move_cost}</m>."
+            f"Total books: <m>{shelves} \\times {books_per_shelf} = {total_books}</m> books. "
+            f"Each box holds {box_capacity}, so "
+            f"{divided_up(total_books, box_capacity, 'books', 'boxes', boxes_needed)}. "
+            f"The helper carries {boxes_per_trip} boxes a trip, so "
+            f"{divided_up(boxes_needed, boxes_per_trip, 'boxes', 'trips', trips_needed)}. "
+            f"Total cost: <m>{trips_needed} \\times \\${cost_per_trip} = \\${total_move_cost}</m>."
         )
 
         return problem, solution
@@ -375,10 +418,11 @@ def generate(**kwargs):
         lemon_note = ("enough lemons" if lemons_short <= 0 else f"short of lemons by {lemons_short} lemon(s)")
 
         solution = (
-            f"Cups needed = {customers} times {cups_per_customer} = {cups_needed} cups. "
-            f"Recipes needed = ceiling({cups_needed}/{base_cups}) = ({cups_needed} + {base_cups} - 1) // {base_cups} = {recipes_needed} recipes. "
-            f"Sugar needed = {recipes_needed} times {sugar_scoops} = {total_sugar_needed} scoops. "
-            f"Lemons needed = {recipes_needed} times {lemons} = {total_lemons_needed} lemons. "
+            f"Cups needed: <m>{customers} \\times {cups_per_customer} = {cups_needed}</m> cups. "
+            f"One recipe makes {base_cups} cups, so "
+            f"{divided_up(cups_needed, base_cups, 'cups', 'recipes', recipes_needed)}. "
+            f"Sugar needed: <m>{recipes_needed} \\times {sugar_scoops} = {total_sugar_needed}</m> scoops. "
+            f"Lemons needed: <m>{recipes_needed} \\times {lemons} = {total_lemons_needed}</m> lemons. "
             f"On hand: {sugar_on_hand} scoops sugar, {lemons_on_hand} lemons. "
             f"Sugar status: {sugar_note}. Lemon status: {lemon_note}."
         )

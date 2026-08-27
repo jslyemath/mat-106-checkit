@@ -59,7 +59,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'\\mbox{{${sides[0]} =\\:$}} \\mbox{{${sides[1]}$}}', ans, 'vA'
+            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vA'
 
         def vB(op, inserts, fill_op):
             chunks = sm.samples([f'{inserts[7]}',
@@ -73,7 +73,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'\\mbox{{${sides[0]} =\\:$}} \\mbox{{${sides[1]}$}}', ans, 'vB'
+            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vB'
 
         def vC(op, inserts, fill_op):
             if op == '+':
@@ -93,7 +93,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'\\mbox{{${sides[0]} =\\:$}} \\mbox{{${sides[1]}$}}', ans, 'vC'
+            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vC'
 
         possible_versions = ['vA', 'vB', 'vC']
 
@@ -132,7 +132,7 @@ def generate(**kwargs):
 
         random.shuffle(sides)
 
-        return f'\\mbox{{${sides[0]} =\\:$}} \\mbox{{${sides[1]}$}}', ans, 'v0'
+        return f'${sides[0]} =$ ${sides[1]}$', ans, 'v0'
 
     def create_ident(op='+', fill_op='+', inserts=['a', 'b', 'c', 'd', 'w', 'x', 'y', 'z'], used_versions=[]):
         for o in (op, fill_op):
@@ -166,7 +166,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'\\mbox{{${sides[0]} =\\:$}} \\mbox{{${sides[1]}$}}', ans, 'vA'
+            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vA'
 
         def vB(op, inserts, fill_op):
             op_ident = {'+': '0', '\\times': '1'}
@@ -196,7 +196,7 @@ def generate(**kwargs):
 
             random.shuffle(sides)
 
-            return f'\\mbox{{${sides[0]} =\\:$}} \\mbox{{${sides[1]}$}}', ans, 'vB'
+            return f'${sides[0]} =$ ${sides[1]}$', ans, 'vB'
 
         possible_versions = ['vA', 'vB']
 
@@ -230,7 +230,7 @@ def generate(**kwargs):
 
         random.shuffle(sides)
 
-        return f'\\mbox{{${sides[0]} =\\:$}} \\mbox{{${sides[1]}$}}', ans, 'v0'
+        return f'${sides[0]} =$ ${sides[1]}$', ans, 'v0'
 
     def create_dist(inserts=['a', 'b', 'c', 'd', 'w', 'x', 'y', 'z']):
         fill_op = '+'
@@ -272,7 +272,7 @@ def generate(**kwargs):
 
         random.shuffle(sides)
 
-        return f'\\mbox{{${sides[0]} =\\:$}} \\mbox{{${sides[1]}$}}', ans, 'v0'
+        return f'${sides[0]} =$ ${sides[1]}$', ans, 'v0'
 
     prob_ans_ver = []
 
@@ -314,13 +314,13 @@ def generate(**kwargs):
 
     random.shuffle(prob_ans_ver)
 
-    def clean_latex_string(s):
-        #Used for getting rid of the formatting specific to latex printing
-        s = s.replace('$', '')
-        s = re.sub(r'\\mbox\{(.*?)\}', r'\1', s)
-        s = s.replace(r'\:', '')
-        return s
-    
+    # `clean_latex_string` lived here: it stripped $, \mbox and \: for the
+    # mode='html' branch. spatext_math replaces it, and the \mbox wrappers it
+    # used to remove are gone from the generators above -- \mbox is a LaTeX
+    # line-breaking hint around maths that is already delimited, so it has no
+    # business in medium-neutral content. Dead since the port; removed
+    # 2026-08-27, when N1/N1-E/W4's templates stopped swallowing it.
+
     # Both halves, not just the prompt: an answer carries the same maths
     # and was previously rendered raw.
     for i, row in enumerate(prob_ans_ver):

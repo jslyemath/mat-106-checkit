@@ -5,7 +5,7 @@
     </intro>
     <knowl>
         <content>
-            <p><m>{{{explain_prob_1}}}</m></p>
+            <p>{{{explain_prob_1}}}</p>
         </content>
         <outtro>
             <p>This statement was {{{explain_ans_1}}}. The argument or counterexample will vary from person to person.</p>
@@ -13,7 +13,7 @@
     </knowl>
     <knowl>
         <content>
-            <p><m>{{{explain_prob_2}}}</m></p>
+            <p>{{{explain_prob_2}}}</p>
         </content>
         <outtro>
             <p>This statement was {{{explain_ans_2}}}. The argument or counterexample will vary from person to person.</p>
@@ -22,7 +22,7 @@
 
     <knowl>
         <content>
-            <p><m>{{{explain_prob_3}}}</m></p>
+            <p>{{{explain_prob_3}}}</p>
         </content>
         <outtro>
             <p>This statement was {{{explain_ans_3}}}. The argument or counterexample will vary from person to person.</p>

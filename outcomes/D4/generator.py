@@ -64,18 +64,22 @@ def generate(**kwargs):
 
         problem = (
             f"{person.name} checks {person.poss_adjective()} phone notifications. One of {person.poss_adjective()} "
-            f"notifications says that the value of {company} stock went {up_down} by {percent_change}\\%. "
+            f"notifications says that the value of {company} stock went {up_down} by ${percent_change}\\%$. "
             f"If {person.name} originally owned {original_value} in {company} stock before this {increase_decrease}, "
             f"how much is their investment worth now?"
         )
 
         solution = (
             f"First, we need to find how much {more_less} {person.poss_adjective()} stock is worth. Multiplying "
-            f"{original_value} by {percent_change / 100} shows us that {person.poss_adjective()} investment is worth "
+            f"{original_value} by ${percent_change / 100}$ shows us that {person.poss_adjective()} investment is worth "
             f"{change_in_value} {more_less}. If we {add_subtract} this {from_to} the original value of {original_value}, "
             f"we see that {person.poss_adjective()} investment is now worth {new_value}."
         )
-        return problem, solution
+        # format_money already writes \$770.13, which spatext_math recognises as
+        # a money amount; the percentages above are wrapped in $ so they travel
+        # the same way. Without this the \$ and \% reach the page as literal
+        # backslashes, because a text field is not a maths field.
+        return sm.spatext_math(problem), sm.spatext_math(solution)
 
     available_versions = [stock_notification]
 

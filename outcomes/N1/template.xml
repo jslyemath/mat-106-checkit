@@ -5,7 +5,7 @@
     </intro>
     <knowl>
         <content>
-            <p><m>{{{p1_prob}}}</m></p>
+            <p>{{{p1_prob}}}</p>
         </content>
         <outtro>
             <p>{{{p1_ans}}}</p>
@@ -13,7 +13,7 @@
     </knowl>
     <knowl>
         <content>
-            <p><m>{{{p2_prob}}}</m></p>
+            <p>{{{p2_prob}}}</p>
         </content>
         <outtro>
             <p>{{{p2_ans}}}</p>
@@ -21,7 +21,7 @@
     </knowl>
     <knowl>
         <content>
-            <p><m>{{{p3_prob}}}</m></p>
+            <p>{{{p3_prob}}}</p>
         </content>
         <outtro>
             <p>{{{p3_ans}}}</p>
@@ -29,7 +29,7 @@
     </knowl>
     <knowl>
         <content>
-            <p><m>{{{p4_prob}}}</m></p>
+            <p>{{{p4_prob}}}</p>
         </content>
         <outtro>
             <p>{{{p4_ans}}}</p>
@@ -37,7 +37,7 @@
     </knowl>
     <knowl>
         <content>
-            <p><m>{{{p5_prob}}}</m></p>
+            <p>{{{p5_prob}}}</p>
         </content>
         <outtro>
             <p>{{{p5_ans}}}</p>
@@ -45,7 +45,7 @@
     </knowl>
     <knowl>
         <content>
-            <p><m>{{{p6_prob}}}</m></p>
+            <p>{{{p6_prob}}}</p>
         </content>
         <outtro>
             <p>{{{p6_ans}}}</p>
@@ -53,7 +53,7 @@
     </knowl>
     <knowl>
         <content>
-            <p><m>{{{p7_prob}}}</m></p>
+            <p>{{{p7_prob}}}</p>
         </content>
         <outtro>
             <p>{{{p7_ans}}}</p>
@@ -61,7 +61,7 @@
     </knowl>
     <knowl>
         <content>
-            <p><m>{{{p8_prob}}}</m></p>
+            <p>{{{p8_prob}}}</p>
         </content>
         <outtro>
             <p>{{{p8_ans}}}</p>
@@ -75,7 +75,7 @@
         </intro>
         <knowl>
             <content>
-                <p><m>{{{explain_prob_1}}}</m></p>
+                <p>{{{explain_prob_1}}}</p>
             </content>
             <outtro>
                 <p>This statement was {{{explain_ans_1}}}. The argument or counterexample will vary from person to person.</p>
@@ -83,7 +83,7 @@
         </knowl>
         <knowl>
             <content>
-                <p><m>{{{explain_prob_2}}}</m></p>
+                <p>{{{explain_prob_2}}}</p>
             </content>
             <outtro>
                 <p>This statement was {{{explain_ans_2}}}. The argument or counterexample will vary from person to person.</p>
@@ -92,7 +92,7 @@
 
         <knowl>
             <content>
-                <p><m>{{{explain_prob_3}}}</m></p>
+                <p>{{{explain_prob_3}}}</p>
             </content>
             <outtro>
                 <p>This statement was {{{explain_ans_3}}}. The argument or counterexample will vary from person to person.</p>
