@@ -19,7 +19,9 @@ def generate(**kwargs):
     def rom_modern():
         modern = int(sm.int_string(4, (0, 4, 5, 6, 7, 8, 9), wt_0=.03, wt_4=.2, wt_6=.2, wt_9=.2))
         rom = sm.to_roman(modern)
-        return f'\\text{{{rom}}}', modern, 'Roman'
+        # The slot this fills also receives glyphs() markup, so this has to be
+        # markup too. Bare TeX renders as the literal "\text{MDCXLVIII}".
+        return sm.as_math(f'\\text{{{rom}}}'), modern, 'Roman'
     
     def egy_modern():
         modern = random.choice(range(100000, 4000000))

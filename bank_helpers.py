@@ -641,7 +641,14 @@ import re as _re
 _MATH_TOKEN = _re.compile(
     r"\\\[(?P<display>.+?)\\\]"                     # \[ ... \]  display maths
     r"|(?<!\\)\$(?P<inline>.+?)(?<!\\)\$"           # $ ... $    inline maths
-    r"|(?P<money>\\\$[0-9][0-9,.]*)",               # \$1,234.56 a bare amount
+    r"|(?P<money>\\\$[0-9][0-9,.]*)"                # \$1,234.56 a bare amount
+    # Emphasis, for the same reason as the maths above: it was written when the
+    # generator knew it was producing LaTeX. Outside a maths field it renders as
+    # the literal text "\textbf{width}". <em> is the medium-neutral form -- and
+    # latex.xsl emits \textbf{...} for it, so print is byte-identical. Nested
+    # braces are refused deliberately: an unmatched case falls through to the
+    # old literal behaviour rather than producing malformed markup.
+    r"|\\textbf\{(?P<emph>[^{}]*)\}",
     _re.S,
 )
 
@@ -652,18 +659,20 @@ def escape_for_spatext(s):
 
 
 def spatext_math(s):
-    """Rewrite TeX maths notation as SpaTeXt <m> elements.
+    """Rewrite TeX notation as the SpaTeXt elements that mean the same thing.
 
-    Handles the three forms these generators produce, in one pass so nothing is
+    Handles the four forms these generators produce, in one pass so nothing is
     wrapped twice:
 
-        \\[ x^2 \\]   -> <m mode="display">x^2</m>
-        $x^2$         -> <m>x^2</m>
-        \\$18         -> <m>\\$18</m>
+        \\[ x^2 \\]      -> <m mode="display">x^2</m>
+        $x^2$            -> <m>x^2</m>
+        \\$18            -> <m>\\$18</m>
+        \\textbf{width}  -> <em>width</em>
 
     An escaped \\$ is a dollar amount, not a delimiter, which is why the inline
     pattern refuses a preceding backslash. Prose between matches is escaped for
     XML; the maths itself is not, since LaTeX needs its own characters intact.
+    The text inside \\textbf *is* prose, so it is escaped like any other.
 
     Apply this exactly ONCE per string. It is not idempotent: a second pass
     escapes the <m> elements the first one produced, turning them into
@@ -677,11 +686,33 @@ def spatext_math(s):
             out.append('<m mode="display">%s</m>' % m.group("display"))
         elif m.group("inline") is not None:
             out.append("<m>%s</m>" % m.group("inline"))
+        elif m.group("emph") is not None:
+            out.append("<em>%s</em>" % escape_for_spatext(m.group("emph")))
         else:
             out.append("<m>%s</m>" % m.group("money"))
         last = m.end()
     out.append(escape_for_spatext(s[last:]))
     return "".join(out)
+
+
+def as_math(tex):
+    """One TeX expression as a standalone <m> element.
+
+    Not named `math`: this module imports the stdlib `math`, and a module-level
+    function of that name silently replaces it, so `rel_primes` starts calling
+    `math.gcd` on a function object.
+
+    For a template slot that already receives markup -- a {{{triple-brace}}}
+    field whose other branch returns `glyphs()` -- and so cannot simply be
+    wrapped in <m> by the template. html.xsl's rule for <m> reads only text
+    nodes, so a <glyphs> element placed inside one is silently swallowed;
+    the choice has to travel in the value, not the template.
+
+    Use `spatext_math` instead when the string is prose with maths in it.
+    """
+    from xml.sax.saxutils import escape
+
+    return "<m>%s</m>" % escape(tex)
 
 
 # --------------------------------------------------------------------------

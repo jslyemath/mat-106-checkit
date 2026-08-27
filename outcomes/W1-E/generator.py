@@ -7,13 +7,14 @@ def generate(**kwargs):
     def rom_modern():
         modern = int(sm.int_string(4, (0, 4, 5, 6, 7, 8, 9), wt_0=.03, wt_4=.2, wt_6=.2, wt_9=.2))
         rom = sm.to_roman(modern)
-        return f'\\text{{{rom}}}', modern, 'Roman'
+        # Markup, not bare TeX: the slot also carries glyphs() output.
+        return sm.as_math(f'\\text{{{rom}}}'), modern, 'Roman'
     
     def egy_glyphs(n):
         return sm.glyphs(
             'egyptian',
             sm.to_egyptian(n, mode='html'),
-            '\Large\textpmhg{%s}' % sm.to_egyptian(n, mode='latex'),
+            r'\Large\textpmhg{%s}' % sm.to_egyptian(n, mode='latex'),
         )
 
     def egy_modern():
@@ -22,7 +23,7 @@ def generate(**kwargs):
             sm.glyphs(
                 'egyptian',
                 sm.to_egyptian(modern, mode='html'),
-                '\\Large\\textpmhg{%s}' % sm.to_egyptian(modern, mode='latex'),
+                r'\Large\textpmhg{%s}' % sm.to_egyptian(modern, mode='latex'),
             ),
             modern,
             'ancient Egyptian',
@@ -33,11 +34,16 @@ def generate(**kwargs):
 
     if expl_system_func == rom_modern:
         expl_system = 'Roman'
-        expl_modern, expl_ancient = random.choice([(11, f'\\text{{{sm.to_roman(2)}}}'),
-                                                   (111, f'\\text{{{sm.to_roman(3)}}}'),
-                                                   (51, f'\\text{{{sm.to_roman(6)}}}'),
-                                                   (511, f'\\text{{{sm.to_roman(7)}}}'),
-                                                   (5111, f'\\text{{{sm.to_roman(8)}}}')])
+        # sm.math, not a bare f-string: {{{expl_ancient}}} is a markup slot,
+        # and its other branch below fills it with glyphs() output.
+        def rom(n):
+            return sm.as_math(f'\\text{{{sm.to_roman(n)}}}')
+
+        expl_modern, expl_ancient = random.choice([(11, rom(2)),
+                                                   (111, rom(3)),
+                                                   (51, rom(6)),
+                                                   (511, rom(7)),
+                                                   (5111, rom(8))])
     else:
         expl_system = 'ancient Egyptian'
         expl_modern, expl_ancient = random.choice([(11, egy_glyphs(2)),

@@ -6,7 +6,7 @@
 
             <p>{{p1_text}}<m>{{p1_math}}</m>.</p>
     
-            <p>Construct the desired model. Then \textbf{explain} each step of its construction process. How is the denominator represented in the model? How is the numerator represented? How does each inform the construction process?</p>
+            <p>Construct the desired model. Then <em>explain</em> each step of its construction process. How is the denominator represented in the model? How is the numerator represented? How does each inform the construction process?</p>
             
             <!-- {{#p1_prob_text}} -->
             <p>

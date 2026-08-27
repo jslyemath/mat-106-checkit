@@ -11,7 +11,11 @@
 
     <knowl>
         <content>
-            <p>Suppose a student challenged you to find {{expl_how_many}} numbers between {{num_a}} and {{num_b}}. What steps would you take to find those {{expl_how_many}} numbers? (You do not need to write out the actual {{expl_how_many}} individual numbers.) </p>
+            <!-- num_a and num_b arrive as bare TeX (\dfrac{5}{7}), so they
+                 need a maths field; without one they render literally. Safe to
+                 wrap here rather than in the generator because these two slots
+                 only ever carry maths, never markup. -->
+            <p>Suppose a student challenged you to find {{expl_how_many}} numbers between <m>{{num_a}}</m> and <m>{{num_b}}</m>. What steps would you take to find those {{expl_how_many}} numbers? (You do not need to write out the actual {{expl_how_many}} individual numbers.) </p>
         </content>
         <outtro>
             <p>Answers will vary.</p>
