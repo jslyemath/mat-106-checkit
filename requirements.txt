@@ -9,7 +9,7 @@
 # Working on the platform itself? Install it editable instead, so edits to the
 # checkit checkout take effect here without rebuilding a wheel:
 #     pip install -e C:/Users/slye/Projects/checkit/dashboard
-checkit-dashboard @ https://github.com/jslyemath/checkit/releases/download/v0.2.8.1/checkit_dashboard-0.2.8.1-py3-none-any.whl
+checkit-dashboard @ https://github.com/jslyemath/checkit/releases/download/v0.2.8.2/checkit_dashboard-0.2.8.2-py3-none-any.whl
 
 Jinja2~=3.1.4
 latex~=0.7.0
