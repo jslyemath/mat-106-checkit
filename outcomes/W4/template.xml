@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
     <intro>
-        <p><m>\textbf{W4}</m></p>
         <p>For each of the following equations, state the property that is being exemplified.</p>
     </intro>
     <knowl>
@@ -93,7 +92,7 @@
             W4-E
         </title>
         <intro>
-            <p><m>\textbf{W4-E}</m> (This explanation skill appears on the back of W4. Passing W4-E is separate from passing W4.)</p>
+            <p>This explanation skill appears on the back of W4. Passing W4-E is separate from passing W4.</p>
         </intro>
         <knowl>
             <content>
