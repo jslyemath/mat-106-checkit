@@ -110,4 +110,4 @@ def generate(**kwargs):
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
     def data(self):
-        return generate(mode='html', course_progress=6, d2_allow_repeating=True)
+        return generate(course_progress=6, d2_allow_repeating=True)

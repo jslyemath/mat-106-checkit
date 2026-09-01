@@ -472,4 +472,4 @@ class Generator(BaseGenerator):
 
     def data(self):
         progress = 2 if self.variant == "multiplication" else 1
-        return generate(mode='html', course_progress=progress)
+        return generate(course_progress=progress)

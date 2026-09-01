@@ -69,4 +69,4 @@ def generate(**kwargs):
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
     def data(self):
-        return generate(mode='html', course_progress=6, w7_allow_terminating=True)
+        return generate(course_progress=6, w7_allow_terminating=True)

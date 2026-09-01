@@ -87,11 +87,14 @@ def generate(**kwargs):
 #
 # Ported from generator.sage, which loaded this file with runpy and called:
 #     pygenerate(mode='html', course_progress=6)
-# Those arguments are reproduced exactly, so this port changes no output: the
-# same seed yields the same data it did before. The shim existed only because
+# The dead arguments among those were dropped on 2026-08-31 -- no generate()
+# ever read `mode`, and only R1, R2, W4, W4-E and W5 read `course_progress`.
+# Verified output-identical across 350 samples before and after.
+#
+# The shim existed only because
 # SageMath could not reach a plain-Python file and the bank root was not
 # importable; both gaps are closed, so the file extension now selects the
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
     def data(self):
-        return generate(course_progress=6)
+        return generate()
