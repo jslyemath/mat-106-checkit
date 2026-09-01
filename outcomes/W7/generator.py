@@ -68,5 +68,13 @@ def generate(**kwargs):
 # importable; both gaps are closed, so the file extension now selects the
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
+    # Terminating decimals arrive partway through the semester, so both
+    # cases have to exist in the bank: a printed quiz set before that
+    # point asks for "no_terminating", one set after asks for either.
+    variants = ["no_terminating", "terminating"]
+
     def data(self):
-        return generate(course_progress=6, w7_allow_terminating=True)
+        return generate(
+            course_progress=6,
+            w7_allow_terminating=self.variant == "terminating",
+        )

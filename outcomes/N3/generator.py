@@ -793,5 +793,12 @@ def generate(**kwargs):
 # importable; both gaps are closed, so the file extension now selects the
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
+    # Whether the student is required to use the listing method, or may
+    # choose. Both belong in the bank so a quiz can demand the method
+    # being taught that week.
+    variants = ["any_method", "listing_only"]
+
     def data(self):
-        return generate()
+        return generate(
+            n3_n4_force_listing_method=self.variant == "listing_only",
+        )

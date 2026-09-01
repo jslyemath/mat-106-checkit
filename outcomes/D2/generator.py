@@ -109,5 +109,13 @@ def generate(**kwargs):
 # importable; both gaps are closed, so the file extension now selects the
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
+    # Repeating decimals come later in the semester than terminating
+    # ones, so both cases have to exist in the bank rather than the
+    # generator being told which one this course has reached.
+    variants = ["no_repeating", "repeating"]
+
     def data(self):
-        return generate(course_progress=6, d2_allow_repeating=True)
+        return generate(
+            course_progress=6,
+            d2_allow_repeating=self.variant == "repeating",
+        )
