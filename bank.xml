@@ -38,6 +38,9 @@
             <description>
                 I can convert the ancient Roman/Babylonian/Egyptian numeration systems to modern Hindu-Arabic base ten, and vice versa.
             </description>
+            <!-- Students are working through these versions; see "Do not
+                 regenerate W1 or W1-E" in CODEBASE_NOTES.md. -->
+            <frozen/>
         </outcome>
 
         <outcome>
@@ -47,6 +50,9 @@
             <description>
                 I can compare and contrast the ancient and modern numeration systems, and explain how they represent values.
             </description>
+            <!-- Students are working through these versions; see "Do not
+                 regenerate W1 or W1-E" in CODEBASE_NOTES.md. -->
+            <frozen/>
         </outcome>
 
         <outcome>
