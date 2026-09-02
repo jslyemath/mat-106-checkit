@@ -86,7 +86,7 @@ def generate(**kwargs):
         if not default_order:
             a, b = b, a
 
-        prob = f'${a}$ {connecting_string} ${b}$'
+        prob = f'${a}${connecting_string}${b}$'
         return prob
 
     vars = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'm', 'n',
@@ -120,12 +120,12 @@ def generate(**kwargs):
         match ver:
             case 'does divide':
                 if second_variable:
-                    extra_statement = f' and {div_statement(a, c, vocab_mode=vocab)} '
+                    extra_statement = f' and {div_statement(a, c, vocab_mode=vocab)}'
                 else:
                     c = int(random.randint(1, 9)) * a
                     extra_statement = ''
 
-                prob = (f'If {div_statement(a, b, vocab_mode=vocab)}{extra_statement}, then  '
+                prob = (f'If {div_statement(a, b, vocab_mode=vocab)}{extra_statement}, then '
                         f'{div_statement(a, f"{b} {op} {c}", vocab_mode=vocab, use_not=not ans)}.')
 
             case 'does not divide':
@@ -238,8 +238,8 @@ def generate(**kwargs):
         a = int(random.randint(2, 9))
         a_mult = int(random.randint(2, 6)) * a
         b = random.choice(vars)
-        prob = (f'If {div_statement(a, b, vocab_mode=vocab)} '
-                f' and {div_statement(a_mult, b, vocab_mode=vocab)}, '
+        prob = (f'If {div_statement(a, b, vocab_mode=vocab)}'
+                f' and {div_statement(a_mult, b, vocab_mode=vocab)},'
                 f' then {div_statement(a * a_mult, b, vocab_mode=vocab)}.')
         return prob
 

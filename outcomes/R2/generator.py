@@ -441,14 +441,14 @@ def generate(**kwargs):
         final_payment = remaining_amount % monthly_payments
 
         problem = (
-            f"{person.name}'s family is buying a new house. The agreed-upon price for the house at the time of closing is <m>\\${house_price:,}</m>. "
-            f"The bank requires an immediate down payment of <m>\\${down_payment:,}</m>. The remaining amount will be paid over {monthly_payments:,} equal monthly payments, plus one more month for any remaining balance. "
+            f"{person.name}'s family is buying a new house. The agreed-upon price for the house at the time of closing is <m>\\${sm.math_num(house_price)}</m>. "
+            f"The bank requires an immediate down payment of <m>\\${sm.math_num(down_payment)}</m>. The remaining amount will be paid over {monthly_payments:,} equal monthly payments, plus one more month for any remaining balance. "
             f"Assuming there is no interest involved, how much will {person.name}'s family be paying each month? Don't forget to mention the final month, in case there was a remaining balance.")
 
         solution = (
             f"To find out how much {person.name}'s family will need to pay each month, we first subtract the down payment from the house price to find the remaining amount. "
-            f"<m>\\${house_price:,}</m> minus <m>\\${down_payment:,}</m> equals <m>\\${remaining_amount:,}</m>. Dividing this by {monthly_payments:,} monthly payments, we get <m>\\${monthly_payment_amount:,}</m> per month. "
-            f"Therefore, {person.name}'s family will need to pay <m>\\${monthly_payment_amount:,}</m> each month for {monthly_payments} months, followed by a final payment of <m>\\${final_payment:,}</m>.")
+            f"<m>\\${sm.math_num(house_price)}</m> minus <m>\\${sm.math_num(down_payment)}</m> equals <m>\\${sm.math_num(remaining_amount)}</m>. Dividing this by {monthly_payments:,} monthly payments, we get <m>\\${sm.math_num(monthly_payment_amount)}</m> per month. "
+            f"Therefore, {person.name}'s family will need to pay <m>\\${sm.math_num(monthly_payment_amount)}</m> each month for {monthly_payments} months, followed by a final payment of <m>\\${sm.math_num(final_payment)}</m>.")
 
         return problem, solution
 

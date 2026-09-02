@@ -62,7 +62,7 @@ def generate(**kwargs):
         offset = int(random.randint(-5, 0))
         dec = Decimal(our_integer) * Decimal(int(10)) ** Decimal(offset)
         percent = str(dec * Decimal(int(10)) ** Decimal(int(2)))
-        percent = sm.dec_string(2, custom_string=str(dec))
+        percent = sm.dec_string(2, custom_string=str(dec), separator=sm.MATH_COMMA)
 
         prob = f'{dec}'
         ans = f'{percent}\\%'

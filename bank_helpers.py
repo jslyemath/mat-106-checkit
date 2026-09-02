@@ -734,6 +734,24 @@ def as_math(tex):
 
 
 # --------------------------------------------------------------------------
+# Numbers that will be typeset as maths.
+
+#: TeX classes a bare comma as punctuation and puts a thin space after it, so
+#: \(7,500\) reads as "7, 500". Braces make it an ordinary atom and the space
+#: goes away. KaTeX follows the same rule -- measured, 59.17px against 55.14px
+#: at 20px -- so this is right for the website as well as for print.
+#:
+#: Maths only. In running text the braces would print literally, so a number
+#: outside <m> keeps its plain comma.
+MATH_COMMA = "{,}"
+
+
+def math_num(value):
+    """`value` with thousands separators that sit right inside maths."""
+    return f"{value:,}".replace(",", MATH_COMMA)
+
+
+# --------------------------------------------------------------------------
 # Numerals from scripts that render differently in each medium.
 #
 # to_egyptian and to_simple_babylonian each return one of two entirely different

@@ -31,17 +31,17 @@ def generate(**kwargs):
         dividend = divisor * quotient
         remainder = random.choice(list(range(0, divisor)))
         dividend += remainder
-        quotient = f'{quotient:,}'.replace(",", "{,}")
-        dividend = f'{dividend:,}'.replace(",", "{,}")
+        quotient = sm.math_num(quotient)
+        dividend = sm.math_num(dividend)
         answer = f'{quotient} remainder {remainder}'
     else:
         quotient_offset = random.choice(list(range(0, -1 * (quotient_pv + 1), -1)))
         divisor_offset = random.choice(list(range(1, -1 * (divisor_pv + 1), -1)))
         dividend_offset = quotient_offset + divisor_offset
         dividend = str(eval(quotient + '*' + divisor))
-        dividend = sm.dec_string(dividend_offset, custom_string=dividend)
-        quotient = sm.dec_string(quotient_offset, custom_string=quotient)
-        divisor = sm.dec_string(divisor_offset, custom_string=divisor)
+        dividend = sm.dec_string(dividend_offset, custom_string=dividend, separator=sm.MATH_COMMA)
+        quotient = sm.dec_string(quotient_offset, custom_string=quotient, separator=sm.MATH_COMMA)
+        divisor = sm.dec_string(divisor_offset, custom_string=divisor, separator=sm.MATH_COMMA)
         directions = 'Compute the following quotient. Give your final answer as a decimal. There should not be a remainder.'
         answer = f'{quotient}'
 
