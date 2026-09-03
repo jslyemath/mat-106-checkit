@@ -12,7 +12,20 @@
         <category prefix="D" color="ForestGreen" />
     </color_map>
 
-    <outcomes>        
+    <outcomes>
+        <!-- Twenty problems across the eleven fundamental skills, printed as a
+             two-page sheet. The printed box reads "Fundamentals Checkpoint"
+             while the footer stays FCP; see \skillheader's optional argument in
+             skillcheckpoints.sty. -->
+        <outcome>
+            <title>Fundamentals Checkpoint</title>
+            <slug>FCP</slug>
+            <path>outcomes/FCP</path>
+            <description>
+                I can perform the fundamental calculations and procedures listed in the syllabus, scoring at least 90 percent.
+            </description>
+        </outcome>
+
         <outcome>
             <title>Analyzing Student Work</title>
             <slug>R1</slug>

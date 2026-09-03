@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
+    <intro>
+        <p>Calculate each of the following. You do not need to simplify any fractions.</p>
+    </intro>
+
+    <knowl>
+        <content><p><m>{{{p1_prob}}}</m></p></content>
+        <outtro><p><m>{{{p1_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p2_prob}}}</m></p></content>
+        <outtro><p><m>{{{p2_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p3_prob}}}</m></p></content>
+        <outtro><p><m>{{{p3_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p4_prob}}}</m></p></content>
+        <outtro><p><m>{{{p4_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p5_prob}}}</m></p></content>
+        <outtro><p><m>{{{p5_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p6_prob}}}</m></p></content>
+        <outtro><p><m>{{{p6_ans}}}</m></p></outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <list>
+                <!-- {{#p7_parts}} -->
+                <item><p><m>{{{prob}}}</m></p></item>
+                <!-- {{/p7_parts}} -->
+            </list>
+        </content>
+        <outtro>
+            <list>
+                <!-- {{#p7_parts}} -->
+                <item><p><m>{{{prob}}} = {{{ans}}}</m></p></item>
+                <!-- {{/p7_parts}} -->
+            </list>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <list>
+                <!-- {{#p8_parts}} -->
+                <item><p><m>{{{prob}}}</m></p></item>
+                <!-- {{/p8_parts}} -->
+            </list>
+        </content>
+        <outtro>
+            <list>
+                <!-- {{#p8_parts}} -->
+                <item><p><m>{{{prob}}} = {{{ans}}}</m></p></item>
+                <!-- {{/p8_parts}} -->
+            </list>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <list>
+                <!-- {{#p9_parts}} -->
+                <item><p><m>{{{prob}}}</m></p></item>
+                <!-- {{/p9_parts}} -->
+            </list>
+        </content>
+        <outtro>
+            <list>
+                <!-- {{#p9_parts}} -->
+                <item><p><m>{{{prob}}} = {{{ans}}}</m></p></item>
+                <!-- {{/p9_parts}} -->
+            </list>
+        </outtro>
+    </knowl>
+    <knowl>
+        <content>
+            <list>
+                <!-- {{#p10_parts}} -->
+                <item><p><m>{{{prob}}}</m></p></item>
+                <!-- {{/p10_parts}} -->
+            </list>
+        </content>
+        <outtro>
+            <list>
+                <!-- {{#p10_parts}} -->
+                <item><p><m>{{{prob}}} = {{{ans}}}</m></p></item>
+                <!-- {{/p10_parts}} -->
+            </list>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content><p><m>{{{p11_prob}}}</m></p></content>
+        <outtro><p><m>{{{p11_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p12_prob}}}</m></p></content>
+        <outtro><p><m>{{{p12_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p13_prob}}}</m></p></content>
+        <outtro><p><m>{{{p13_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p14_prob}}}</m></p></content>
+        <outtro><p><m>{{{p14_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p15_prob}}}</m></p></content>
+        <outtro><p><m>{{{p15_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <content><p><m>{{{p16_prob}}}</m></p></content>
+        <outtro><p><m>{{{p16_ans}}}</m></p></outtro>
+    </knowl>
+
+    <knowl>
+        <intro><p>Order the given integers from least to greatest.</p></intro>
+        <content><p><m>{{{p17_prob}}}</m></p></content>
+        <outtro><p><m>{{{p17_ans}}}</m></p></outtro>
+    </knowl>
+    <knowl>
+        <intro><p>Order the given integers from least to greatest.</p></intro>
+        <content><p><m>{{{p18_prob}}}</m></p></content>
+        <outtro><p><m>{{{p18_ans}}}</m></p></outtro>
+    </knowl>
+
+    <knowl>
+        <intro><p>Round each of the following to the desired place value.</p></intro>
+        <content>
+            <list>
+                <!-- {{#p19_parts}} -->
+                <item><p><m>{{{prob}}}</m> ({{place}})</p></item>
+                <!-- {{/p19_parts}} -->
+            </list>
+        </content>
+        <outtro>
+            <list>
+                <!-- {{#p19_parts}} -->
+                <item><p><m>{{{ans}}}</m></p></item>
+                <!-- {{/p19_parts}} -->
+            </list>
+        </outtro>
+    </knowl>
+    <knowl>
+        <intro><p>Round each of the following to the desired place value.</p></intro>
+        <content>
+            <list>
+                <!-- {{#p20_parts}} -->
+                <item><p><m>{{{prob}}}</m> ({{place}})</p></item>
+                <!-- {{/p20_parts}} -->
+            </list>
+        </content>
+        <outtro>
+            <list>
+                <!-- {{#p20_parts}} -->
+                <item><p><m>{{{ans}}}</m></p></item>
+                <!-- {{/p20_parts}} -->
+            </list>
+        </outtro>
+    </knowl>
+</knowl>

@@ -1,0 +1,112 @@
+\setvseed{\VAR{seed}}
+\skillheader[Fundamentals Checkpoint]{FCP}
+
+\#{ Every student's paper sits in one document, so the problem counter has to
+   start over here or the second student's sheet is numbered 21 to 40. }
+\setcounter{pi}{0}
+
+\textit{Calculate each of the following. You do not need to simplify any fractions.}
+
+\vspace{6pt}
+
+\begin{tabular}{lp{4.6cm}lp{4.6cm}lp{4.6cm}}
+    \numprob
+    $\VAR{p1_prob}$ \newline\newline\ans{$\VAR{p1_ans}$} &
+
+    \numprob
+    $\VAR{p2_prob}$ \newline\newline\ans{$\VAR{p2_ans}$} &
+
+    \numprob
+    $\VAR{p3_prob}$ \newline\newline\ans{$\VAR{p3_ans}$} \\[1.7in]
+
+    \numprob
+    $\VAR{p4_prob}$ \newline\newline\ans{$\VAR{p4_ans}$} &
+
+    \numprob
+    $\VAR{p5_prob}$ \newline\newline\ans{$\VAR{p5_ans}$} &
+
+    \numprob
+    $\VAR{p6_prob}$ \newline\newline\ans{$\VAR{p6_ans}$} \\[1.7in]
+
+    \numprob
+    \begin{tabular}[t]{llr}
+\BLOCK{for part in p7_parts}
+        (\VAR{part.letter}) & $\VAR{part.prob}$ & \ans{$\VAR{part.ans}$} \BLOCK{if not loop.last}\\[12pt]\BLOCK{endif}
+\BLOCK{endfor}
+    \end{tabular} &
+
+    \numprob
+    \begin{tabular}[t]{llr}
+\BLOCK{for part in p8_parts}
+        (\VAR{part.letter}) & $\VAR{part.prob}$ & \ans{$\VAR{part.ans}$} \BLOCK{if not loop.last}\\[12pt]\BLOCK{endif}
+\BLOCK{endfor}
+    \end{tabular} &
+
+    \numprob
+    \begin{tabular}[t]{llr}
+\BLOCK{for part in p9_parts}
+        (\VAR{part.letter}) & $\VAR{part.prob}$ & \ans{$\VAR{part.ans}$} \BLOCK{if not loop.last}\\[12pt]\BLOCK{endif}
+\BLOCK{endfor}
+    \end{tabular} \\[1.7in]
+
+    \numprob
+    \begin{tabular}[t]{llr}
+\BLOCK{for part in p10_parts}
+        (\VAR{part.letter}) & $\VAR{part.prob}$ & \ans{$\VAR{part.ans}$} \BLOCK{if not loop.last}\\[12pt]\BLOCK{endif}
+\BLOCK{endfor}
+    \end{tabular} &
+
+    \numprob
+    $\VAR{p11_prob}$ \newline\newline\newline\ans{ $\VAR{p11_ans}$ } &
+
+    \numprob
+    $\VAR{p12_prob}$ \newline\newline\newline\ans{ $\VAR{p12_ans}$ }
+\end{tabular}
+
+\newpage
+\#{ The version and the grading box belong on the first sheet only. Set for
+   this page alone, never with \fancyfoot, because every student's paper is in
+   one document and a running change would follow through to all of them. }
+\thispagestyle{skillcontinued}
+
+\begin{tabular}{lp{7.9cm}lp{7.9cm}}
+    \numprob
+    $\VAR{p13_prob}$ \newline\newline\newline\ans{ $\VAR{p13_ans}$ } &
+
+    \numprob
+    $\VAR{p14_prob}$ \newline\newline\newline\ans{ $\VAR{p14_ans}$ } \\[2in]
+
+    \numprob
+    $\VAR{p15_prob}$ \newline\newline\ans{$\VAR{p15_ans}$} &
+
+    \numprob
+    $\VAR{p16_prob}$ \newline\newline\ans{$\VAR{p16_ans}$} \\[2in]
+\end{tabular}
+
+\textit{For each of the following, order the given integers from least to greatest.}
+
+\begin{tabular}{lp{7.9cm}lp{7.9cm}}
+    \numprob
+    $\VAR{p17_prob}$ \newline\newline \ans{$\VAR{p17_ans}$} &
+
+    \numprob
+    $\VAR{p18_prob}$ \newline\newline \ans{$\VAR{p18_ans}$} \\[2in]
+\end{tabular}
+
+\textit{Round each of the following to the desired place value.}
+
+\begin{tabular}{lp{7.9cm}lp{7.9cm}}
+    \numprob
+    \begin{tabular}[t]{lp{7cm}}
+\BLOCK{for part in p19_parts}
+        (\VAR{part.letter}) & $\VAR{part.prob}$ (\VAR{part.place}) \newline\newline\ans{$\VAR{part.ans}$} \BLOCK{if not loop.last}\\[48pt]\BLOCK{endif}
+\BLOCK{endfor}
+    \end{tabular} &
+
+    \numprob
+    \begin{tabular}[t]{lp{7cm}}
+\BLOCK{for part in p20_parts}
+        (\VAR{part.letter}) & $\VAR{part.prob}$ (\VAR{part.place}) \newline\newline\ans{$\VAR{part.ans}$} \BLOCK{if not loop.last}\\[48pt]\BLOCK{endif}
+\BLOCK{endfor}
+    \end{tabular}
+\end{tabular}
