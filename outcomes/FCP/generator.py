@@ -648,7 +648,10 @@ def ordering_problems():
     """Two lists of integers to put in order, one mixed and one all negative."""
     mixed = random.sample(range(-19, 1), 4)
     mixed[3] *= (-1) ** random.choice([0, 1])
-    mixed.extend(random.sample(range(1, 20), 2))
+    # `sample` draws distinct values only within a single call. The flip above
+    # can turn mixed[3] positive, so the two positives are drawn from a pool
+    # that leaves it out; otherwise the list asks for the same number twice.
+    mixed.extend(random.sample([n for n in range(1, 20) if n != mixed[3]], 2))
     random.shuffle(mixed)
 
     negatives = random.sample(range(-19, 1), 6)
@@ -657,6 +660,9 @@ def ordering_problems():
     lists = [mixed, negatives]
     if random.choice([True, False]):
         lists.reverse()
+
+    for values in lists:
+        assert len(set(values)) == len(values), f'repeated value in {values}'
 
     return [{'prob': ', '.join(str(n) for n in values),
              'ans': ', '.join(str(n) for n in sorted(values))}
