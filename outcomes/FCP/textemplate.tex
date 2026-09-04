@@ -69,6 +69,12 @@
    one document and a running change would follow through to all of them. }
 \thispagestyle{skillcontinued}
 
+\#{ A line of air under the header. Page one has the skill box between the
+   header and the first problem; page two has nothing, so without this the top
+   row sits right under the student's name. \vspace* rather than \vspace,
+   because ordinary vertical space is discarded at the top of a page. }
+\vspace*{\baselineskip}
+
 \begin{tabular}{lp{7.9cm}lp{7.9cm}}
     \numprob
     $\VAR{p13_prob}$ \newline\newline\newline\ans{ $\VAR{p13_ans}$ } &
@@ -90,7 +96,11 @@
     $\VAR{p17_prob}$ \newline\newline \ans{$\VAR{p17_ans}$} &
 
     \numprob
-    $\VAR{p18_prob}$ \newline\newline \ans{$\VAR{p18_ans}$} \\[2in]
+    \#{ 1.8in, not 2in. The line of air added under the header above has to
+       come from somewhere or problems 19 and 20 fall onto a third page; this
+       is trailing space before the next instruction line rather than room a
+       student writes in, so it is the cheapest 0.2in on the sheet. }
+    $\VAR{p18_prob}$ \newline\newline \ans{$\VAR{p18_ans}$} \\[1.8in]
 \end{tabular}
 
 \textit{Round each of the following to the desired place value.}
