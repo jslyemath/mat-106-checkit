@@ -29,69 +29,42 @@
         <outtro><p><m>{{{p6_ans}}}</m></p></outtro>
     </knowl>
 
+    <!-- Problems 7 to 10 each hold four of their own. Sub-knowls rather than a
+         list, so the web numbers them 7.1 to 7.4 and each carries its own
+         answer: a list would stack four questions above four answers and leave
+         the reader matching them up. The print template puts the same parts in
+         a lettered table, which is what a printed grid can do instead. -->
     <knowl>
-        <content>
-            <list>
-                <!-- {{#p7_parts}} -->
-                <item><p><m>{{{prob}}}</m></p></item>
-                <!-- {{/p7_parts}} -->
-            </list>
-        </content>
-        <outtro>
-            <list>
-                <!-- {{#p7_parts}} -->
-                <item><p><m>{{{prob}}} = {{{ans}}}</m></p></item>
-                <!-- {{/p7_parts}} -->
-            </list>
-        </outtro>
+        <!-- {{#p7_parts}} -->
+        <knowl>
+            <content><p><m>{{{prob}}}</m></p></content>
+            <outtro><p><m>{{{ans}}}</m></p></outtro>
+        </knowl>
+        <!-- {{/p7_parts}} -->
     </knowl>
     <knowl>
-        <content>
-            <list>
-                <!-- {{#p8_parts}} -->
-                <item><p><m>{{{prob}}}</m></p></item>
-                <!-- {{/p8_parts}} -->
-            </list>
-        </content>
-        <outtro>
-            <list>
-                <!-- {{#p8_parts}} -->
-                <item><p><m>{{{prob}}} = {{{ans}}}</m></p></item>
-                <!-- {{/p8_parts}} -->
-            </list>
-        </outtro>
+        <!-- {{#p8_parts}} -->
+        <knowl>
+            <content><p><m>{{{prob}}}</m></p></content>
+            <outtro><p><m>{{{ans}}}</m></p></outtro>
+        </knowl>
+        <!-- {{/p8_parts}} -->
     </knowl>
     <knowl>
-        <content>
-            <list>
-                <!-- {{#p9_parts}} -->
-                <item><p><m>{{{prob}}}</m></p></item>
-                <!-- {{/p9_parts}} -->
-            </list>
-        </content>
-        <outtro>
-            <list>
-                <!-- {{#p9_parts}} -->
-                <item><p><m>{{{prob}}} = {{{ans}}}</m></p></item>
-                <!-- {{/p9_parts}} -->
-            </list>
-        </outtro>
+        <!-- {{#p9_parts}} -->
+        <knowl>
+            <content><p><m>{{{prob}}}</m></p></content>
+            <outtro><p><m>{{{ans}}}</m></p></outtro>
+        </knowl>
+        <!-- {{/p9_parts}} -->
     </knowl>
     <knowl>
-        <content>
-            <list>
-                <!-- {{#p10_parts}} -->
-                <item><p><m>{{{prob}}}</m></p></item>
-                <!-- {{/p10_parts}} -->
-            </list>
-        </content>
-        <outtro>
-            <list>
-                <!-- {{#p10_parts}} -->
-                <item><p><m>{{{prob}}} = {{{ans}}}</m></p></item>
-                <!-- {{/p10_parts}} -->
-            </list>
-        </outtro>
+        <!-- {{#p10_parts}} -->
+        <knowl>
+            <content><p><m>{{{prob}}}</m></p></content>
+            <outtro><p><m>{{{ans}}}</m></p></outtro>
+        </knowl>
+        <!-- {{/p10_parts}} -->
     </knowl>
 
     <knowl>
@@ -132,36 +105,20 @@
 
     <knowl>
         <intro><p>Round each of the following to the desired place value.</p></intro>
-        <content>
-            <list>
-                <!-- {{#p19_parts}} -->
-                <item><p><m>{{{prob}}}</m> ({{place}})</p></item>
-                <!-- {{/p19_parts}} -->
-            </list>
-        </content>
-        <outtro>
-            <list>
-                <!-- {{#p19_parts}} -->
-                <item><p><m>{{{ans}}}</m></p></item>
-                <!-- {{/p19_parts}} -->
-            </list>
-        </outtro>
+        <!-- {{#p19_parts}} -->
+        <knowl>
+            <content><p><m>{{{prob}}}</m> ({{place}})</p></content>
+            <outtro><p><m>{{{ans}}}</m></p></outtro>
+        </knowl>
+        <!-- {{/p19_parts}} -->
     </knowl>
     <knowl>
         <intro><p>Round each of the following to the desired place value.</p></intro>
-        <content>
-            <list>
-                <!-- {{#p20_parts}} -->
-                <item><p><m>{{{prob}}}</m> ({{place}})</p></item>
-                <!-- {{/p20_parts}} -->
-            </list>
-        </content>
-        <outtro>
-            <list>
-                <!-- {{#p20_parts}} -->
-                <item><p><m>{{{ans}}}</m></p></item>
-                <!-- {{/p20_parts}} -->
-            </list>
-        </outtro>
+        <!-- {{#p20_parts}} -->
+        <knowl>
+            <content><p><m>{{{prob}}}</m> ({{place}})</p></content>
+            <outtro><p><m>{{{ans}}}</m></p></outtro>
+        </knowl>
+        <!-- {{/p20_parts}} -->
     </knowl>
 </knowl>
