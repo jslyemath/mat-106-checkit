@@ -1,5 +1,7 @@
 assets/**/generated
 assets/bank.json
+# Copied from the bank root at build time, and published via docs/.
+assets/*.sty
 assets/R1/used_versions.json
 *.ipynb.sage-jupyter2
 dashboard.ipynb
