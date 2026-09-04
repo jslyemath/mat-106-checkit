@@ -10,6 +10,12 @@
         <category prefix="N" color="Red" />
         <category prefix="F" color="teal" />
         <category prefix="D" color="ForestGreen" />
+        <!-- FCP would take F's teal, since the longest matching prefix wins and
+             "F" would otherwise be the only match. Sepia is the furthest thing
+             from every colour above: 65 units away in CIE Lab, where the
+             closest existing pair (Orange and Red) is 40, and it reads at
+             11.3:1 against white so it survives a laser printer. -->
+        <category prefix="FCP" color="Sepia" />
     </color_map>
 
     <outcomes>
