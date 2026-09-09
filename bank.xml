@@ -22,7 +22,7 @@
         <!-- Twenty problems across the eleven fundamental skills, printed as a
              two-page sheet. The printed box reads "Fundamentals Checkpoint"
              while the footer stays FCP; see \skillheader's optional argument in
-             skillcheckpoints.sty. -->
+             printit/printit.sty. -->
         <outcome>
             <title>Fundamentals Checkpoint</title>
             <slug>FCP</slug>
