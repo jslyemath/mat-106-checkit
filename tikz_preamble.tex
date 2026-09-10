@@ -1,0 +1,19 @@
+% How this bank's figures are compiled to PNG for the viewer.
+%
+% Loading printitfigures.sty is the point of this file. It carries the same
+% pgfplots axis styles the printed handouts use, so a number line drawn for
+% the website and the same line drawn in a handout come out identical --
+% because they are the same picture, from the same .tikz source, styled by the
+% same package.
+%
+% Not printit.sty itself: that sets up page geometry, headers and footers, and
+% expects a document to have called \acadclass and \title. A figure has none
+% of that.
+%
+% checkit-printit installs both files into printit/, and CheckIt copies the
+% ones bank.xml declares into the directory where each figure is compiled.
+
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{printitfigures}

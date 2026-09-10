@@ -5,8 +5,9 @@
     <url>https://jslyemath.github.io/mat-106-checkit</url>
     <latex-support>
         <!-- Installed and owned by checkit-printit. CheckIt only
-             publishes it, so the viewer can build LaTeX that
+             publishes them, so the viewer can build LaTeX that
              matches the printed handouts. -->
+        <file path="printit/printitfigures.sty" role="figures"/>
         <file path="printit/printit.sty" role="theme"/>
     </latex-support>
 

@@ -9,16 +9,21 @@
     
     Construct the desired model. Then \textbf{explain} each step of its construction process. How is the denominator represented in the model? How is the numerator represented? How does each inform the construction process?
 
-    \ifthenelse{\equal{\VAR{p1_type}}{line}}{
+    %% The picture comes from the .tikz the generator wrote -- the same file
+    %% CheckIt rasterizes for the website, so both show the same thing. See
+    %% F2's textemplate for why the problem/answer choice is made twice, once
+    %% in Jinja and once in LaTeX.
     \vspace{20pt}
-    \setmyx{0}{\VAR{p1_ticks}}
-    \begin{tikzpicture}[scale=2.3]
-        \begin{axis}[blank number line style,
-        extra x ticks={0,\VAR{p1_orig_loc},\VAR{p1_requested_loc}},
-        extra x tick labels={0,$\VAR{p1_label_b}$,\ans{$\VAR{p1_label_c}$}}]
-            \ans{\node at (axis cs:\VAR{p1_requested_loc},0) {\tikz \fill[scCOLOR] (0,0) circle (2pt);};}
-        \end{axis}
-    \end{tikzpicture}
-    }{\ans{\VAR{p1_ans_text}}}
+    \BLOCK{if p1_type == 'line'}
+    \ifthenelse{\boolean{anstoggle}}{%
+        \input{assets/F2-E/generated/\VAR{'%04d'|format(seed)}/p1_ans_model.tikz}%
+    }{%
+        \input{assets/F2-E/generated/\VAR{'%04d'|format(seed)}/p1_prob_model.tikz}%
+    }
+    \BLOCK{else}
+    \ifthenelse{\boolean{anstoggle}}{%
+        \input{assets/F2-E/generated/\VAR{'%04d'|format(seed)}/p1_ans_model.tikz}%
+    }{}
+    \BLOCK{endif}
 
     \VAR{p1_soln_text}

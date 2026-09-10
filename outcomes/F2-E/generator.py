@@ -151,16 +151,18 @@ class Generator(BaseGenerator):
             kind = data[part + "_type"]
             if kind == "line":
                 ticks = int(data[part + "_ticks"])
-                one = int(data[part + "_orig_loc"])
+                given = int(data[part + "_orig_loc"])
                 mark = int(data[part + "_requested_loc"])
-                num = int(data[part + "_requested_num"])
-                den = int(data[part + "_requested_denom"])
 
-                labels = {0: "0", one: "1"}
+                # The labels the generator already wrote, not ones rebuilt
+                # here. The marked reference point is not always 1 -- it can be
+                # a fraction such as 4/19 -- so labelling it "1" made the
+                # picture state something false. See F2's generator.
+                labels = {0: "0", given: data[part + "_label_b"]}
                 models[part + "_prob_model"] = amt.tikz_number_line(ticks, labels)
 
                 answered = dict(labels)
-                answered[mark] = r"\frac{%d}{%d}" % (num, den)
+                answered[mark] = data[part + "_label_c"]
                 models[part + "_ans_model"] = amt.tikz_number_line(
                     ticks, answered, point=mark
                 )

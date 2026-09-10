@@ -299,20 +299,33 @@ def tikz_number_line(ticks, labels, point=None):
     `labels` maps an integer position to LaTeX shown beneath it; `point` is an
     optional position to mark with a filled dot, which is what distinguishes an
     answer diagram from its problem.
+
+    Drawn with the theme's `blank number line style`, which is what decides the
+    double arrowheads, the tick length and the line weight. One source, two
+    surfaces: CheckIt rasterizes this to PNG for the viewer, and a printed
+    handout inputs the same .tikz.
+
+    It used to be hand-drawn TikZ while the print template drew its own
+    pgfplots axis -- two drawings of one picture, differing in every one of
+    those properties. The visible symptom was a web number line with no
+    left-hand arrowhead.
     """
-    # Long lines have to shrink or the picture runs off the page. The shape
-    # functions can assume a fixed scale because each is about one unit across;
-    # a number line is as wide as its tick count.
-    scale = min(1.2, 11.0 / max(ticks, 1))
+    ordered = sorted(labels.items())
+    positions = ",".join(str(p) for p, _ in ordered)
+    texts = ",".join("$%s$" % t for _, t in ordered)
     out = [
-        r"\begin{tikzpicture}[scale=%.3f, line width=1pt]" % scale,
-        r"\draw[->] (-0.4,0) -- (%.2f,0);" % (ticks + 0.7),
+        r"\setmyx{0}{%d}" % ticks,
+        r"\begin{tikzpicture}[scale=2.3]",
+        r"    \begin{axis}[blank number line style,",
+        r"    extra x ticks={%s}," % positions,
+        r"    extra x tick labels={%s}]" % texts,
     ]
-    for i in range(ticks + 1):
-        out.append(r"\draw (%d,0.14) -- (%d,-0.14);" % (i, i))
-    for position, text in sorted(labels.items()):
-        out.append(r"\node[below=2pt] at (%d,-0.14) {$%s$};" % (position, text))
     if point is not None:
-        out.append(r"\fill[blue] (%d,0) circle (3pt);" % point)
-    out.append(r"\end{tikzpicture}")
+        # scCOLOR is the theme's per-skill colour, so the answer dot matches
+        # the skill box above it instead of being a hardcoded blue.
+        out.append(
+            r"        \node at (axis cs:%d,0) "
+            r"{\tikz \fill[scCOLOR] (0,0) circle (2pt);};" % point
+        )
+    out += [r"    \end{axis}", r"\end{tikzpicture}"]
     return "\n".join(out)
