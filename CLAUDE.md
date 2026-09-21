@@ -32,3 +32,12 @@ platform edits take effect here with no reinstall.
   gitignored; the source of truth is `printit/`.
 - `pdfgenerator.py` and `main_template.tex` are the deprecated pre-printit
   path. They still work, but printit replaced them.
+- The installed checkit reports **0.2.8.1** while the source says 0.2.9.1. The
+  install is editable, so the code that runs is always current -- only the
+  label is stale, and it goes into `bank.json` and the published footer.
+  `pip install -e ../checkit/dashboard` refreshes it.
+- This bank now has a printit **workspace** at
+  `~/CheckItPrintIt/workspaces/MAT 106/`, holding the roster, seating,
+  availability, form config and print record. Print jobs name it rather than
+  carrying copies. Nothing about it lives in this repo, deliberately --- it
+  holds names, student ids and email addresses.
