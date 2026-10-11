@@ -321,7 +321,7 @@ def tikz_number_line(ticks, labels, point=None):
         r"    extra x tick labels={%s}]" % texts,
     ]
     if point is not None:
-        # scCOLOR is the theme's per-skill colour, so the answer dot matches
+        # scCOLOR is the theme's per-skill color, so the answer dot matches
         # the skill box above it instead of being a hardcoded blue.
         out.append(
             r"        \node at (axis cs:%d,0) "
