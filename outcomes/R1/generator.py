@@ -389,7 +389,15 @@ def generate(**kwargs):
         # make a rebuild non-reproducible; it stays for pdfgenerator.py, which
         # is picking a handful of versions for one printed assessment and
         # genuinely wants to avoid repeats across runs.
-        available_versions = list(versions)
+        #
+        # `course_progress` restricts it to what the course has covered,
+        # cumulatively, exactly as the legacy path did. Without one the
+        # whole dictionary is in play, which is what this did before and
+        # what a caller naming no level still gets.
+        if course_progress is None:
+            available_versions = list(versions)
+        else:
+            available_versions = get_available_versions(course_progress)
         version_name = random.choice(available_versions)
         version_data = versions[version_name]
     else:
@@ -424,9 +432,38 @@ def generate(**kwargs):
 # importable; both gaps are closed, so the file extension now selects the
 # plain-Python runtime directly.
 class Generator(BaseGenerator):
+    # The cumulative lists this generator already had, named so a print
+    # run can ask for the one the course has reached. Each includes
+    # everything before it, which is what `get_available_versions` means
+    # by `versions_lists[:n+1]`.
+    #
+    # Pregenerated across the bank and filtered at print time, rather
+    # than the level being frozen into a call and the whole bank
+    # regenerated to advance the semester -- the same arrangement W5
+    # and W7 use.
+    variants = ["whole_numbers", "integers", "fractions", "decimals"]
+
+    #: Which list each variant reaches, by index into `versions_lists`.
+    #:
+    #:   0 add        1 subtract     2 multiply/divide   -- whole numbers
+    #:   3 integers and PEMDAS
+    #:   4 fraction addition and subtraction
+    #:   5 decimals
+    REACHES = {"whole_numbers": 2, "integers": 3,
+               "fractions": 4, "decimals": 5}
+
     def data(self):
         # PUBLIC_SEEDS comes from the generator namespace: below it a student
         # browses this version in the viewer, at or above it the version feeds
         # an assessment, printed or exported to an LMS.
         studying = self.seed < PUBLIC_SEEDS
-        return generate(pool='self_study' if studying else 'assessment')
+        if studying:
+            # **The variant does not reach the viewer.** `self_study`
+            # draws from `html_versions`, a separate and larger pool
+            # with its own names and no level structure to restrict to.
+            # A browsing student sees everything, as before. The label
+            # is still written into these seeds by the wrapper and is
+            # never read for them: only printable seeds are filtered.
+            return generate(pool='self_study')
+        return generate(pool='assessment',
+                        course_progress=self.REACHES[self.variant])
