@@ -1,8 +1,30 @@
 \ProvidesPackage{printit}
 
+% ---------------------------------------------------------------------
+% Options, for a document written by hand rather than by printit.
+%
+%   \usepackage[noid]{printit}     no id field in the header
+%   \usepackage[nocode]{printit}   never draw the footer code
+%
+% Neither is needed for an ordinary hand-written assessment. The code
+% already draws nothing unless \setrunid has been called, which
+% only printit does, so `nocode` is for the case where printit built
+% the run and the symbol is still not wanted. The id field *is* on by
+% default, because a line of boxes to write a student number into is
+% worth having whoever made the page.
+%
+% The underlying switches are \cipidfalse and \cipcodeonfalse, and
+% either can be used in a preamble instead of the option.
+\newif\ifcipid\cipidtrue
+\newif\ifcipcodeon\cipcodeontrue
+\DeclareOption{noid}{\cipidfalse}
+\DeclareOption{nocode}{\cipcodeonfalse}
+\DeclareOption*{}
+\ProcessOptions\relax
+
 \usepackage[T1]{fontenc}
 
-% Colours live in printitfigures.sty; see its note.
+% Colors live in printitfigures.sty; see its note.
 
 % For setting keys and values
 \usepackage{pgfkeys}
@@ -308,6 +330,238 @@ title=#2,#1}
 \newcommand{\vseed}{}
 \newcommand{\setvseed}[1]{\renewcommand{\vseed}{#1}}
 
+% ---------------------------------------------------------------------
+% What a page carries so it can be read back (design 14.5)
+%
+% Three marks, and the reason for each:
+%
+%   \runid     which run this sheet belongs to. A small number the
+%              print record allocates, one per run per course, and
+%              never reuses. **Not the draw seed**: a replay carries
+%              the replayed run's seed on purpose, so two runs
+%              routinely share one and a seed cannot say which run a
+%              sheet came from.
+%   \cipsid    the student id, when the run prints names. Blank runs
+%              leave it unset and the header prints empty boxes to write
+%              in -- which is what lets an unnamed spare be graded.
+%   the code   everything above plus the skill and the sheet number, as
+%              a QR in the footer, so splitting a scanned stack needs no
+%              OCR at all.
+%
+% `qrcode` is pure TeX and draws with no external tool, which matters:
+% a build must not depend on something the instructor has to install.
+\usepackage{qrcode}
+
+\newcommand{\runid}{0}
+% The one command that says "this document is a printit run". It
+% opens the page index, stamps it, and switches on everything that
+% writes to it -- see the note on \cipindex above.
+\newcommand{\setrunid}[1]{%
+  \renewcommand{\runid}{#1}%
+  \ifcipindex\else
+    \immediate\openout\cipindex=\jobname.pages\relax
+    \global\cipindextrue
+  \fi
+  \immediate\write\cipindex{run*#1}}
+
+% Either mark can be turned off for a run. Both default **on**: a
+% document that says nothing about them is an older one, and printing
+% less than it asked for is the worse way to be wrong.
+%
+% `\ifcipid` covers the whole id field, label included -- a bare
+% "ID:" with nothing after it is worse than no id at all. Both
+% switches are declared at the top of this file, with the package
+% options that set them.
+
+\newcommand{\cipsid}{}
+\newcommand{\setsid}[1]{\renewcommand{\cipsid}{#1}}
+
+% Which sheet of the current skill this is. Reset by \skillheader,
+% which runs once at the top of every skill, and stepped in the footer,
+% which is expanded once per page at shipout and therefore in order.
+\newcounter{cipsheet}
+\setcounter{cipsheet}{0}
+
+% What kind of paper this is. A scanned stack may contain all three and
+% they are graded differently -- a key must never be recorded as an
+% attempt, and a spare belongs to nobody until someone writes an id on
+% it. Nothing on the page says which, so the document has to.
+\newcommand{\cipkind}{student}
+\newcommand{\setkind}[1]{\renewcommand{\cipkind}{#1}}
+
+% ---------------------------------------------------------------------
+% The page index: what the code's key actually resolves to.
+%
+% The footer code says `C1-<runid>-<page>` and nothing else, on the
+% stated grounds that run plus page is a unique key and everything else
+% is "a lookup in that run's manifest". It was not: `manifest.toml`
+% records which (skill, version, seed) were *drawn*, with no students
+% and no page numbers in it, and the print record's `printed` table has
+% a row per student per paper with no page either. So the key was real
+% and the table it keyed into did not exist.
+%
+% Only one party knows which page a given paper landed on, and it is
+% not Python: a skill can run to two sheets, so page numbers exist only
+% once TeX has broken the pages. The document therefore writes the
+% table itself, one line per page, as it ships them.
+%
+%   run*<runid>
+%   <page>*<kind>*<sid>*<slug>*<vseed>*<sheet>
+%
+% `*` separates, as it did in the first payload, because `-` occurs in
+% slugs. The header's first field is `run` rather than a page number,
+% which no page can collide with -- and avoids `#`, which `\write`
+% would double.
+%
+% An absent sid is empty: a blank-name run prints boxes to write one
+% into, and claiming an owner we do not have would be worse than
+% admitting we have none.
+%
+% Written from the footer, not from a shipout hook, and that is the
+% whole trick for blank pages: \preparefornextstudent pads with
+% \pagestyle{empty}, which has no footer, so a padding page writes no
+% line without anyone having to detect one. The gaps in the sequence
+% are the blanks.
+%
+% No space before any `*`: a control sequence name ends at the first
+% non-letter, so `\thepage*` is already two tokens.
+% The stream is opened by \setrunid, not here, and `\ifcipindex`
+% is false until it is. A hand-written document never calls
+% \setrunid -- it is printit's way of saying "this is a run" --
+% so it pays for none of this: no file appears beside its PDF, no
+% line is written per page, and \cipmark becomes a pass-through
+% that does not measure anything.
+%
+% Gating on \setrunid rather than on a package option means
+% there is nothing to remember and nothing to get wrong.
+\newwrite\cipindex
+\newif\ifcipindex
+\newcommand{\cipwriteindex}{%
+  \ifcipindex
+    \immediate\write\cipindex{%
+      \thepage*\cipkind*\cipsid*\currentskill*\vseed*\thecipsheet}%
+  \fi}
+
+% ---------------------------------------------------------------------
+% Where a thing is on the page, in the page's own coordinates.
+%
+%   mark*<page>*<label>*<x>*<y>*<width>*<height>*<depth>
+%
+% The five numbers are scaled points from the bottom-left of the page,
+% so the rectangle is x to x+width and y-depth to y+height.
+%
+% Scans has to cut pieces out of a scanned sheet and read them, and
+% there were three ways to know where to cut:
+%
+%   - compute it from the header and footer geometry, which breaks
+%     silently the next time anybody adjusts either;
+%   - measure it off a render, which is the same constant with a
+%     measuring step in front of it, and this project has a bad record
+%     with measurement harnesses;
+%   - ask the typesetter, which is where the answer actually lives.
+%
+% One macro and not one per thing, because the three marks worth
+% recording -- the grading box, the id field, the name -- differ only
+% in what they wrap:
+%
+%   box    the thing the instructor ticks. Cropped and classified.
+%   id     printed digits on a named run, an empty grid on a blank
+%          one. The grid is the only way an unnamed paper is ever
+%          attributed to anybody.
+%   name   likewise written by hand on a blank run, and shown beside
+%          the id during review so the instructor has two independent
+%          reads of who this is.
+%
+% The slug and the version are deliberately *not* recorded. Both are
+% already known from the page index once the code has been read -- and
+% if the code cannot be read, the page number is unknown too, so there
+% is no entry to look a position up in. A position that is only
+% available when it is not needed is not worth a line in the file.
+%
+% \pdfsavepos records the position of the point it sits at, and
+% \pdflastxpos is only set when the page is shipped -- so the \write
+% has to be deferred, not \immediate, or it reads the previous page's.
+%
+% `\global` is not optional. A header or footer is built inside a
+% group, and a deferred write runs after that group has closed. A
+% locally set save box is void by then, and the first version of this
+% recorded a box 0sp wide at exactly the right place.
+%
+% The content is measured into a save box and then typeset *again*
+% rather than the measured copy being used. `\sbox` typesets without
+% contributing anything, so measuring has no consequences and what
+% reaches the page is the tokens that were always there.
+%
+% Using the measured copy changed the page. `\roundbox` ends in
+% `\xspace`, which decides whether to add a space by looking at what
+% comes next -- and inside a save box what comes next is the end of the
+% box. The grading box and the skill slug beside it moved about 0.8mm:
+% 3,344 pixels out of 8.4 million, all in one corner, and found only
+% by differencing against a page built before the change.
+%
+% The cost is that #2 is typeset twice, so **only inert content goes in
+% here.** Anything that steps a counter, writes a file or sets a
+% bookmark would do it twice. The three uses are a rule, a grid of
+% rules, and a piece of text.
+\newsavebox{\cipmarkbox}
+\newcommand{\cipmark}[2]{%
+  \ifcipindex
+  \global\sbox{\cipmarkbox}{#2}%
+  \pdfsavepos
+  % Two clocks, and they do not agree.
+  %
+  % The *position* must be read late: \pdflastxpos is only set when
+  % the page ships, so `\the\pdflastxpos` has to survive into the
+  % deferred write unexpanded.
+  %
+  % The *size* must be read now. One save box serves all three marks
+  % on a page, so by shipout it holds whichever was measured last --
+  % and the first version of this reported the footer's 27pt grading
+  % box as the width of the name and the id as well. Position right,
+  % size wrong, on every page.
+  %
+  % \edef settles both: \number expands here and freezes three
+  % literal numbers into the token list, while \noexpand keeps
+  % \thepage and \pdflastxpos for shipout. This is the job
+  % \protected@write exists for.
+  \edef\cipmarkline{\noexpand\write\noexpand\cipindex{%
+    mark*\noexpand\thepage*#1*%
+    \noexpand\the\noexpand\pdflastxpos*%
+    \noexpand\the\noexpand\pdflastypos*%
+    \number\wd\cipmarkbox*\number\ht\cipmarkbox*%
+    \number\dp\cipmarkbox}}%
+  \cipmarkline
+  \fi
+  #2}
+
+% ---------------------------------------------------------------------
+% The payload: the least that identifies a sheet.
+%
+%   C1-7-347
+%
+% **`runid` plus `page` is a unique key.** A run numbers its pages
+% once, so the skill, the version seed, the sheet-within-skill and
+% the student are every one of them a lookup in that run's page
+% index. Putting any of them in the code buys nothing a scanner needs
+% and costs modules.
+%
+% `C1` is the format version. Without it a later change of fields
+% would be unreadable rather than merely different -- and Scans will
+% meet codes printed by a theme that no longer exists.
+%
+% The payload was `C1-<seed>-<page>` until 2026-10-25 and 17
+% characters long, which exactly fills a version-1 symbol at level L.
+% A run number is 1 to 3 digits where a seed is 10, so the longest
+% realistic payload is now about 11 characters -- which fits level
+% **M** in the same 21 modules. Same size on the page, 15% of the
+% symbol recoverable instead of 7%, and a footer corner is where
+% staples and folds live.
+%
+% What is given up: a loose sheet whose course record is gone says
+% nothing about itself. The skill is printed beside the code in words
+% for exactly that case.
+\newcommand{\cippayload}{C1-\runid-\thepage}
+
 % --- Updated Skill macros ---
 \newcommand\currentskill{}
 
@@ -358,16 +612,124 @@ title=#2,#1}
 % keeps the slug, and only the printed title moves.
 \NewDocumentCommand{\skillheader}{o m}{%
     \gdefcurrentskill{#2}%
+    \setcounter{cipsheet}{0}%
     \begin{skill}[\getskillcolor{#2}]{\IfNoValueTF{#1}{#2}{#1}}%
         \getskilldesc{#2}%
     \end{skill}%
 }
 
 % For compatibility with older skill files
-\newenvironment{setskill}[1]{\gdefcurrentskill{#1}\begin{skill}{\currentskill}}{\end{skill}}
+\newenvironment{setskill}[1]{%
+    \gdefcurrentskill{#1}\setcounter{cipsheet}{0}%
+    \begin{skill}{\currentskill}}{\end{skill}}
 
 % Adds a newpage to separate skills
 \newcommand{\skillpage}[1]{\input{#1}\newpage}
+
+% What the footer calls, once per page. Three jobs in a fixed order,
+% and the order is the point: the sheet is counted and the index line
+% written on every page that has a footer, whether or not the code is
+% drawn on it.
+%
+% Keeping the counter and the index inside `\ifcipcodeon` would have
+% tied the record of what was printed to the decision to print a
+% symbol -- two unrelated things, and a page index that silently
+% emptied itself when someone turned the codes off is a worse failure
+% than having no index at all, because it looks like a run with no
+% pages.
+%
+% One call per page is guaranteed by fancyhdr, not by us: `\cipcode`
+% sits in [LO] and [RE], and exactly one of those fires per page.
+\newcommand{\cippagemark}{%
+  \stepcounter{cipsheet}%
+  \cipwriteindex
+  \cipcode}
+
+% Drawn small, and quiet: this is for a scanner, and a student should
+% not feel watched by it.
+\newcommand{\cipcode}{%
+  % Two conditions, one copy of each, and they live here rather than
+  % at the four call sites -- two page styles times two parities.
+  %
+  % `\ifcipindex` is the important one. The code is a key into the
+  % page index, so with no index there is nothing for it to key into:
+  % it would carry `C1-0-17`, naming run zero, which does not exist.
+  % A hand-written assessment that never calls \setrunid therefore
+  % prints no symbol at all, without having to ask for that.
+  %
+  % It is also the most expensive thing on the page -- qrcode.sty does
+  % its Reed-Solomon in TeX macros -- so not drawing it is most of
+  % what a hand-written document saves.
+  \ifcipindex\ifcipcodeon
+  % `nolink`, which is why it was cyan. `qrcode` sets
+  % `\qr@hyperlinktrue` by default, wraps the code in a hyperref
+  % link, and hyperref colours it -- so wrapping it in
+  % `\textcolor{black}` changed nothing, because the colour was not
+  % coming from the surrounding text. A payload of `CIP1*...` is not a
+  % URL either, so the link was never meaningful.
+  %
+  % A scanner wants maximum contrast; light cyan on white is close to
+  % the worst case a decoder can be handed.
+  %
+  % 9mm at level **M**, which is a deliberate pair and not two
+  % independent settings.
+  %
+  % A version-1 symbol is 21 modules and holds 17 bytes at level L
+  % but only 14 at level M. The payload was 17 while it carried a
+  % ten-digit seed, so L was forced. A run number is 1 to 3 digits,
+  % which brings it to about 11 -- inside M, in the same 21 modules.
+  %
+  % **If `\cippayload` ever grows past 14 characters this silently
+  % falls to version 2, the modules shrink, and the symbol stops
+  % reading at 9mm.** Re-measure after any change to it;
+  % `test_the_symbol_is_still_one_version_1` holds the line.
+  %
+  % Measured at level M on second-generation copies: 9mm reads
+  % 150/150, the same as L. The extra correction is not buying
+  % legibility, which is set by module size -- it is buying damage
+  % tolerance for the staple.
+  %
+  % 9mm, not 11, and the 2mm came off the back of a measurement
+  % rather than a rule of thumb. The old 11mm was carried over from a
+  % 33-module symbol, and when the payload was cut to 17 characters
+  % the symbol became 21 modules and nobody revisited the size.
+  %
+  % What was measured: the real footer, on real pages, rendered at
+  % 200dpi -- the low end of the instructor's copier -- then blurred,
+  % skewed, noised and JPEGed, with the decoder given the whole sheet
+  % to search rather than a cropped symbol.
+  %
+  %   size   straight   skewed 4deg   2nd generation   upside down
+  %   11mm      36/36         36/36            36/36         36/36
+  %    9mm      36/36         36/36            36/36         36/36
+  %    8mm      36/36         36/36            30/36         36/36
+  %    7mm      36/36         36/36            34/36         36/36
+  %    6mm      36/36         36/36             0/36         35/36
+  %
+  % 9mm then took 150/150 on second-generation copies alone. 8mm and
+  % 7mm are both marginal and their ordering is noise; the cliff is
+  % between 9 and 8, and it is a photocopy-of-a-photocopy that finds
+  % it. That is not a hypothetical case -- a student who needs a
+  % blank copy gets one off the copier.
+  %
+  % Sizes here are measured off a 600dpi render, never computed from
+  % the QR version tables -- `qrcode` puts its quiet zone inside the
+  % height it is given, and the tables were misread once already.
+  %
+  % Centred on the footer text rather than hung below it: `\raisebox`
+  % by half the height, less half the x-height, puts the middle of the
+  % square on the middle of the line.
+  % Centred the way `\roundbox` is, and by the same mechanism: a
+  % tikzpicture with `baseline=-0.7ex`, which puts the picture's
+  % origin 0.7ex above the text baseline and the node's centre on it.
+  % Two nested `\raisebox`es were doing this arithmetically and still
+  % reading as top-aligned; copying the thing already in the footer
+  % that looks right is better than computing something that should.
+  \begin{tikzpicture}[baseline=-0.7ex]
+    \node[inner sep=0pt, outer sep=0pt] {\textcolor{black}{%
+      \qrcode[height=9mm, level=M, nolink]{\cippayload}}};
+  \end{tikzpicture}%
+  \fi\fi}
 
 %insert nicer urls if needed in online PDF checkpoints (pandemic era)
 \usepackage{hyperref}
@@ -391,18 +753,143 @@ title=#2,#1}
 % Whatever \setsect last set, appended to the course: "-800", or nothing.
 \newcommand{\scsection}{}
 \makeatletter
-\newcommand{\scheadright}{\sffamily\color{darkgray} \@acadclass{}\scsection\hspace{5pt} \textbullet{}\hspace{5pt}  \@date \hspace{5pt} \textbullet{}\hspace{5pt}  \@author}
+% Each gap was \hspace{5pt} *plus* a literal word space -- about
+% 8.3pt. The spaces are gone and the 5pt stays, which closes the
+% three parts up by about a third without changing the rhythm.
+\newcommand{\scheadright}{\sffamily\color{darkgray} \@acadclass{}\scsection\hspace{5pt}\textbullet{}\hspace{5pt}\@date\hspace{5pt}\textbullet{}\hspace{5pt}\@author}
 \makeatother
 % Whatever \setname last set; a ruled blank until it is called.
-\newcommand{\scname}{\underline{\Large\phantom{Blank}\hspace{2.9in}}}
-\newcommand{\scheadleft}{\sffamily\color{darkgray} Name: \scname}
+\newcommand{\scname}{\underline{\large\phantom{Blank}\hspace{1.25in}}}
 
-\fancyhead[C]{}
+% The name has a budget, because the id is centred and so starts
+% at a fixed place whatever the name does. Past the budget the
+% name is scaled to fit instead of running into "ID:".
+%
+% 2.1in, chosen by measuring the ink rather than the boxes. The gap
+% that matters is from the end of the name to the word "ID:", and
+% the `name` and `id` marks do not include that label -- reading the
+% gap between them said a 27-character name cleared by 0.10in while
+% the render showed it touching.
+%
+% Measured in ink columns, the name-to-"ID:" gap is:
+%
+%        name   budget 2.25in   budget 2.1in
+%    22 chars         0.34in         0.34in   (not shrunk either way)
+%    27 chars         0.16in         0.31in
+%    blank            0.30in         0.30in
+%
+% So 2.1in leaves every case about a third of an inch, and leaves
+% the longest name on either roster -- 22 characters -- at full
+% size. Only longer ones are scaled, and only by what it takes.
+%
+% Shrinking on demand rather than always: scaling every name to a
+% fixed width would make the short ones enormous.
+\newlength{\cipnamebudget}
+\setlength{\cipnamebudget}{2.1in}
+\newsavebox{\cipnamefit}
+\newcommand{\cipfittedname}{%
+  \sbox{\cipnamefit}{\scname}%
+  \ifdim\wd\cipnamefit>\cipnamebudget
+    \resizebox{\cipnamebudget}{!}{\scname}%
+  \else\scname\fi}
+% One box per digit. Separated digits are the most reliable
+% handwriting there is, and this is the only handwriting the system
+% has to read -- so it is worth the width. Filled when the run knows
+% the student, empty to be written in when it does not, which is what
+% lets an unnamed spare be graded at all.
+\makeatletter
+% One box per character. `\@tfor` walks the digits, so the whole block
+% has to be defined with `@` a letter -- not merely used inside one
+% pair of \makeatletter, which is how the first attempt defined
+% `\@ tfor` and failed at the first named student.
+% One grid of nine cells, drawn only when nobody has filled the id
+% in. A faint ruled array rather than nine black boxes: it is a place
+% to write, not a thing to read, and at the weight of the boxes it
+% replaced it competed with the student's own name.
+%
+% 4.4mm cells. The first version used 1.5ex -- about 1.3mm -- which
+% the instructor rightly called too tiny to write in. A digit written
+% by an adult wants four to five millimetres.
+\newlength{\cipcell}
+\setlength{\cipcell}{4.4mm}
+\newcommand{\cipidgrid}{%
+  % Lowered 1.80pt so the grid's bottom rule meets the blank name's
+  % underline. `\underline` draws below the baseline and a
+  % `\framebox` stands on it, so they start a rule's-worth apart and
+  % no amount of sizing brings them together. Measured off a 600dpi
+  % render of this very header; see `align_check.py` in the notes.
+  \raisebox{-1.80pt}{%
+  \begingroup
+  \color{black!30}%
+  \setlength{\fboxsep}{0pt}%
+  \setlength{\fboxrule}{0.4pt}%
+  \framebox{%
+    \makebox[\cipcell]{\rule{0pt}{5.2mm}}%
+    \@tfor\cipdiv:=12345678\do{%
+      \vrule width 0.4pt\makebox[\cipcell]{}}%
+  }%
+  \endgroup}}
+
+% When the run knows the student the id is simply printed, at the
+% size of everything else on this line. It is a fact about the paper,
+% not a blank: boxes around a number nobody has to write are noise,
+% and the instructor asked for them only in the empty case.
+\newcommand{\cipidfield}{%
+  \ifx\cipsid\empty\cipidgrid\else\cipsid\fi}
+
+% The blank name rule shortens when the grid is shown, because the
+% two together at full width push the course and date off the line.
+% `\scname` expands to `\large <name>`, and a size command leaks to
+% the end of its group -- which here is the whole header. So the id
+% came out at name size. The braces scope it, and the id then sits at
+% the size of "Name:" and "MAT 106-820" either side of it.
+% Three slots, not two. The id used to follow the name, so it sat
+% at a different place on every page and in a different place again
+% on a blank run -- which is what read as clunky. fancyhdr's centre
+% slot was empty, and it centres on the head regardless of what the
+% other two hold, so both kinds of id now land identically.
+\newcommand{\scheadleft}{%
+  \makebox[2.5in][l]{\sffamily\color{darkgray} Name: %
+    {\cipmark{name}{\cipfittedname}}}}
+\newcommand{\scheadid}{%
+  \ifcipid\sffamily\color{darkgray} ID: \cipmark{id}{\cipidfield}\fi}
+\makeatother
+
+\fancyhead[C]{\scheadid}
 \fancyhead[R]{\scheadright}
 \fancyhead[L]{\scheadleft}
-\fancyfoot[RE, LO]{\maketitle}
+% Titles are long and carry a date -- "Skill Checkpoint Redo
+% 2026-10-23" -- so this slot is given a width and a smaller face
+% rather than being allowed to run into the centre.
+%
+% The code goes **outside** the title, which puts it in the corner
+% diagonally opposite the grading box on both sides of a sheet: on an
+% odd page the title is on the left, so the code is left of it; on an
+% even page the title is on the right, so the code is right of it.
+% Two slots rather than one, because `[RE, LO]` is a single slot and
+% the order has to differ.
+% The title at its own size, as it always was. It fits beside the
+% code because the instructor shortened what he calls a run -- "SC
+% Redo 10/23" rather than "Skill Checkpoint Redo 2026-10-23".
+%
+% The box is spacing, not a clip: a title long enough to overflow
+% 1.9in will still run into the version string in the centre. The
+% centre spans roughly 2.75in to 4.25in of a 7in line, so everything
+% left of it has to finish by 2.75in. The box is still 1.9in: the
+% code shrinking from 11mm to 9mm moved the title 2mm left and
+% left the room it has unchanged.
+\fancyfoot[LO]{\cippagemark\hspace{0.6em}%
+  \makebox[1.9in][l]{\maketitle}}
+\fancyfoot[RE]{\makebox[1.9in][r]{\maketitle}%
+  \hspace{0.6em}\cippagemark}
+% Just the version again. The run seed was printed here as a dashed
+% suffix so a loose sheet could be traced by eye -- but it is in the
+% code now, and the code is the thing that will actually be read.
+% Two copies of a ten-digit number on every page, one of them for a
+% case the other already covers, is clutter.
 \fancyfoot[C]{\sffamily\textit{\color{darkgray}v\vseed}}
-\fancyfoot[LE, RO]{\sffamily\textit{\color{darkgray}\currentskill\hspace{0.5em}\roundbox{20pt}}}
+\fancyfoot[LE, RO]{\sffamily\textit{\color{darkgray}%
+  \currentskill\hspace{0.5em}\cipmark{box}{\roundbox{20pt}}}}
 
 % The second and later sheets of a skill that runs past one page.
 %
@@ -418,9 +905,16 @@ title=#2,#1}
 \fancypagestyle{skillcontinued}{%
     \fancyhf{}%
     \renewcommand{\headrulewidth}{0pt}%
+    \fancyhead[C]{\scheadid}%
     \fancyhead[R]{\scheadright}%
     \fancyhead[L]{\scheadleft}%
-    \fancyfoot[RE, LO]{\maketitle}%
+    % A continued sheet carries the code too -- it is the sheet that
+    % most needs to say which paper it belongs to -- in the same
+    % corner as on a first sheet.
+    \fancyfoot[LO]{\cippagemark\hspace{0.6em}%
+      \makebox[1.9in][l]{\maketitle}}%
+    \fancyfoot[RE]{\makebox[1.9in][r]{\maketitle}%
+      \hspace{0.6em}\cippagemark}%
     \fancyfoot[C]{\sffamily\textit{\color{darkgray}v\vseed}}%
 }
 
@@ -436,8 +930,8 @@ title=#2,#1}
 % -- would come out with a blank rule where the student's name should be.
 \newcommand{\setname}[1]{%
     \ifthenelse{\equal{#1}{Blank} \OR \equal{#1}{blank}}%
-        {\renewcommand{\scname}{\underline{\Large\phantom{Blank}\hspace{2.9in}}}}%
-        {\renewcommand{\scname}{\Large #1}}%
+        {\renewcommand{\scname}{\underline{\large\phantom{Blank}\hspace{1.25in}}}}%
+        {\renewcommand{\scname}{\large #1}}%
     \pdfbookmark[0]{\texorpdfstring{#1}{#1}}{#1}%
 }
 
