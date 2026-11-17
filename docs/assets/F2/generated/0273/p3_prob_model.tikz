@@ -1,0 +1,7 @@
+\setmyx{0}{28}
+\begin{tikzpicture}[scale=2.3]
+    \begin{axis}[blank number line style,
+    extra x ticks={0,24},
+    extra x tick labels={$0$,$\dfrac{2}{19}$}]
+    \end{axis}
+\end{tikzpicture}

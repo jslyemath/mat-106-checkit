@@ -1,0 +1,15 @@
+\begin{tikzpicture}[scale=1.5, every node/.style={inner sep=0,outer sep=0}, line width=1pt, line style/.style={line width=1pt}]
+
+    \filldraw[fill=blue!30,draw=black] (0.0,0) -- ++(0.0:1) arc (0.0:120.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (0.0,0) -- ++(120.0:1) arc (120.0:240.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (0.0,0) -- ++(240.0:1) arc (240.0:360.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (2.2,0) -- ++(0.0:1) arc (0.0:120.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (2.2,0) -- ++(120.0:1) arc (120.0:240.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (2.2,0) -- ++(240.0:1) arc (240.0:360.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (4.4,0) -- ++(0.0:1) arc (0.0:120.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (4.4,0) -- ++(120.0:1) arc (120.0:240.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (4.4,0) -- ++(240.0:1) arc (240.0:360.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (6.6000000000000005,0) -- ++(0.0:1) arc (0.0:120.0:1) -- cycle;
+    \filldraw[fill=blue!30,draw=black] (6.6000000000000005,0) -- ++(120.0:1) arc (120.0:240.0:1) -- cycle;
+    \filldraw[fill=white,draw=black] (6.6000000000000005,0) -- ++(240.0:1) arc (240.0:360.0:1) -- cycle;
+\end{tikzpicture}

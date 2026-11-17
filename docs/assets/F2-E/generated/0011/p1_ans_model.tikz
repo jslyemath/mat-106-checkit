@@ -1,0 +1,15 @@
+\begin{tikzpicture}[scale=1.5, every node/.style={inner sep=0,outer sep=0}, line width=1pt, line style/.style={line width=1pt}]
+
+    \draw[thick] (0.0,0) rectangle (2.0,1);
+    \filldraw[fill=blue!30,draw=black] (0.0,0) rectangle (0.4,1);
+    \filldraw[fill=blue!30,draw=black] (0.4,0) rectangle (0.8,1);
+    \filldraw[fill=blue!30,draw=black] (0.8,0) rectangle (1.2000000000000002,1);
+    \filldraw[fill=blue!30,draw=black] (1.2000000000000002,0) rectangle (1.6,1);
+    \filldraw[fill=blue!30,draw=black] (1.6,0) rectangle (2.0,1);
+    \draw[thick] (2.6,0) rectangle (4.6,1);
+    \filldraw[fill=blue!30,draw=black] (2.6,0) rectangle (3.0,1);
+    \filldraw[fill=blue!30,draw=black] (3.0,0) rectangle (3.4000000000000004,1);
+    \filldraw[fill=blue!30,draw=black] (3.4000000000000004,0) rectangle (3.8000000000000003,1);
+    \filldraw[fill=blue!30,draw=black] (3.8000000000000003,0) rectangle (4.2,1);
+    \filldraw[fill=white,draw=black] (4.2,0) rectangle (4.6,1);
+\end{tikzpicture}

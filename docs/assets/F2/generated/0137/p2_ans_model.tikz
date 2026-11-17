@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=1.5, every node/.style={inner sep=0,outer sep=0}, line width=1pt, line style/.style={line width=1pt}]
+
+    \draw[thick] (-1.000,0) -- (1.000,0) -- (0.500,1) -- (-0.500,1) -- cycle;
+    \begin{scope}
+        \clip (-1.000,0) -- (1.000,0) -- (0.500,1) -- (-0.500,1) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (-1.000,0) -- (0.000,0) -- (-0.500,1) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (-0.500,1) -- (0.500,1) -- (0.000,0) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (0.000,0) -- (1.000,0) -- (0.500,1) -- cycle;
+    \end{scope}
+    \draw[thick] (1.200,0) -- (3.200,0) -- (2.700,1) -- (1.700,1) -- cycle;
+    \begin{scope}
+        \clip (1.200,0) -- (3.200,0) -- (2.700,1) -- (1.700,1) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (1.200,0) -- (2.200,0) -- (1.700,1) -- cycle;
+        \filldraw[fill=white,draw=black] (1.700,1) -- (2.700,1) -- (2.200,0) -- cycle;
+        \filldraw[fill=white,draw=black] (2.200,0) -- (3.200,0) -- (2.700,1) -- cycle;
+    \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=1.5, every node/.style={inner sep=0,outer sep=0}, line width=1pt, line style/.style={line width=1pt}]
+
+    \draw[thick] (-0.500,0) -- (0.500,0) -- (0.000,0.866) -- cycle;
+    \begin{scope}
+        \clip (-0.500,0) -- (0.500,0) -- (0.000,0.866) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (-0.500,0) -- (0.000,0.289) -- (0.000,0.866) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (0.500,0) -- (0.000,0.289) -- (0.000,0.866) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (-0.500,0) -- (0.500,0) -- (0.000,0.289) -- cycle;
+    \end{scope}
+    \draw[thick] (0.700,0) -- (1.700,0) -- (1.200,0.866) -- cycle;
+    \begin{scope}
+        \clip (0.700,0) -- (1.700,0) -- (1.200,0.866) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (0.700,0) -- (1.200,0.289) -- (1.200,0.866) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (1.700,0) -- (1.200,0.289) -- (1.200,0.866) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (0.700,0) -- (1.700,0) -- (1.200,0.289) -- cycle;
+    \end{scope}
+    \draw[thick] (1.900,0) -- (2.900,0) -- (2.400,0.866) -- cycle;
+    \begin{scope}
+        \clip (1.900,0) -- (2.900,0) -- (2.400,0.866) -- cycle;
+        \filldraw[fill=blue!30,draw=black] (1.900,0) -- (2.400,0.289) -- (2.400,0.866) -- cycle;
+        \filldraw[fill=white,draw=black] (2.900,0) -- (2.400,0.289) -- (2.400,0.866) -- cycle;
+        \filldraw[fill=white,draw=black] (1.900,0) -- (2.900,0) -- (2.400,0.289) -- cycle;
+    \end{scope}
+\end{tikzpicture}

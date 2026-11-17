@@ -1,0 +1,8 @@
+\setmyx{0}{16}
+\begin{tikzpicture}[scale=2.3]
+    \begin{axis}[blank number line style,
+    extra x ticks={0,4,14},
+    extra x tick labels={$0$,$\dfrac{2}{7}$,$1$}]
+        \node at (axis cs:4,0) {\tikz \fill[scCOLOR] (0,0) circle (2pt);};
+    \end{axis}
+\end{tikzpicture}
