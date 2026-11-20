@@ -6,7 +6,8 @@ The line above loads the house rules shared by all three repos; they start
 with checking that student names are masked. The whole-project map is
 `../checkit/CLAUDE.md`, and what is left to do is `../checkit/ROADMAP.md`.
 
-This is the live bank: 29 outcomes, published to `docs/`.
+This is the live bank: 29 skills plus the Fundamentals Checkpoint (FCP),
+which `bank.xml` lists as 30 outcomes, published to `docs/`.
 
 ```bash
 ./venv/Scripts/python.exe -m checkit generate --remote https://jslyemath.github.io/mat-106-checkit

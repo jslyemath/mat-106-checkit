@@ -1,4 +1,40 @@
 \setvseed{\VAR{seed}}
 \skillheader{F5-E}
 
-This explanation skill is under construction.
+Consider the following task.
+
+\begin{statement}
+    \VAR{problem_tex}
+\end{statement}
+
+When attempting to solve the task, your student, \VAR{student}, \VAR{verb} the following.
+
+%% A picture is the .tikz the generator wrote -- the same file CheckIt
+%% rasterizes for the website, so both show one drawing.
+\BLOCK{if has_figure}
+\begin{center}
+    \input{assets/F5-E/generated/\VAR{'%04d'|format(seed)}/work.tikz}
+\end{center}
+\BLOCK{else}
+\BLOCK{for line in work_lines_tex}
+\[ \VAR{line} \]
+\BLOCK{endfor}
+\BLOCK{endif}
+
+Analyzing \VAR{student}'s work, explain the following.
+
+\begin{enumerate}
+    \item \VAR{q1_tex}
+
+    \begin{ansenv}
+        \VAR{a1_tex}
+    \end{ansenv}
+    \vfill
+
+    \item \VAR{q2_tex}
+
+    \begin{ansenv}
+        \VAR{a2_tex}
+    \end{ansenv}
+    \vfill
+\end{enumerate}

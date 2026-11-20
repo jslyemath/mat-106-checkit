@@ -1,4 +1,42 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <knowl mode="exercise" xmlns="https://spatext.clontz.org" version="0.3">
-    This explanation skill is under construction.
+    <intro>
+        <p>Consider the following task.</p>
+
+        <p>{{{problem}}}</p>
+
+        <p>When attempting to solve the task, your student, {{student}}, {{verb}} the following.</p>
+
+        <!-- The work is either a picture or lines of maths, never both. -->
+        <!-- {{#has_figure}} -->
+        <p>
+            <tikz-image
+                source="assets/F5-E/generated/{{__seed__}}/work"
+                description="{{figure_desc}}"/>
+        </p>
+        <!-- {{/has_figure}} -->
+        <!-- {{#work}} -->
+        <p>{{{work}}}</p>
+        <!-- {{/work}} -->
+
+        <p>Analyzing {{student}}'s work, explain the following.</p>
+    </intro>
+
+    <knowl>
+        <content>
+            <p>{{{q1}}}</p>
+        </content>
+        <outtro>
+            <p>{{{a1}}}</p>
+        </outtro>
+    </knowl>
+
+    <knowl>
+        <content>
+            <p>{{{q2}}}</p>
+        </content>
+        <outtro>
+            <p>{{{a2}}}</p>
+        </outtro>
+    </knowl>
 </knowl>

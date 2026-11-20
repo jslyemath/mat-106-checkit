@@ -1,0 +1,30 @@
+\begin{tikzpicture}[font=\small]
+    \node[left] at (-0.2,1.05) {Juice (cups)};
+    \draw[thick] (0.000,0.75) rectangle (0.500,1.35);
+    \node[font=\footnotesize] at (0.250,1.05) {2};
+    \draw[thick] (0.500,0.75) rectangle (1.000,1.35);
+    \node[font=\footnotesize] at (0.750,1.05) {2};
+    \draw[thick] (1.000,0.75) rectangle (1.500,1.35);
+    \node[font=\footnotesize] at (1.250,1.05) {2};
+    \node[right] at (1.700,1.05) {6};
+    \node[left] at (-0.2,0.30) {Ginger ale (cups)};
+    \draw[thick] (0.000,0.00) rectangle (1.750,0.60);
+    \node[font=\footnotesize] at (0.875,0.30) {7};
+    \draw[thick] (1.750,0.00) rectangle (3.500,0.60);
+    \node[font=\footnotesize] at (2.625,0.30) {7};
+    \draw[thick] (3.500,0.00) rectangle (5.250,0.60);
+    \node[font=\footnotesize] at (4.375,0.30) {7};
+    \node[right] at (5.450,0.30) {21};
+    \node[left] at (-0.2,-0.95) {Juice (cups)};
+    \draw[thick] (0.000,-1.25) rectangle (0.500,-0.65);
+    \node[font=\footnotesize] at (0.250,-0.95) {2};
+    \draw[thick] (0.500,-1.25) rectangle (1.000,-0.65);
+    \node[font=\footnotesize] at (0.750,-0.95) {2};
+    \node[right, draw, circle, inner sep=1.5pt] at (1.200,-0.95) {4};
+    \node[left] at (-0.2,-1.70) {Ginger ale (cups)};
+    \draw[thick] (0.000,-2.00) rectangle (1.750,-1.40);
+    \node[font=\footnotesize] at (0.875,-1.70) {7};
+    \draw[thick] (1.750,-2.00) rectangle (3.500,-1.40);
+    \node[font=\footnotesize] at (2.625,-1.70) {7};
+    \node[right] at (3.700,-1.70) {14};
+\end{tikzpicture}

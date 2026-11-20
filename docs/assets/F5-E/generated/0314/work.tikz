@@ -1,0 +1,21 @@
+\begin{tikzpicture}[x=1.15cm, y=1cm, font=\small]
+    \draw[thick, ->] (0,1.2) -- (2.7,1.2);
+    \draw[thick, ->] (0,0) -- (2.7,0);
+    \node[left] at (-0.2,1.2) {Apples (lb)};
+    \node[left] at (-0.2,0) {Cost (\$)};
+    \draw[gray!60] (0,0.12) -- (0,1.08);
+    \draw (0,1.32) -- (0,1.08);
+    \node[above] at (0,1.32) {15};
+    \draw (0,0.12) -- (0,-0.12);
+    \node[below] at (0,-0.12) {24};
+    \draw[gray!60] (1,0.12) -- (1,1.08);
+    \draw (1,1.32) -- (1,1.08);
+    \node[above] at (1,1.32) {23};
+    \draw (1,0.12) -- (1,-0.12);
+    \node[below] at (1,-0.12) {32};
+    \draw[gray!60] (2,0.12) -- (2,1.08);
+    \draw (2,1.32) -- (2,1.08);
+    \node[above, draw, circle, inner sep=1.5pt] at (2,1.32) {31};
+    \draw (2,0.12) -- (2,-0.12);
+    \node[below] at (2,-0.12) {40};
+\end{tikzpicture}
